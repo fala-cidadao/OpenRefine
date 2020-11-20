@@ -53,33 +53,33 @@ public class Find implements Function {
                     fromIndex++;
                 }
             }
-            
+
             if (s != null && p != null && p instanceof Pattern) {
-                
-                Pattern pattern = (p instanceof String) ? Pattern.compile((String) p) : (Pattern) p;
+
+                Pattern pattern = (Pattern) p;
 
                 Matcher matcher = pattern.matcher(s.toString());
-                
+
                 while (matcher.find()) {
                     allMatches.add(matcher.group());
-                } 
+                }
             }
-            
+
             return allMatches.toArray(new String[0]);
         }
         return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " expects a string or a regexp");
     }
-    
+
     @Override
     public String getDescription() {
         return "Returns all the occurances of match given regular expression";
     }
-    
+
     @Override
     public String getParams() {
         return "string or regexp";
     }
-    
+
     @Override
     public String getReturns() {
         return "array of strings";
