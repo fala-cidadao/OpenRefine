@@ -76,7 +76,7 @@ public class DatePart implements Function {
         } else if ("seconds".equals(part) || "sec".equals(part) || "s".equals(part)) {
             return offsetDateTime.getSecond();
         } else if ("milliseconds".equals(part) || "ms".equals(part) || "S".equals(part)) {
-            return Math.round(offsetDateTime.getNano() / 1000);
+            return offsetDateTime.getNano() / 1000;
         } else if ("nanos".equals(part) || "nano".equals(part) || "n".equals(part)) {
             // JSR-310 is based on nanoseconds, not milliseconds.
             return offsetDateTime.getNano();
