@@ -187,8 +187,8 @@ public class Row implements HasFields {
         try {
             ParsingUtilities.saveWriter.writeValue(writer, this);
             Pool pool = (Pool)options.get("pool");
-            if(pool != null) {
-                for(Cell c : cells) {
+            if (pool != null) {
+                for (Cell c : cells) {
                     if (c != null && c.recon != null) {
                         pool.pool(c.recon);
                     }

@@ -93,13 +93,13 @@ public class ImportingJob  {
     }
     
     public void setState(String state) {
-        synchronized(config) {
+        synchronized (config) {
             JSONUtilities.safePut(config, "state", state);        
         }
     }
 
     public void setError(List<Exception> exceptions) {
-        synchronized(config) {
+        synchronized (config) {
             JSONUtilities.safePut(config, "errors", 
                     DefaultImportingController.convertErrorsToJsonArray(exceptions));
             setState("error");
@@ -141,8 +141,8 @@ public class ImportingJob  {
 
     @JsonIgnore
     public ObjectNode getRetrievalRecord() {
-        synchronized(config) {
-            return JSONUtilities.getObject(config,"retrievalRecord");
+        synchronized (config) {
+            return JSONUtilities.getObject(config, "retrievalRecord");
         }
     }
     
@@ -150,11 +150,11 @@ public class ImportingJob  {
     public List<ObjectNode> getSelectedFileRecords() {
         List<ObjectNode> results = new ArrayList<ObjectNode>();
         
-        ObjectNode retrievalRecord = JSONUtilities.getObject(config,"retrievalRecord");
+        ObjectNode retrievalRecord = JSONUtilities.getObject(config, "retrievalRecord");
         if (retrievalRecord != null) {
             ArrayNode fileRecordArray = JSONUtilities.getArray(retrievalRecord, "files");
             if (fileRecordArray != null) {
-                ArrayNode fileSelectionArray = JSONUtilities.getArray(config,"fileSelection");
+                ArrayNode fileSelectionArray = JSONUtilities.getArray(config, "fileSelection");
                 if (fileSelectionArray != null) {
                     for (int i = 0; i < fileSelectionArray.size(); i++) {
                         int index = JSONUtilities.getIntElement(fileSelectionArray, i, -1);

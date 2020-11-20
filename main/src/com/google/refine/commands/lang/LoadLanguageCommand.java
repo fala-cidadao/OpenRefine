@@ -89,14 +89,14 @@ public class LoadLanguageCommand extends Command {
         }
         
         // Default language is English
-        if (langs.length == 0 || langs[langs.length-1] != "en" ) {
-            langs = Arrays.copyOf(langs, langs.length+1);
-            langs[langs.length-1] = "en";
+        if (langs.length == 0 || langs[langs.length- 1] != "en" ) {
+            langs = Arrays.copyOf(langs, langs.length+ 1);
+            langs[langs.length- 1] = "en";
         }
 
         ObjectNode translations = null;
         String bestLang = null;
-        for (int i = langs.length-1; i >= 0; i--) {
+        for (int i = langs.length- 1; i >= 0; i--) {
             if (langs[i] == null) continue;
             ObjectNode json = loadLanguage(this.servlet, modname, langs[i]);
             if (json != null) {
@@ -151,11 +151,11 @@ public class LoadLanguageCommand extends Command {
     static ObjectNode mergeLanguages(ObjectNode preferred, ObjectNode fallback) {
         ObjectNode results = ParsingUtilities.mapper.createObjectNode();
         Iterator<Entry<String, JsonNode>> iterator = fallback.fields();
-        while(iterator.hasNext()) {
-            Entry<String,JsonNode> entry = iterator.next();
+        while (iterator.hasNext()) {
+            Entry<String, JsonNode> entry = iterator.next();
             String code = entry.getKey();
             JsonNode value = preferred.get(code);
-            if (value == null) {;
+            if (value == null) { ;
                 value = entry.getValue();
             }
             results.set(code, value);

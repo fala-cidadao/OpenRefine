@@ -191,7 +191,7 @@ public class ReconciledDataExtensionJob {
 
         ObjectNode o = ParsingUtilities.mapper.readValue(response, ObjectNode.class);
 
-        if(columns.size() == 0) {
+        if (columns.size() == 0) {
             // Extract the column metadata
             List<ColumnInfo> newColumns = ParsingUtilities.mapper.convertValue(o.get("meta"), new TypeReference<List<ColumnInfo>>() {});  
             columns.addAll(newColumns);
@@ -266,7 +266,7 @@ public class ReconciledDataExtensionJob {
 
         // for each property
         int colindex = 0;
-        for(ColumnInfo ci : columns) {
+        for (ColumnInfo ci : columns) {
             String pid = ci.id;
             ArrayNode values = JSONUtilities.getArray(record, pid);     
             if (values == null) {
@@ -274,7 +274,7 @@ public class ReconciledDataExtensionJob {
             }
 
             // for each value
-            for(int rowindex = 0; rowindex < values.size(); rowindex++) {
+            for (int rowindex = 0; rowindex < values.size(); rowindex++) {
             	if (!(values.get(rowindex) instanceof ObjectNode)) {
             		continue;
             	}
@@ -298,7 +298,7 @@ public class ReconciledDataExtensionJob {
                     args[0] = val.get("date").asText();
                     Object v = td.call(null, args);
                     storeCell(rows, rowindex, colindex, v);
-                } else if(val.has("bool")) {
+                } else if (val.has("bool")) {
                     boolean v = val.get("bool").asBoolean();
                     storeCell(rows, rowindex, colindex, v);
                 }

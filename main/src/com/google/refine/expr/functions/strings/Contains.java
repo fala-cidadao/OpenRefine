@@ -54,7 +54,7 @@ public class Contains implements Function {
                 Matcher matcher = pattern.matcher(s);
                 if (matcher.find()) {
                     return true;
-                }else
+                } else
                     return false;
             }
         }

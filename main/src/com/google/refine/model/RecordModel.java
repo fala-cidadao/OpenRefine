@@ -60,7 +60,7 @@ public class RecordModel  {
         
         @Override
         public String toString() {
-            return rowIndex+","+cellIndex;
+            return rowIndex+ ","+ cellIndex;
         }
     }
     
@@ -71,7 +71,7 @@ public class RecordModel  {
         
         @Override
         public String toString() {
-            return "Idx: "+recordIndex+" CellDeps: "+Arrays.toString(cellDependencies)+" Rows:"+contextRows;
+            return "Idx: "+ recordIndex+ " CellDeps: "+ Arrays.toString(cellDependencies)+ " Rows:"+ contextRows;
         }
     }
 

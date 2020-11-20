@@ -60,7 +60,7 @@ public class XmlImportUtilities extends TreeImportUtilities {
     static public String[] detectPathFromTag(TreeReader parser, String tag) throws TreeReaderException {
         while (parser.hasNext()) {
             Token eventType = parser.next();
-            if (eventType == Token.StartEntity) {//XMLStreamConstants.START_ELEMENT) {
+            if (eventType == Token.StartEntity) { //XMLStreamConstants.START_ELEMENT) {
                 List<String> path = detectRecordElement(parser, tag);
                 if (path != null) {
                     String[] path2 = new String[path.size()];
@@ -89,7 +89,7 @@ public class XmlImportUtilities extends TreeImportUtilities {
      * @throws ServletException
      */
     static protected List<String> detectRecordElement(TreeReader parser, String tag) throws TreeReaderException {
-        if(parser.current() == Token.Ignorable) {
+        if (parser.current() == Token.Ignorable) {
             parser.next();
         }
 
@@ -104,9 +104,9 @@ public class XmlImportUtilities extends TreeImportUtilities {
 
         while (parser.hasNext()) {
             Token eventType = parser.next();
-            if (eventType == Token.EndEntity) {//XMLStreamConstants.END_ELEMENT) {
+            if (eventType == Token.EndEntity) { //XMLStreamConstants.END_ELEMENT) {
                 break;
-            } else if (eventType == Token.StartEntity) {//XMLStreamConstants.START_ELEMENT) {
+            } else if (eventType == Token.StartEntity) { //XMLStreamConstants.START_ELEMENT) {
                 List<String> path = detectRecordElement(parser, tag);
                 if (path != null) {
                     path.add(0, localName);
@@ -262,11 +262,11 @@ public class XmlImportUtilities extends TreeImportUtilities {
             while (parser.hasNext()) {
                 Token eventType = parser.next();
                 if (eventType == Token.StartEntity) {
-                    findRecord(project, parser, recordPath, 0, rootColumnGroup, limit--,parameters);
+                    findRecord(project, parser, recordPath, 0, rootColumnGroup, limit--, parameters);
                 }
             }
         } catch (TreeReaderException e) {
-            logger.error("Exception from XML parse",e);
+            logger.error("Exception from XML parse", e);
             throw e;
         }
     }
@@ -290,9 +290,9 @@ public class XmlImportUtilities extends TreeImportUtilities {
         ImportParameters parameters
     ) throws TreeReaderException {
         if (logger.isTraceEnabled()) {
-            logger.trace("findRecord(Project, TreeReader, String[], int, ImportColumnGroup - path:"+Arrays.toString(recordPath));
+            logger.trace("findRecord(Project, TreeReader, String[], int, ImportColumnGroup - path:"+ Arrays.toString(recordPath));
         }
-        if(parser.current() == Token.Ignorable){//XMLStreamConstants.START_DOCUMENT){
+        if (parser.current() == Token.Ignorable){ //XMLStreamConstants.START_DOCUMENT){
             logger.warn("Cannot use findRecord method for START_DOCUMENT event");
             return;
         }
@@ -316,7 +316,7 @@ public class XmlImportUtilities extends TreeImportUtilities {
                             String desiredFieldName = recordPath[pathIndex + 1];
                             String currentFieldName = parser.getFieldName();
                             if (desiredFieldName.equals(currentFieldName)) {
-                                processFieldAsRecord(project, parser, rootColumnGroup,parameters);
+                                processFieldAsRecord(project, parser, rootColumnGroup, parameters);
                             }
                         }
                     }
@@ -332,7 +332,7 @@ public class XmlImportUtilities extends TreeImportUtilities {
     static protected void skip(TreeReader parser) throws TreeReaderException {
         while (parser.hasNext()) {
             Token eventType = parser.next();
-            if (eventType == Token.StartEntity) {//XMLStreamConstants.START_ELEMENT) {
+            if (eventType == Token.StartEntity) { //XMLStreamConstants.START_ELEMENT) {
                 skip(parser);
             } else if (eventType == Token.EndEntity) { //XMLStreamConstants.END_ELEMENT) {
                 return;
@@ -458,10 +458,10 @@ public class XmlImportUtilities extends TreeImportUtilities {
         ImportParameters parameter
     ) throws TreeReaderException {
         if (logger.isTraceEnabled()) {
-            logger.trace("processSubRecord(Project,TreeReader,ImportColumnGroup,ImportRecord) lvl:"+level+" "+columnGroup);
+            logger.trace("processSubRecord(Project, TreeReader, ImportColumnGroup, ImportRecord) lvl:"+ level+ " "+ columnGroup);
         }
         
-        if(parser.current() == Token.Ignorable) {
+        if (parser.current() == Token.Ignorable) {
             return;
         }
         
@@ -499,7 +499,7 @@ public class XmlImportUtilities extends TreeImportUtilities {
                     parser,
                     thisColumnGroup,
                     record,
-                    level+1,
+                    level+ 1,
                     parameter
                 );
             } else if (//eventType == XMLStreamConstants.CDATA ||
@@ -508,7 +508,7 @@ public class XmlImportUtilities extends TreeImportUtilities {
                 String colName = parser.getFieldName();
                 if (value instanceof String) {
                     String text = (String) value;
-                    if(parameter.trimStrings) {
+                    if (parameter.trimStrings) {
                         text = text.trim();
                     }
                     addCell(project, thisColumnGroup, record, colName, text, 

@@ -78,7 +78,7 @@ public abstract class ProjectManager {
 
 
     protected Map<Long, ProjectMetadata> _projectsMetadata;
-    protected Map<String, Integer> _projectsTags;// TagName, number of projects having that tag
+    protected Map<String, Integer> _projectsTags; // TagName, number of projects having that tag
     protected PreferenceStore            _preferenceStore;
 
     final static Logger logger = LoggerFactory.getLogger("ProjectManager");
@@ -186,7 +186,7 @@ public abstract class ProjectManager {
      * @param id
      */
     public void ensureProjectSaved(long id) {
-        synchronized(this){
+        synchronized (this){
             ProjectMetadata metadata = this.getProjectMetadata(id);
             if (metadata != null) {
                 try {
@@ -194,7 +194,7 @@ public abstract class ProjectManager {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }//FIXME what should be the behaviour if metadata is null? i.e. not found
+            } //FIXME what should be the behaviour if metadata is null? i.e. not found
 
             Project project = getProject(id);
             if (project != null && metadata != null && metadata.getModified().isAfter(project.getLastSave())) {
@@ -203,7 +203,7 @@ public abstract class ProjectManager {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }//FIXME what should be the behaviour if project is null? i.e. not found or loaded.
+            } //FIXME what should be the behaviour if project is null? i.e. not found or loaded.
             //FIXME what should happen if the metadata is found, but not the project? or vice versa?
         }
 
@@ -483,7 +483,7 @@ public abstract class ProjectManager {
      */
     @JsonIgnore
     public Map<Long, ProjectMetadata> getAllProjectMetadata() {
-        for(Project project : _projects.values()) {
+        for (Project project : _projects.values()) {
             mergeEmptyUserMetadata(project.getMetadata());
         }
             

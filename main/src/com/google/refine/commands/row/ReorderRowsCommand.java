@@ -54,7 +54,7 @@ public class ReorderRowsCommand extends EngineDependentCommand {
         String mode = request.getParameter("mode");
         SortingConfig sorting = null;
 
-        try{
+        try {
             String json = request.getParameter("sorting");
 
             sorting = (json == null) ? null : SortingConfig.reconstruct(json);

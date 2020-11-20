@@ -43,9 +43,9 @@ import com.google.refine.model.Project;
  *
  */
 @JsonTypeInfo(
-        use=JsonTypeInfo.Id.NAME,
-        include=JsonTypeInfo.As.PROPERTY,
-        property="type")
+        use= JsonTypeInfo.Id.NAME,
+        include= JsonTypeInfo.As.PROPERTY,
+        property= "type")
 @JsonSubTypes({
     @Type(value = ListFacet.ListFacetConfig.class, name = "list"),
     @Type(value = RangeFacet.RangeFacetConfig.class, name = "range"),

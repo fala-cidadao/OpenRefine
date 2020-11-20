@@ -51,7 +51,7 @@ public class OwnText implements Function {
                 Element e1 = (Element)o1;
                 return e1.ownText();
 
-            }else{
+            } else {
                 return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " failed as the first parameter is not an XML or HTML Element.  Please first use parseHtml(string) and select(query) prior to using this function");
             }
         }

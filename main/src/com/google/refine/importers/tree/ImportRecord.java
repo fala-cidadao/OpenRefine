@@ -79,10 +79,10 @@ public class ImportRecord {
                     }
                     // Shuffle up
                     for (int i = size(); i > delta; i --) {
-                        set(i,get(i-delta));
+                        set(i, get(i- delta));
                     } // Null unused entries
                     for (int i = 0; i < delta; i++) {
-                        set(i,null);
+                        set(i, null);
                     }
                     offset = new_offset;
                 } else {

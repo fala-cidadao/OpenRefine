@@ -84,7 +84,7 @@ public class ProjectUtilities {
 
             project.setLastSave();
 
-            logger.info("Saved project '{}'",id);
+            logger.info("Saved project '{}'", id);
         }
     }
 

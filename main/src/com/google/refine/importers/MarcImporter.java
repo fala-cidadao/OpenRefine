@@ -61,7 +61,7 @@ public class MarcImporter extends XmlImporter {
         if (fileRecords.size() > 0) {
             ObjectNode firstFileRecord = fileRecords.get(0);
             File file = ImportingUtilities.getFile(job, firstFileRecord);
-            File tempFile = new File(file.getAbsolutePath()+".xml");
+            File tempFile = new File(file.getAbsolutePath()+ ".xml");
 
 
             try {
@@ -86,7 +86,7 @@ public class MarcImporter extends XmlImporter {
                             tempFile.delete();
                         else                    // only set json if write the temp file successfully:
                             JSONUtilities.safePut(firstFileRecord, "location", 
-                                    JSONUtilities.getString(firstFileRecord, "location", "")+".xml");
+                                    JSONUtilities.getString(firstFileRecord, "location", "")+ ".xml");
                         
 //                        file.delete(); // get rid of our original file
                     } catch (IOException e) {

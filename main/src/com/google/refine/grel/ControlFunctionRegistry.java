@@ -171,7 +171,7 @@ public class ControlFunctionRegistry {
     static public Set<Entry<String, Function>> getFunctionMapping() {
         return s_nameToFunction.entrySet();
     }
-    static public Map<String,Function> getFunctionMap() {
+    static public Map<String, Function> getFunctionMap() {
         return Collections.unmodifiableMap(s_nameToFunction);
     }
 
@@ -184,7 +184,7 @@ public class ControlFunctionRegistry {
     static public Set<Entry<String, Control>> getControlMapping() {
         return s_nameToControl.entrySet();
     }
-    static public Map<String,Control> getControlMap() {
+    static public Map<String, Control> getControlMap() {
         return Collections.unmodifiableMap(s_nameToControl);
     }
 

@@ -55,9 +55,9 @@ import com.google.refine.util.ParsingUtilities;
 import edu.mit.simile.butterfly.ButterflyModule;
 
 @JsonTypeInfo(
-    use=JsonTypeInfo.Id.CUSTOM,
-    include=JsonTypeInfo.As.PROPERTY,
-    property="mode")
+    use= JsonTypeInfo.Id.CUSTOM,
+    include= JsonTypeInfo.As.PROPERTY,
+    property= "mode")
 @JsonTypeIdResolver(ReconConfigResolver.class)
 abstract public class ReconConfig  {
     final static protected Logger LOGGER = LoggerFactory.getLogger("recon-config");

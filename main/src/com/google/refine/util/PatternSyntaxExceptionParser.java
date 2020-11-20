@@ -83,7 +83,7 @@ public class PatternSyntaxExceptionParser {
     public String getUserMessage() {
         String msg = "";
         String desc = exception.getDescription();
-        switch(desc)
+        switch (desc)
         {
             case "Unclosed character class":
                 msg = "The regular expression is missing a closing ']' character, or has an empty pair of square brackets '[]'.";

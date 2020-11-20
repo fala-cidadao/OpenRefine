@@ -55,7 +55,7 @@ public class SqlCreateBuilder {
     }
 
     public String getCreateSQL() {
-        if(logger.isDebugEnabled()) {
+        if (logger.isDebugEnabled()) {
             logger.debug("Create SQL with columns: {}", columns);
         }
         StringBuffer createSB = new StringBuffer();
@@ -78,16 +78,16 @@ public class SqlCreateBuilder {
                 logger.info("allowNull::{}" , allowNull);
                 
                 String allowNullStr = "NULL";
-                if(!allowNull) {
+                if (!allowNull) {
                     allowNullStr = "NOT NULL";
                 }
       
                 
                 if (name != null) {
-                    if(trimColNames) {
+                    if (trimColNames) {
                         String trimmedCol = name.replaceAll("\\s", "");
                         createSB.append( trimmedCol + " ");
-                    }else{
+                    } else {
                         createSB.append(name + " ");
                     }
                    
@@ -121,13 +121,13 @@ public class SqlCreateBuilder {
                     }
                     
                     createSB.append(" " + allowNullStr);
-                    if(defaultValue != null && !defaultValue.isEmpty()) {
-                        if(type.equals(SqlData.SQL_TYPE_VARCHAR) || type.equals(SqlData.SQL_TYPE_CHAR) || type.equals(SqlData.SQL_TYPE_TEXT)) {
+                    if (defaultValue != null && !defaultValue.isEmpty()) {
+                        if (type.equals(SqlData.SQL_TYPE_VARCHAR) || type.equals(SqlData.SQL_TYPE_CHAR) || type.equals(SqlData.SQL_TYPE_TEXT)) {
                             createSB.append(" DEFAULT " + "'" + defaultValue + "'"); 
-                        }else {
+                        } else {
                             try {
                                 Integer.parseInt(defaultValue);
-                            }catch(NumberFormatException nfe) {
+                            } catch (NumberFormatException nfe) {
                                 throw new SqlExporterException(defaultValue + " is not compatible with column type :" + type);
                             }
                             createSB.append(" DEFAULT " + defaultValue); 
@@ -148,9 +148,9 @@ public class SqlCreateBuilder {
         boolean includeDrop = JSONUtilities.getBoolean(options, "includeDropStatement", false);
         boolean addIfExist = JSONUtilities.getBoolean(options, "includeIfExistWithDropStatement", true);
         if (includeDrop) {
-            if(addIfExist) {
+            if (addIfExist) {
                 sql.append("DROP TABLE IF EXISTS " + table + ";\n");
-            }else {
+            } else {
                 sql.append("DROP TABLE " + table + ";\n");
             }
            
@@ -162,7 +162,7 @@ public class SqlCreateBuilder {
         sql.append(")").append(";" + "\n");
         
         String createSQL = sql.toString();
-        if(logger.isDebugEnabled()){
+        if (logger.isDebugEnabled()){
             logger.debug("Create SQL Generated Successfully...{}", createSQL);
         }
         return createSQL;

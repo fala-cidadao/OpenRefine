@@ -72,8 +72,8 @@ public class Escape implements Function {
                     return StringEscapeUtils.escapeEcmaScript(s);
                 } else if ("url".equals(mode)) {
                     try {
-                        return URLEncoder.encode(s,"UTF-8");
-                    } catch (UnsupportedEncodingException e) {}
+                        return URLEncoder.encode(s, "UTF-8");
+                    } catch (UnsupportedEncodingException e) { }
                 } else {
                     return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " does not recognize mode '" + mode + "'.");
                 }

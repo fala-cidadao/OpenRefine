@@ -146,7 +146,7 @@ public class GetScatterplotCommand extends Command {
         public void setRotation(Object rotation) {
         	try {
         		this.rotation = Integer.parseInt(rotation.toString());
-        	} catch(NumberFormatException e) {
+        	} catch (NumberFormatException e) {
         		;
         	}
         }
@@ -165,9 +165,9 @@ public class GetScatterplotCommand extends Command {
         Evaluable eval_x = null;
         Evaluable eval_y = null;
         
-        Color color = new Color(Integer.parseInt(o.color_str,16));
+        Color color = new Color(Integer.parseInt(o.color_str, 16));
         
-        Color base_color = o.base_color_str != null ? new Color(Integer.parseInt(o.base_color_str,16)) : null;
+        Color base_color = o.base_color_str != null ? new Color(Integer.parseInt(o.base_color_str, 16)) : null;
         
         if (o.columnName_x.length() > 0) {
             Column x_column = project.columnModel.getColumnByName(o.columnName_x);

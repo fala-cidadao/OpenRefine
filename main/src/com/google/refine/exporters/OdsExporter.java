@@ -65,7 +65,7 @@ public class OdsExporter implements StreamExporter {
         try {
             odfDoc = OdfSpreadsheetDocument.newSpreadsheetDocument();
         } catch (Exception e) {
-            throw new IOException("Failed to create spreadsheet",e);
+            throw new IOException("Failed to create spreadsheet", e);
         }
         
         TabularSerializer serializer = new TabularSerializer() {
@@ -118,7 +118,7 @@ public class OdsExporter implements StreamExporter {
         try {
             odfDoc.save(outputStream);
         } catch (Exception e) {
-            throw new IOException("Error saving spreadsheet",e);
+            throw new IOException("Error saving spreadsheet", e);
         }
         outputStream.flush();
     }

@@ -82,53 +82,53 @@ public class ToDate implements Function {
             }
         }
         
-        if(args.length==1) {
-            date = parse(o1,true,formats);
+        if (args.length== 1) {
+            date = parse(o1, true, formats);
         } else if (args.length > 1) {
-            if(args[1] instanceof Boolean) {
+            if (args[1] instanceof Boolean) {
                 month_first = (Boolean) args[1];
             } else if (args[1] instanceof String) {
                 formats.add(StringUtils.trim((String) args[1]));
             } else {
                 return new EvalError("Invalid argument");
             }
-            for(int i=2;i<args.length;i++) {
+            for (int i= 2; i< args.length; i++) {
                 if (!(args[i] instanceof String)) {
                     // skip formats that aren't strings
                     continue;
                 }
                 formats.add(StringUtils.trim((String) args[i]));
             }
-            if(month_first != null) {
-                date = parse(o1,month_first,formats);
+            if (month_first != null) {
+                date = parse(o1, month_first, formats);
             } else {
-                date = parse(o1,formats);
+                date = parse(o1, formats);
             }
             
         }
-        if(date != null) {
+        if (date != null) {
             return date;
         }
         return new EvalError("Unable to convert to a date");
     }
     
     private OffsetDateTime parse(String o1, Boolean month_first, List<String> formats) {
-        if(month_first != null) {
+        if (month_first != null) {
             try {
                return CalendarParser.parseAsOffsetDateTime( o1, (month_first) ? CalendarParser.MM_DD_YY : CalendarParser.DD_MM_YY);
             } catch (CalendarParserException e) {
            }
         }
-        return parse(o1,formats);
+        return parse(o1, formats);
     }
     
     private OffsetDateTime parse(String o1, List<String> formats) {
-        if(formats.size()>0) {
+        if (formats.size()> 0) {
             String f1 = formats.get(0);
             formats.remove(0);
-            return parse(o1,f1,formats);   
+            return parse(o1, f1, formats);   
         } else {
-            return parse(o1,Locale.getDefault(),formats);
+            return parse(o1, Locale.getDefault(), formats);
         }
     }
     
@@ -139,20 +139,20 @@ public class ToDate implements Function {
             if (l.equals(possibleLocale)) {
                 locale = possibleLocale;
             } else {
-                formats.add(0,f1);
+                formats.add(0, f1);
             }
         }
-        return parse(o1,locale,formats);
+        return parse(o1, locale, formats);
     }
     
     private OffsetDateTime parse(String o1, Locale locale, List<String> formats) {
         DateFormat formatter;
         OffsetDateTime date;
         //need to try using each format in the formats list!
-        if(formats.size()>0) {
-            for(int i=0;i<formats.size();i++) {
+        if (formats.size()> 0) {
+            for (int i= 0; i< formats.size(); i++) {
                 try {
-                    formatter = new SimpleDateFormat(formats.get(i),locale);
+                    formatter = new SimpleDateFormat(formats.get(i), locale);
                 } catch (IllegalArgumentException e) {
                     continue;
                 }

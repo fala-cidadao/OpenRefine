@@ -46,7 +46,7 @@ public class FingerprintKeyer extends Keyer {
     
     @Override
     public String key(String s, Object... o) {
-        if (s == null || o !=null && o.length > 0) {
+        if (s == null || o != null && o.length > 0) {
             throw new IllegalArgumentException("Fingerprint keyer accepts a single string parameter");
         }
         s = s.trim(); // first off, remove whitespace around the string
@@ -83,7 +83,7 @@ public class FingerprintKeyer extends Keyer {
      * NOTE: this function deals only with latin-1 supplement and latin-1 extended code charts
      */
     private char translate(char c) {
-        switch(c) {
+        switch (c) {
             case '\u00C0':
             case '\u00C1':
             case '\u00C2':

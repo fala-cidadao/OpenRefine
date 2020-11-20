@@ -138,7 +138,7 @@ public class ScatterplotDrawingRowVisitor implements RowVisitor, RecordVisitor {
             double xv = ((Number) cellx.value).doubleValue();
             double yv = ((Number) celly.value).doubleValue();
 
-            Point2D.Double p = new Point2D.Double(xv,yv);
+            Point2D.Double p = new Point2D.Double(xv, yv);
             
             p = ScatterplotFacet.translateCoordinates(
                     p, min_x, max_x, min_y, max_y, dim_x, dim_y, l, r);

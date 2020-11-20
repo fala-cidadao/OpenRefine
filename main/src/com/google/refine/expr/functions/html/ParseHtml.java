@@ -47,7 +47,7 @@ public class ParseHtml implements Function {
         if (args.length == 1) {
             Object o1 = args[0];
             if (o1 != null && o1 instanceof String) {
-                return new ParseXml().call(bindings,args,"html");
+                return new ParseXml().call(bindings , args, "html");
             }
         }
         return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " expects a single String as an argument");

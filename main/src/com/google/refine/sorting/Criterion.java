@@ -45,9 +45,9 @@ import com.google.refine.model.Record;
 import com.google.refine.model.Row;
 
 @JsonTypeInfo(
-        use=JsonTypeInfo.Id.NAME,
-        include=JsonTypeInfo.As.PROPERTY,
-        property="valueType")
+        use= JsonTypeInfo.Id.NAME,
+        include= JsonTypeInfo.As.PROPERTY,
+        property= "valueType")
 @JsonSubTypes({
     @Type(value = BooleanCriterion.class, name = "boolean"),
     @Type(value = DateCriterion.class, name = "date"),

@@ -202,7 +202,7 @@ public class Parser {
 
             if (_token == null || _token.type != TokenType.Delimiter || !_token.text.equals("(")) {
                 eval = "null".equals(text) ? new LiteralExpr(null) : new VariableExpr(text);
-            } else if( "PI".equals(text) ) {
+            } else if ( "PI".equals(text) ) {
                 eval = new LiteralExpr(Math.PI);
                 next(false);
             } else {

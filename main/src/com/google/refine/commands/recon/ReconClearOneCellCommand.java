@@ -75,7 +75,7 @@ public class ReconClearOneCellCommand extends Command {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	if(!hasValidCSRFToken(request)) {
+    	if (!hasValidCSRFToken(request)) {
     		respondCSRFError(response);
     		return;
     	}
@@ -101,7 +101,7 @@ public class ReconClearOneCellCommand extends Command {
                  */
                 Pool pool = new Pool();
                 
-                if(process.newCell != null && process.newCell.recon != null) {
+                if (process.newCell != null && process.newCell.recon != null) {
                     pool.pool(process.newCell.recon);
                 }
 

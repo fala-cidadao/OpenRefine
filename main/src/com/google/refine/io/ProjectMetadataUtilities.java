@@ -71,7 +71,7 @@ public class ProjectMetadataUtilities {
         File oldFile = new File(projectDir, "metadata.old.json");
 
         if (file.exists()) {
-            if(file.length() > 0) {
+            if (file.length() > 0) {
                 if (oldFile.exists()) {
                     oldFile.delete();
                 }
@@ -140,7 +140,7 @@ public class ProjectMetadataUtilities {
             List<String> columnNames = p.columnModel.getColumnNames();
             String tempName = "<recovered project> - " + columnNames.size() 
                     + " cols X " + p.rows.size() + " rows - "
-                    + StringUtils.join(columnNames,'|');
+                    + StringUtils.join(columnNames, '|');
             p.dispose();
             long ctime = System.currentTimeMillis();
             long mtime = 0;
@@ -148,7 +148,7 @@ public class ProjectMetadataUtilities {
             File dataFile = new File(projectDir, "data.zip");
             ctime = mtime = dataFile.lastModified();
 
-            File historyDir = new File(projectDir,"history");
+            File historyDir = new File(projectDir, "history");
             File[] files = historyDir.listFiles();
             if (files != null) {
                 for (File f : files) {

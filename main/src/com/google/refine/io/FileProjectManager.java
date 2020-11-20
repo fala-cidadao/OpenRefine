@@ -229,7 +229,7 @@ public class FileProjectManager extends ProjectManager  {
             byte[] buf = new byte[buffersize];
             int count;
 
-            while((count = fis.read(buf, 0, buffersize)) != -1) {
+            while ((count = fis.read(buf, 0, buffersize)) != - 1) {
                 os.write(buf, 0, count);
             }
         } finally {
@@ -300,7 +300,7 @@ public class FileProjectManager extends ProjectManager  {
     }
     
     protected void saveProjectMetadata() throws IOException {
-        for(Entry<Long,ProjectMetadata> entry : _projectsMetadata.entrySet()) {
+        for (Entry<Long, ProjectMetadata> entry : _projectsMetadata.entrySet()) {
             ProjectMetadata metadata = entry.getValue();
             if (metadata != null && metadata.isDirty()) {
                 ProjectMetadataUtilities.save(metadata, getProjectDir(entry.getKey()));
@@ -375,7 +375,7 @@ public class FileProjectManager extends ProjectManager  {
 	        try {
 	        	ParsingUtilities.mapper.readerForUpdating(this).readValue(file);
 	            found = true;
-	        } catch(IOException e) {
+	        } catch (IOException e) {
 	        	logger.warn(e.toString());
 	        }
         }
@@ -466,7 +466,7 @@ public class FileProjectManager extends ProjectManager  {
     
     @JsonProperty("preferences")
     protected void setPreferences(PreferenceStore preferences) {
-    	if(preferences != null) {
+    	if (preferences != null) {
     		_preferenceStore = preferences;
     	}
     }

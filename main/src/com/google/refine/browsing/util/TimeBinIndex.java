@@ -75,15 +75,15 @@ abstract public class TimeBinIndex {
     protected long[] steps = { 
             1,                  // msec
             1000,               // sec
-            1000*60,            // min
-            1000*60*60,         // hour
-            1000*60*60*24,      // day
-            1000*60*60*24*7,    // week
-            1000l*2629746l,       // month (average Gregorian year / 12)
-            1000l*31556952l,      // year (average Gregorian year)
-            1000l*31556952l*10l,   // decade 
-            1000l*31556952l*100l,  // century 
-            1000l*31556952l*1000l, // millennium 
+            1000* 60,            // min
+            1000* 60* 60,         // hour
+            1000* 60* 60* 24,      // day
+            1000* 60* 60* 24* 7,    // week
+            1000l* 2629746l,       // month (average Gregorian year / 12)
+            1000l* 31556952l,      // year (average Gregorian year)
+            1000l* 31556952l* 10l,   // decade 
+            1000l* 31556952l* 100l,  // century 
+            1000l* 31556952l* 1000l, // millennium 
     };
                       
     abstract protected void iterate(Project project, RowEvaluable rowEvaluable, List<Long> allValues);
@@ -118,7 +118,7 @@ abstract public class TimeBinIndex {
 
         _bins = new int[(int) (diff / _step) + 1];
         for (long d : allValues) {
-            int bin = (int) Math.max((d - _min) / _step,0);
+            int bin = (int) Math.max((d - _min) / _step, 0);
             _bins[bin]++;
         }
     }

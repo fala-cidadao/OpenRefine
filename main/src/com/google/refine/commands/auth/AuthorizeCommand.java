@@ -67,7 +67,7 @@ public class AuthorizeCommand extends Command {
                                     
             // prepare the continuation URL that the OAuth provider will redirect the user to
             // (we need to make sure this URL points back to this code or the dance will never complete)
-            String callbackURL = getBaseURL(request,provider);
+            String callbackURL = getBaseURL(request, provider);
             
             if (access_credentials == null) {
                 // access credentials are not available so we need to check 

@@ -108,7 +108,7 @@ public class ParsingUtilities {
             if (query.startsWith("?")) {
                 query = query.substring(1);
             }
-            parseParameters(options,query);
+            parseParameters(options, query);
         }
         return options;
     }
@@ -127,7 +127,7 @@ public class ParsingUtilities {
     }
 
     static public Properties parseParameters(String str) {
-        return (str == null) ? null : parseParameters(new Properties(),str);
+        return (str == null) ? null : parseParameters(new Properties(), str);
     }
 
     static public String inputStreamToString(InputStream is) throws IOException {
@@ -217,7 +217,7 @@ public class ParsingUtilities {
         // Accept timestamps with an explicit time zone
         try {
             return OffsetDateTime.parse(s);
-        } catch(DateTimeParseException e) {
+        } catch (DateTimeParseException e) {
             
         }
         
@@ -226,7 +226,7 @@ public class ParsingUtilities {
         try {
             LocalDateTime localTime = LocalDateTime.parse(s);
             return OffsetDateTime.of(localTime, ZoneId.systemDefault().getRules().getOffset(localTime));
-        } catch(DateTimeParseException e) {
+        } catch (DateTimeParseException e) {
             
         }
         return null;
@@ -263,7 +263,7 @@ public class ParsingUtilities {
 	public static ObjectNode evaluateJsonStringToObjectNode(String optionsString) {
 		try {
 			JsonNode tree = mapper.readTree(optionsString);
-			if(tree instanceof ObjectNode) {
+			if (tree instanceof ObjectNode) {
 				return (ObjectNode)tree;
 			}
 		} catch (IOException e) {
@@ -275,7 +275,7 @@ public class ParsingUtilities {
 	public static ArrayNode evaluateJsonStringToArrayNode(String parameter) {
 		try {
 			JsonNode tree = mapper.readTree(parameter);
-			if(tree instanceof ArrayNode) {
+			if (tree instanceof ArrayNode) {
 				return (ArrayNode)tree;
 			}
 		} catch (IOException e) {

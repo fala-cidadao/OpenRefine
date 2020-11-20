@@ -308,7 +308,7 @@ public class StandardReconConfig extends ReconConfig {
         @JsonProperty("type_strict")
         @JsonInclude(Include.NON_NULL)
         public String isTypeStrict() {
-            if(typeID != null) {
+            if (typeID != null) {
                 return "should";
             }
             return null;
@@ -360,7 +360,7 @@ public class StandardReconConfig extends ReconConfig {
     	@JsonIgnore
 		public ReconCandidate toCandidate() {
     		String[] bareTypes = new String[types.size()];
-    		for(int i = 0; i != types.size(); i++) {
+    		for (int i = 0; i != types.size(); i++) {
     			bareTypes[i] = types.get(i).id;
     		}
        		ReconCandidate result = new ReconCandidate(

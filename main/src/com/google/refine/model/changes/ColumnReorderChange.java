@@ -82,7 +82,7 @@ public class ColumnReorderChange extends ColumnChange {
             	_removedColumns = new ArrayList<Column>();
 	            for (String n : project.columnModel.getColumnNames()) {
 	            	Column oldColumn = project.columnModel.getColumnByName(n);
-	            	if(!_newColumns.contains(oldColumn)) {
+	            	if (!_newColumns.contains(oldColumn)) {
 	            		_removedColumns.add(oldColumn);
 	            	}
 	            }
@@ -101,7 +101,7 @@ public class ColumnReorderChange extends ColumnChange {
 	            		if (cellIndex < row.cells.size()) {
 	            			oldCell = row.cells.get(cellIndex);
 	            		}
-	            		_oldCells[count++] = new CellAtRowCellIndex(i, cellIndex,oldCell);
+	            		_oldCells[count++] = new CellAtRowCellIndex(i, cellIndex, oldCell);
 	            	}
 	            }
             }
@@ -135,7 +135,7 @@ public class ColumnReorderChange extends ColumnChange {
 
             for (int i = 0; i < _oldCells.length; i++) {
                 Row row = project.rows.get(_oldCells[i].row);
-                row.setCell(_oldCells[i].cellIndex,_oldCells[i].cell);
+                row.setCell(_oldCells[i].cellIndex, _oldCells[i].cell);
             }
 
             project.update();

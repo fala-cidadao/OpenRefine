@@ -54,12 +54,12 @@ public class LeastCommonMultiple implements Function {
     public static double LCM(double a, double b){
         double largerValue = a;
         double smallerValue = b;
-        if(b > a){
+        if (b > a){
             largerValue = b;
             smallerValue = a;
         }
-        for(int i = 1; i <= largerValue; i++){
-            if((largerValue*i) % smallerValue == 0) {
+        for (int i = 1; i <= largerValue; i++){
+            if ((largerValue* i) % smallerValue == 0) {
                 return largerValue * i;
             }
         }

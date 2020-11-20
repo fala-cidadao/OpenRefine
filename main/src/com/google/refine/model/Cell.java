@@ -151,7 +151,7 @@ public class Cell implements HasFields {
     public void save(Writer writer, Properties options) {
         try {
             Pool pool = (Pool)options.get("pool");
-            if(pool != null && recon != null) {
+            if (pool != null && recon != null) {
                 pool.pool(recon);
             }
             ParsingUtilities.saveWriter.writeValue(writer, this);
@@ -180,7 +180,7 @@ public class Cell implements HasFields {
             @JacksonInject("pool")
             Pool pool) {
         Recon recon = null;
-        if(reconId != null) {
+        if (reconId != null) {
             recon = pool.getRecon(reconId);
         }
         if (type != null && "date".equals(type)) {

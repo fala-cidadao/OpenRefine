@@ -513,7 +513,7 @@ public class ImportingUtilities {
         long length = 0;
         FileOutputStream fos = new FileOutputStream(file);
         try {
-            byte[] bytes = new byte[16*1024];
+            byte[] bytes = new byte[16* 1024];
             int c;
             while ((update == null || !update.isCanceled()) && (c = stream.read(bytes)) > 0) {
                 fos.write(bytes, 0, c);
@@ -697,7 +697,7 @@ public class ImportingUtilities {
                     || "application/x-gzip".equals(mimeType)) {                
                 return new GZIPInputStream(new FileInputStream(file));
             } else if (fileName.endsWith(".bz2")
-                    ||"application/x-bzip2".equals(mimeType)) {
+                    || "application/x-bzip2".equals(mimeType)) {
                 InputStream is = new FileInputStream(file);
                 is.mark(4);
                 if (!(is.read() == 'B' && is.read() == 'Z')) {
@@ -707,7 +707,7 @@ public class ImportingUtilities {
                 return new CBZip2InputStream(is);
             }
         } catch (IOException e) {
-            logger.warn("Something that looked like a compressed file gave an error on open: "+file,e);
+            logger.warn("Something that looked like a compressed file gave an error on open: "+ file, e);
         }
         return null;
     }
@@ -719,9 +719,9 @@ public class ImportingUtilities {
         final Progress progress
     ) throws IOException {
         String fileName = JSONUtilities.getString(fileRecord, "location", "unknown");
-        for (String ext : new String[] {".gz",".bz2"}) {
+        for (String ext : new String[] {".gz", ".bz2"}) {
             if (fileName.endsWith(ext)) {
-                fileName = fileName.substring(0, fileName.length()-ext.length());
+                fileName = fileName.substring(0, fileName.length()- ext.length());
                 break;
             }
         }

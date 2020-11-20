@@ -140,7 +140,7 @@ public class ImporterUtilities {
                         i++;
                     } else {
                         // Want to update currentFileColumnNames
-                        if(! currentFileColumnNames.contains(columnName)){
+                        if (! currentFileColumnNames.contains(columnName)){
                             currentFileColumnNames.add(columnName);
                         }
                         return column;

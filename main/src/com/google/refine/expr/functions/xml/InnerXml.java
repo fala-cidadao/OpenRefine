@@ -45,7 +45,7 @@ public class InnerXml implements Function {
 
     @Override
     public Object call(Properties bindings, Object[] args) {
-        return call(bindings,args,"xml");
+        return call(bindings, args, "xml");
     }
     
     public Object call(Properties bindings, Object[] args, String mode) {
@@ -53,14 +53,14 @@ public class InnerXml implements Function {
             Object o1 = args[0];
             if (o1 != null && o1 instanceof Element) {
                 Element e1 = (Element)o1;
-                if(mode.equals("xml")) {
+                if (mode.equals("xml")) {
                     return e1.children().toString();
                 } else if (mode.equals("html")) {
                     return e1.html();
                 } else {
                     return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " unable to determine whether XML or HTML is being used.");
                 }
-            }else{
+            } else {
                 return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " failed as the first parameter is not an XML or HTML Element.  Please first use parseXml() or parseHtml() and select(query) prior to using this function");
             }
         }

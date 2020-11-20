@@ -329,7 +329,7 @@ public class ColumnAdditionByFetchingURLsOperation extends EngineDependentOperat
         Serializable cachedFetch(String urlString) {
             try {
                 return  _urlCache.get(urlString);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 return null;
             }
         }
@@ -385,7 +385,7 @@ public class ColumnAdditionByFetchingURLsOperation extends EngineDependentOperat
                         if (errorStream != null) {
                             errorString = ParsingUtilities.inputStreamToString(errorStream);
                         }
-                        message = String.format("HTTP error %d : %s | %s",status,
+                        message = String.format("HTTP error %d : %s | %s", status,
                                 ((HttpURLConnection)urlConnection).getResponseMessage(),
                                 errorString);
                     } else {

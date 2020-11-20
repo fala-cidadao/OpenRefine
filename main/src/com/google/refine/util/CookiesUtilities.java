@@ -80,6 +80,6 @@ public class CookiesUtilities {
             return DOMAIN;
         }
         int index = host.indexOf(':');
-        return (index > -1) ? host.substring(0,index) : host ;
+        return (index > -1) ? host.substring(0, index) : host ;
     }
 }

@@ -113,6 +113,6 @@ public class ColumnGroup  {
     
     @Override
     public String toString() {
-        return String.format("%d:%d:k=%d",startColumnIndex,columnSpan,keyColumnIndex);
+        return String.format("%d:%d:k=%d", startColumnIndex, columnSpan, keyColumnIndex);
     }
 }

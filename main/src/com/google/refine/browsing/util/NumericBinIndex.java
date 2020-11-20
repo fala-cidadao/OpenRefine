@@ -87,7 +87,7 @@ abstract public class NumericBinIndex {
         if (_min >= _max) {
             _step = 1;
             _min = Math.min(_min, _max);
-            _max = _min+_step;
+            _max = _min+ _step;
             _bins = new int[1];
             
             return;
@@ -123,7 +123,7 @@ abstract public class NumericBinIndex {
         
         _bins = new int[(int) Math.round(binCount)];
         for (double d : allValues) {
-            int bin = Math.max((int) Math.floor((d - _min) / _step),0);
+            int bin = Math.max((int) Math.floor((d - _min) / _step), 0);
             _bins[bin]++;
         }
     }

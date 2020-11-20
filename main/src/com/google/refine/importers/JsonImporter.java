@@ -341,7 +341,7 @@ public class JsonImporter extends TreeImportingParserBase {
             try {
                 if (current != null) {
                     if (current.isScalarValue()) {
-                        fieldValue = getValue(parser,current);
+                        fieldValue = getValue(parser, current);
                     } else {
                         fieldValue = null;
                     }
@@ -366,7 +366,7 @@ public class JsonImporter extends TreeImportingParserBase {
         }
         
         protected Token mapToToken(JsonToken token){
-            switch(token){
+            switch (token){
                 case START_ARRAY: return Token.StartEntity;
                 case END_ARRAY: return Token.EndEntity;
                 case START_OBJECT: return Token.StartEntity;

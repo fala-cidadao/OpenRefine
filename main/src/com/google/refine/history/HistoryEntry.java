@@ -108,11 +108,11 @@ public class HistoryEntry {
     		String description,
     		@JsonProperty(OPERATION)
     		AbstractOperation operation) {
-    	this(id,projectID,description,operation,OffsetDateTime.now(ZoneId.of("Z")));
+    	this(id, projectID, description, operation, OffsetDateTime.now(ZoneId.of("Z")));
     }
 
     public HistoryEntry(long id, Project project, String description, AbstractOperation operation, Change change) {
-        this(id,project.id,description,operation,OffsetDateTime.now(ZoneId.of("Z")));
+        this(id, project.id, description, operation, OffsetDateTime.now(ZoneId.of("Z")));
         setChange(change);
     }
 

@@ -196,7 +196,7 @@ public class ImportingManager {
     static public ImportingJob createJob() {
         long id;
         
-        synchronized(jobIdLock) {
+        synchronized (jobIdLock) {
             ++jobIdCounter;
             
             // Avoid negative job id's when the counter wraps around.
@@ -280,7 +280,7 @@ public class ImportingManager {
     static private void cleanUpStaleJobs() {
         long now = System.currentTimeMillis();
         Collection<Long> keys;
-        synchronized(jobs) {
+        synchronized (jobs) {
             keys = new ArrayList<Long>(jobs.keySet());
         }
         for (Long id : keys) {

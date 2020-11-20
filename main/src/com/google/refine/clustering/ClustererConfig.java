@@ -41,9 +41,9 @@ import com.google.refine.model.Project;
  *
  */
 @JsonTypeInfo(
-        use=JsonTypeInfo.Id.NAME,
-        include=JsonTypeInfo.As.PROPERTY,
-        property="type")
+        use= JsonTypeInfo.Id.NAME,
+        include= JsonTypeInfo.As.PROPERTY,
+        property= "type")
 @JsonSubTypes({
     @Type(value = kNNClustererConfig.class, name = "knn"),
     @Type(value = BinningClustererConfig.class, name = "binning") })

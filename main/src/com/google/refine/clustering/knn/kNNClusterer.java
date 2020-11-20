@@ -235,17 +235,17 @@ public class kNNClusterer extends Clusterer {
     @Override
     public void computeClusters(Engine engine) {
         //VPTreeClusteringRowVisitor visitor = new VPTreeClusteringRowVisitor(_distance,_config);
-        BlockingClusteringRowVisitor visitor = new BlockingClusteringRowVisitor(_distance,_params);
+        BlockingClusteringRowVisitor visitor = new BlockingClusteringRowVisitor(_distance, _params);
         FilteredRows filteredRows = engine.getAllFilteredRows();
         filteredRows.accept(_project, visitor);
      
         _clusters = visitor.getClusters();
     }
 
-    public static class ValuesComparator implements Comparator<Entry<Serializable,Integer>>, Serializable {
+    public static class ValuesComparator implements Comparator<Entry<Serializable, Integer>>, Serializable {
         private static final long serialVersionUID = 204469656070583155L;
         @Override
-        public int compare(Entry<Serializable,Integer> o1, Entry<Serializable,Integer> o2) {
+        public int compare(Entry<Serializable, Integer> o1, Entry<Serializable, Integer> o2) {
             return o2.getValue() - o1.getValue();
         }
     }

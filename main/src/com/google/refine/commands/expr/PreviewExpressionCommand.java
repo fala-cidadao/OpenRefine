@@ -245,7 +245,7 @@ public class PreviewExpressionCommand extends Command {
                     sb.append("[object " + v.getClass().getSimpleName() + "]");
                 } else if (v instanceof OffsetDateTime) {
                     sb.append("[date " + 
-                            ParsingUtilities.dateToString((OffsetDateTime) v) +"]");
+                            ParsingUtilities.dateToString((OffsetDateTime) v) + "]");
                 } else if (v instanceof String) {
                     if (quote) {
                         try {

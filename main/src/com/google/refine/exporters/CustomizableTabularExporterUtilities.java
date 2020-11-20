@@ -271,7 +271,7 @@ abstract public class CustomizableTabularExporterUtilities {
         boolean includeNullFieldValue = false;
         
         DateFormat dateFormatter;
-        String[] urlSchemes = {"http","https", "ftp"};
+        String[] urlSchemes = {"http", "https", "ftp"};
         UrlValidator urlValidator = new UrlValidator(urlSchemes);
         
         Map<String, String> identifierSpaceToUrl = null;
@@ -284,10 +284,10 @@ abstract public class CustomizableTabularExporterUtilities {
                 DateSettings dateSettings,
                 @JsonProperty("nullValueToEmptyStr")
                 boolean includeNullFieldValue) {
-            if(reconSettings != null) {
+            if (reconSettings != null) {
                 recon = reconSettings;
             }
-            if(dateSettings != null) {
+            if (dateSettings != null) {
                 date = dateSettings;
             }
             setup();
@@ -373,11 +373,11 @@ abstract public class CustomizableTabularExporterUtilities {
                         if (value instanceof String) {
                             text = (String) value;
                             
-                            if(text.contains(":") && urlValidator.isValid(text)) {
+                            if (text.contains(":") && urlValidator.isValid(text)) {
                             	// Extra check for https://github.com/OpenRefine/OpenRefine/issues/2213
                             	try {
                             		link = new URI(text).toString();
-                            	} catch(URISyntaxException e) {
+                            	} catch (URISyntaxException e) {
                             		;
                             	}
                             }
@@ -389,9 +389,9 @@ abstract public class CustomizableTabularExporterUtilities {
                     }
                     return new CellData(column.getName(), value, text, link);
                 }
-            }else {//added for sql exporter
+            } else { //added for sql exporter
             
-                if(includeNullFieldValue) {
+                if (includeNullFieldValue) {
                     return new CellData(column.getName(), "", "", "");
                 }
                 

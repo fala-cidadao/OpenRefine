@@ -112,7 +112,7 @@ public class ScatterplotFacet implements Facet {
         protected String color_str = "000000";
         @JsonIgnore
         protected Color getColor() {
-            return new Color(Integer.parseInt(color_str,16));
+            return new Color(Integer.parseInt(color_str, 16));
         }
         
         @JsonProperty(FROM_X)
@@ -282,7 +282,7 @@ public class ScatterplotFacet implements Facet {
     @JsonProperty(IMAGE)
     @JsonInclude(Include.NON_NULL)
     public String getImage() {
-        if(IMAGE_URI) {
+        if (IMAGE_URI) {
             return image;
         }
         return null;
@@ -401,7 +401,7 @@ public class ScatterplotFacet implements Facet {
                 
                 @Override
                 protected boolean checkValues(double x, double y) {
-                    Point2D.Double p = new Point2D.Double(x,y);
+                    Point2D.Double p = new Point2D.Double(x, y);
                     p = translateCoordinates(p, min_x, max_x, min_y, max_y, config.dim_x, config.dim_y, config.l, t);
                     return p.x >= from_x_pixels && p.x <= to_x_pixels && p.y >= from_y_pixels && p.y <= to_y_pixels;
                 };
@@ -511,7 +511,7 @@ public class ScatterplotFacet implements Facet {
             try {
                 eval = MetaParser.parse(expression);
             } catch (ParsingException e) {
-                logger.warn("Error parsing expression",e);
+                logger.warn("Error parsing expression", e);
             }
         }
         NumericBinIndex index = (NumericBinIndex) column.getPrecompute(key);

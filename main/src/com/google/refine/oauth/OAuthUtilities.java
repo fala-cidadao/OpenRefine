@@ -42,8 +42,8 @@ import oauth.signpost.OAuthConsumer;
 
 public class OAuthUtilities {
     
-    static final private Map<String,Provider> providers = new HashMap<String,Provider>();
-    static final private Map<String,String[]> infos = new HashMap<String,String[]>();
+    static final private Map<String, Provider> providers = new HashMap<String, Provider>();
+    static final private Map<String, String[]> infos = new HashMap<String, String[]>();
     
     static final public void registerOAuthProvider(Provider provider, String[] oauthInfo) {
         providers.put(provider.getHost(), provider);
@@ -73,7 +73,7 @@ public class OAuthUtilities {
         if (consumer_info == null) {
             throw new RuntimeException("Can't find secrets for provider '" + provider.getHost() + "'");
         }
-        OAuthConsumer oauthConsumer = provider.createConsumer(consumer_info[0],consumer_info[1]);
+        OAuthConsumer oauthConsumer = provider.createConsumer(consumer_info[0], consumer_info[1]);
         oauthConsumer.setSigningStrategy(new AuthorizationHeaderSigningStrategy(provider.getRealm()));
         return oauthConsumer;
     }

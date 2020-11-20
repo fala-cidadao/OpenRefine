@@ -50,7 +50,7 @@ public class InnerHtml implements Function {
             Object o1 = args[0];
             if (o1 != null && o1 instanceof Element) {
                 return new InnerXml().call(bindings, args, "html");
-            }else{
+            } else {
                 return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " failed as the first parameter is not an HTML Element.  Please first use parseHtml(string) and select(query) prior to using this function");
             }
         }

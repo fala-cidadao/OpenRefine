@@ -54,7 +54,7 @@ public class UnicodeType implements Function {
     }
     
     private String translateType(int type) {
-        switch(type) {
+        switch (type) {
             case 0: return "unassigned";
             case 1: return "uppercase letter";
             case 2: return "lowercase letter";

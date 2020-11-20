@@ -81,7 +81,7 @@ public class ExcelImporter extends TabularImportingParserBase {
         ArrayNode sheetRecords = ParsingUtilities.mapper.createArrayNode();
         JSONUtilities.safePut(options, "sheetRecords", sheetRecords);
         try {
-            for (int index = 0;index < fileRecords.size();index++) {
+            for (int index = 0; index < fileRecords.size(); index++) {
                 ObjectNode fileRecord = fileRecords.get(index);
                 File file = ImportingUtilities.getFile(job, fileRecord);
 
@@ -116,7 +116,7 @@ public class ExcelImporter extends TabularImportingParserBase {
             logger.error("Error generating parser UI initialization data for Excel file", e);
         } catch (IllegalArgumentException e) {
             logger.error("Error generating parser UI initialization data for Excel file (only Excel 97 & later supported)", e);
-        } catch (POIXMLException|InvalidFormatException e) {
+        } catch (POIXMLException| InvalidFormatException e) {
             logger.error("Error generating parser UI initialization data for Excel file - invalid XML", e);
         }
         
@@ -177,7 +177,7 @@ public class ExcelImporter extends TabularImportingParserBase {
         
         ArrayNode sheets = (ArrayNode) options.get("sheets");
         
-        for(int i=0;i<sheets.size();i++)  {
+        for (int i= 0; i< sheets.size(); i++)  {
             String[] fileNameAndSheetIndex = new String[2];
             ObjectNode sheetObj = (ObjectNode) sheets.get(i);
             // value is fileName#sheetIndex

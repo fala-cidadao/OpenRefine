@@ -63,7 +63,7 @@ public class EngineConfig  {
     }
     
     public static EngineConfig reconstruct(String json) {
-        if(json == null) {
+        if (json == null) {
             return new EngineConfig(Collections.emptyList(), Mode.RowBased);
         }
         try {

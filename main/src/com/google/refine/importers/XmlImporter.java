@@ -237,7 +237,7 @@ public class XmlImporter extends TreeImportingParserBase {
         }
         
         protected Token mapToToken(int token) {
-            switch(token){
+            switch (token){
                 case XMLStreamConstants.START_ELEMENT: return Token.StartEntity;
                 case XMLStreamConstants.END_ELEMENT: return Token.EndEntity;
                 case XMLStreamConstants.CHARACTERS: return Token.Value;

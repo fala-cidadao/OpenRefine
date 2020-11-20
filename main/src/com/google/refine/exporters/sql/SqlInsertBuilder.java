@@ -78,13 +78,13 @@ public class SqlInsertBuilder {
     * @return
     */
     public String getInsertSQL(){
-        if(logger.isDebugEnabled()) {
+        if (logger.isDebugEnabled()) {
             logger.debug("Insert SQL with columns: {}", columns);
         }
         
         List<JsonNode> colOptionArray = options == null ? null : JSONUtilities.getArray(options, "columns");
         Map<String, JsonNode> colOptionsMap = new HashMap<>();
-        if(colOptionArray != null) {
+        if (colOptionArray != null) {
             colOptionArray.forEach(json -> { 
                 colOptionsMap.put(JSONUtilities.getString(json, "name", null), json);
             });
@@ -95,11 +95,11 @@ public class SqlInsertBuilder {
         StringBuffer values = new StringBuffer();
        
         int idx = 0;
-        for(ArrayList<SqlData> sqlRow : sqlDataList) {
+        for (ArrayList<SqlData> sqlRow : sqlDataList) {
             StringBuilder rowValue = new StringBuilder();
             
             //int fieldCount = 0;
-            for(SqlData val : sqlRow) {
+            for (SqlData val : sqlRow) {
              
                 JsonNode jsonOb = colOptionsMap.get(val.getColumnName());
                 String type = JSONUtilities.getString(jsonOb, "type", null);
@@ -107,36 +107,36 @@ public class SqlInsertBuilder {
                 String defaultValue = JSONUtilities.getString(jsonOb, "defaultValue", null);
               
                 boolean allowNullChkBox = JSONUtilities.getBoolean(jsonOb, "defaultValue", true);;
-                if(type == null) {
+                if (type == null) {
                     type = SqlData.SQL_TYPE_VARCHAR;
                 }
                 //Character Types
-                if(type.equals(SqlData.SQL_TYPE_VARCHAR) || type.equals(SqlData.SQL_TYPE_CHAR) || type.equals(SqlData.SQL_TYPE_TEXT)) {
+                if (type.equals(SqlData.SQL_TYPE_VARCHAR) || type.equals(SqlData.SQL_TYPE_CHAR) || type.equals(SqlData.SQL_TYPE_TEXT)) {
 
-                    if((val.getText() == null || val.getText().isEmpty()) ) {
+                    if ((val.getText() == null || val.getText().isEmpty()) ) {
                       
                         handleNullField(allowNullChkBox, defaultValue, nullValueNull, val.getColumnName(), rowValue, true);
                         
-                    }else {
-                        rowValue.append("'" + val.getText().replace("'","''") + "'"); 
+                    } else {
+                        rowValue.append("'" + val.getText().replace("'", "''") + "'"); 
                         
                     }
                  
-                }else if(type.equals(SqlData.SQL_TYPE_INT) || type.equals(SqlData.SQL_TYPE_INTEGER) || type.equals(SqlData.SQL_TYPE_NUMERIC)) {//Numeric Types : INT, NUMERIC
+                } else if (type.equals(SqlData.SQL_TYPE_INT) || type.equals(SqlData.SQL_TYPE_INTEGER) || type.equals(SqlData.SQL_TYPE_NUMERIC)) { //Numeric Types : INT, NUMERIC
                     
-                    if((val.getText() == null || val.getText().isEmpty())) {
+                    if ((val.getText() == null || val.getText().isEmpty())) {
                         
                         handleNullField(allowNullChkBox, defaultValue, nullValueNull, val.getColumnName(), rowValue, false);
                  
-                    }else {//value not null
+                    } else { //value not null
                         
-                        if(type.equals(SqlData.SQL_TYPE_NUMERIC)) {//test if number is numeric (decimal(p,s) number is valid)
+                        if (type.equals(SqlData.SQL_TYPE_NUMERIC)) { //test if number is numeric (decimal(p,s) number is valid)
                            
-                            if(!NumberUtils.isNumber(val.getText())){
+                            if (!NumberUtils.isNumber(val.getText())){
                                 throw new SqlExporterException(
                                         val.getText() + " is not compatible with column type :" + type);
                             }
-                        }else {
+                        } else {
                             
                             try { //number should be an integer
                                 Integer.parseInt(val.getText());
@@ -151,10 +151,10 @@ public class SqlInsertBuilder {
                        
                     }
                     
-                }else if(type.equals(SqlData.SQL_TYPE_DATE) || type.equals(SqlData.SQL_TYPE_TIMESTAMP)) {
-                    if((val.getText() == null || val.getText().isEmpty())) {
+                } else if (type.equals(SqlData.SQL_TYPE_DATE) || type.equals(SqlData.SQL_TYPE_TIMESTAMP)) {
+                    if ((val.getText() == null || val.getText().isEmpty())) {
                         handleNullField(allowNullChkBox, defaultValue, nullValueNull, val.getColumnName(), rowValue, true);
-                    }else {
+                    } else {
                         rowValue.append("'" + val.getText() + "'"); 
                     }
                 }
@@ -171,7 +171,7 @@ public class SqlInsertBuilder {
             values.append("( ");
             values.append(rowValString);
             values.append(" )");
-            if(idx < sqlDataList.size()) {
+            if (idx < sqlDataList.size()) {
                 values.append(","); 
             }
             values.append("\n");
@@ -180,7 +180,7 @@ public class SqlInsertBuilder {
 
         boolean trimColNames = options == null ? false : JSONUtilities.getBoolean(options, "trimColumnNames", false);
         String colNamesWithSep = columns.stream().map(col -> col.replaceAll("\\s", "")).collect(Collectors.joining(","));;
-        if(!trimColNames) {
+        if (!trimColNames) {
            colNamesWithSep = columns.stream().collect(Collectors.joining(","));  
         }
         
@@ -197,7 +197,7 @@ public class SqlInsertBuilder {
         sql.append(valuesString);
         
         String sqlString = sql.toString();
-        if(logger.isDebugEnabled()) {
+        if (logger.isDebugEnabled()) {
             logger.debug("Insert Statement Generated Successfully...{}", sqlString);
         }
         return sqlString;
@@ -222,33 +222,33 @@ public class SqlInsertBuilder {
             boolean quote
             ) {
 
-        if(allowNullChkBox) {//cell nullable
-            if(defaultValue != null && !defaultValue.isEmpty()) {
-                if(quote) {
+        if (allowNullChkBox) { //cell nullable
+            if (defaultValue != null && !defaultValue.isEmpty()) {
+                if (quote) {
                     rowValue.append("'" + defaultValue + "'");  
-                }else {
+                } else {
                     rowValue.append(defaultValue);
                 } 
                
-            }else {
-                if(nullValueNull) {
+            } else {
+                if (nullValueNull) {
                     rowValue.append("null"); 
                    
-                }else {
+                } else {
                     throw new SqlExporterException("Null value not allowed for Field :" + col); 
                 }
                 
             }
             
-        }else {
-            if(defaultValue != null && !defaultValue.isEmpty()) {
-                if(quote) {
+        } else {
+            if (defaultValue != null && !defaultValue.isEmpty()) {
+                if (quote) {
                     rowValue.append("'" + defaultValue + "'"); 
-                }else {
+                } else {
                     rowValue.append(defaultValue);
                 }    
                
-            }else {
+            } else {
                 throw new SqlExporterException("Null value not allowed for Field :" + col);
             }
            

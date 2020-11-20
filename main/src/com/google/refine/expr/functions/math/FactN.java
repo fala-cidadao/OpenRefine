@@ -65,7 +65,7 @@ public class FactN implements Function {
     public static long factorial(long i, long step){
         if (i < 0) {
             throw new IllegalArgumentException("Can't compute the factorial of a negative number");
-        } else if(i <= 1) {
+        } else if (i <= 1) {
             return 1;
         } else {
             long result = i * FactN.factorial(i - step, step);

@@ -64,7 +64,7 @@ public class CreateProjectCommand extends Command {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	if(!hasValidCSRFTokenAsGET(request)) {
+    	if (!hasValidCSRFTokenAsGET(request)) {
     		respondCSRFError(response);
     		return;
     	}

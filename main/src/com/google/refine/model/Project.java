@@ -239,7 +239,7 @@ public class Project {
         project.columnModel.setMaxCellIndex(maxCellCount - 1);
 
         logger.info(
-            "Loaded project {} from disk in {} sec(s)",id,Long.toString((System.currentTimeMillis() - start) / 1000)
+            "Loaded project {} from disk in {} sec(s)", id, Long.toString((System.currentTimeMillis() - start) / 1000)
         );
 
         project.update();

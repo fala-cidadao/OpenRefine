@@ -49,7 +49,7 @@ public class NGramFingerprintKeyer extends FingerprintKeyer {
         }
         s = s.toLowerCase(); // then lowercase it
         s = alphanum.matcher(s).replaceAll(""); // then remove all punctuation and control chars
-        TreeSet<String> set = ngram_split(s,ngram_size);
+        TreeSet<String> set = ngram_split(s, ngram_size);
         StringBuffer b = new StringBuffer();
         Iterator<String> i = set.iterator();
         while (i.hasNext()) { // join ordered fragments back together
@@ -62,7 +62,7 @@ public class NGramFingerprintKeyer extends FingerprintKeyer {
         TreeSet<String> set = new TreeSet<String>();
         char[] chars = s.toCharArray();
         for (int i = 0; i + size <= chars.length; i++) {
-            set.add(new String(chars,i,size));
+            set.add(new String(chars, i, size));
         }
         return set;
     }

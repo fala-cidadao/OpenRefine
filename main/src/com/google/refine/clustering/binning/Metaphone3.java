@@ -279,14 +279,14 @@ public class Metaphone3 {
 	boolean SetKeyLength(int inKeyLength)
 	{
 		int key = inKeyLength;
-	    if(key < 1)
+	    if (key < 1)
 		{
 			// can't have that -
 			// no room for terminating null
 	    	key = 1;
 		}
 
-		if(key > MAX_KEY_ALLOCATION)
+		if (key > MAX_KEY_ALLOCATION)
 	    {
 	        m_metaphLength = MAX_KEY_ALLOCATION;
 	        return false;
@@ -303,14 +303,14 @@ public class Metaphone3 {
      */
     void MetaphAdd(String in)
     {
-    	if(!(in.equals("A") 
+    	if (!(in.equals("A") 
     			&& (m_primary.length() > 0) 
     			&& (m_primary.charAt(m_primary.length() - 1) == 'A')))
     	{
     		m_primary.append(in);
     	}
     	
-    	if(!(in.equals("A") 
+    	if (!(in.equals("A") 
     			&& (m_secondary.length() > 0) 
     			&& (m_secondary.charAt(m_secondary.length() - 1) == 'A')))
     	{
@@ -327,18 +327,18 @@ public class Metaphone3 {
 	 */
 	void MetaphAdd(String main, String alt)
 	{
-    	if(!(main.equals("A") 
+    	if (!(main.equals("A") 
     			&& (m_primary.length() > 0) 
     			&& (m_primary.charAt(m_primary.length() - 1) == 'A')))
     	{
     		m_primary.append(main);
     	}
     	
-    	if(!(alt.equals("A") 
+    	if (!(alt.equals("A") 
     			&& (m_secondary.length() > 0) 
     			&& (m_secondary.charAt(m_secondary.length() - 1) == 'A')))
     	{
-			if(!alt.isEmpty())
+			if (!alt.isEmpty())
 			{
 				m_secondary.append(alt);
 			}
@@ -361,7 +361,7 @@ public class Metaphone3 {
 	 */	
 	void MetaphAddExactApprox(String mainExact, String altExact, String main, String alt)
 	{
-		if(m_encodeExact)
+		if (m_encodeExact)
 		{
 			MetaphAdd(mainExact, altExact);
 		}
@@ -382,7 +382,7 @@ public class Metaphone3 {
 	 */	
 	void MetaphAddExactApprox(String mainExact, String main)
 	{
-		if(m_encodeExact)
+		if (m_encodeExact)
 		{
 			MetaphAdd(mainExact);
 		}
@@ -395,13 +395,13 @@ public class Metaphone3 {
 	 *
 	 * @return short integer representing the length allowed for the key.
 	 */
-   int GetKeyLength(){return m_metaphLength;}
+   int GetKeyLength(){ return m_metaphLength; }
 
 	/** Retrieves maximum number of characters allowed for encoded key. 
 	 *
 	 * @return short integer representing the length of allocated storage for the key.
 	 */
-   int GetMaximumKeyLength(){return (int)MAX_KEY_ALLOCATION;}
+   int GetMaximumKeyLength(){ return (int)MAX_KEY_ALLOCATION; }
 
 	/** Sets flag that causes Metaphone3 to encode non-initial vowels. However, even 
 	 * if there are more than one vowel sound in a vowel sequence (i.e. 
@@ -410,13 +410,13 @@ public class Metaphone3 {
 	 *
 	 * @param inEncodeVowels Non-initial vowels encoded if true, not if false. 
 	 */
-   void SetEncodeVowels(boolean inEncodeVowels){m_encodeVowels = inEncodeVowels;}
+   void SetEncodeVowels(boolean inEncodeVowels){ m_encodeVowels = inEncodeVowels; }
 
 	/** Retrieves setting determining whether or not non-initial vowels will be encoded. 
 	 *
 	 * @return true if the Metaphone3 object has been set to encode non-initial vowels, false if not.
 	 */
-   boolean GetEncodeVowels(){return m_encodeVowels;}
+   boolean GetEncodeVowels(){ return m_encodeVowels; }
 
 	/** Sets flag that causes Metaphone3 to encode consonants as exactly as possible.
 	 * This does not include 'S' vs. 'Z', since americans will pronounce 'S' at the
@@ -426,13 +426,13 @@ public class Metaphone3 {
 	 *
 	 * @param inEncodeExact consonants to be encoded "exactly" if true, not if false. 
 	 */
-   void SetEncodeExact(boolean inEncodeExact){m_encodeExact = inEncodeExact;}
+   void SetEncodeExact(boolean inEncodeExact){ m_encodeExact = inEncodeExact; }
 
 	/** Retrieves setting determining whether or not consonants will be encoded "exactly".
 	 *
 	 * @return true if the Metaphone3 object has been set to encode "exactly", false if not.
 	 */
-   boolean GetEncodeExact(){return m_encodeExact;}
+   boolean GetEncodeExact(){ return m_encodeExact; }
 
 	/** Retrieves primary encoded key.
 	 *
@@ -461,7 +461,7 @@ public class Metaphone3 {
 	 */
 	boolean Front_Vowel(int at)
 	{
-		if(((CharAt(at) == 'E') || (CharAt(at) == 'I') || (CharAt(at) == 'Y')))
+		if (((CharAt(at) == 'E') || (CharAt(at) == 'I') || (CharAt(at) == 'Y')))
 		{
 			return true;
 		}
@@ -477,7 +477,7 @@ public class Metaphone3 {
 	 */
 	boolean SlavoGermanic()
 	{
-		if(StringAt(0, 3, "SCH", "")
+		if (StringAt(0, 3, "SCH", "")
 			|| StringAt(0, 2, "SW", "")
 			|| (CharAt(0) == 'J')
 			|| (CharAt(0) == 'W'))
@@ -496,7 +496,7 @@ public class Metaphone3 {
 	 */
 	boolean IsVowel(char inChar)
 	{
-	    if((inChar == 'A') 
+	    if ((inChar == 'A') 
 			|| (inChar == 'E') 
 			|| (inChar == 'I') 
 			|| (inChar == 'O') 
@@ -546,14 +546,14 @@ public class Metaphone3 {
 	 */
 	boolean IsVowel(int at)
 	{
-	    if((at < 0) || (at >= m_length))
+	    if ((at < 0) || (at >= m_length))
 		{
 	        return false;
 		}
 
 	    char it = CharAt(at);
 
-	    if(IsVowel(it))
+	    if (IsVowel(it))
 		{
 	        return true;
 		}
@@ -572,21 +572,21 @@ public class Metaphone3 {
 	int SkipVowels(int at)
 	{
 		int control = at;
-	    if(control < 0)
+	    if (control < 0)
 		{
 	        return 0;
 		}
 
-	    if(control >= m_length)
+	    if (control >= m_length)
 		{
 	        return m_length;
 		}
 
 	    char it = CharAt(control);
 
-	    while(IsVowel(it) || (it == 'W'))
+	    while (IsVowel(it) || (it == 'W'))
 	    {
-	        if(StringAt(control, 4, "WICZ", "WITZ", "WIAK", "")
+	        if (StringAt(control, 4, "WICZ", "WITZ", "WIAK", "")
 				|| StringAt((control - 1), 5, "EWSKI", "EWSKY", "OWSKI", "OWSKY", "")
 				|| (StringAt(control, 5, "WICKI", "WACKI", "") && ((control) == m_last)))
 	        {
@@ -594,7 +594,7 @@ public class Metaphone3 {
 	        }
 
 	        control++;
-	        if(((CharAt(control - 1) == 'W') && (CharAt(control) == 'H'))
+	        if (((CharAt(control - 1) == 'W') && (CharAt(control) == 'H'))
 	            && !(StringAt(control, 3, "HOP", "")
 	                  || StringAt(control, 4, "HIDE", "HARD", "HEAD", "HAWK", "HERD", "HOOK", "HAND", "HOLE", "")
 	                  || StringAt(control, 5, "HEART", "HOUSE", "HOUND", "")
@@ -603,7 +603,7 @@ public class Metaphone3 {
 	        	control++;
 			}
 	        
-	        if(control > (m_length - 1))
+	        if (control > (m_length - 1))
 	        {
 	        	break;
 	        }
@@ -622,7 +622,7 @@ public class Metaphone3 {
 	 */
 	void AdvanceCounter(int ifNotEncodeVowels, int ifEncodeVowels)
 	{
-		if(!m_encodeVowels)
+		if (!m_encodeVowels)
 		{
 			m_current += ifNotEncodeVowels;
 		}
@@ -642,7 +642,7 @@ public class Metaphone3 {
 	char CharAt(int at)
 	{
 	    // check substring bounds
-		if((at < 0)
+		if ((at < 0)
 	    	|| (at > (m_length - 1)))
 	    {
 	    	return '\0';
@@ -665,23 +665,23 @@ public class Metaphone3 {
 		rootMod = root;
 		String test;
 		test = rootMod + "S";
-		if((inWord.equals(rootMod))
+		if ((inWord.equals(rootMod))
 				|| (inWord.equals(test)))
 		{
 			return true;
 		}
 
-		if(rootMod.charAt(len - 1) != 'E')
+		if (rootMod.charAt(len - 1) != 'E')
 		{
 			test = rootMod + "ES";
 		}
 		
-		if(inWord.equals(test))
+		if (inWord.equals(test))
 		{
 			return true;
 		}
 
-		if(rootMod.charAt(len - 1) != 'E')
+		if (rootMod.charAt(len - 1) != 'E')
 		{
 			test = rootMod + "ED";
 		}
@@ -690,30 +690,30 @@ public class Metaphone3 {
 			test = rootMod + "D";
 		}
 		
-		if(inWord.equals(test))
+		if (inWord.equals(test))
 		{
 			return true;
 		}
 
-		if(rootMod.charAt(len - 1) == 'E')
+		if (rootMod.charAt(len - 1) == 'E')
 		{
 			rootMod = rootMod.substring(0, len - 1);
 		}
 
 		test = rootMod + "ING";
-		if(inWord.equals(test))
+		if (inWord.equals(test))
 		{
 			return true;
 		}
 
 		test = rootMod + "INGLY";
-		if(inWord.equals(test))
+		if (inWord.equals(test))
 		{
 			return true;
 		}
 
 		test = rootMod + "Y";
-		if(inWord.equals(test))
+		if (inWord.equals(test))
 		{
 			return true;
 		}
@@ -733,7 +733,7 @@ public class Metaphone3 {
 	boolean StringAt(int start, int length, String... compareStrings)
 	{
 	    // check substring bounds
-		if((start < 0)
+		if ((start < 0)
 	    	|| (start > (m_length - 1))
 	    	|| ((start + length - 1) > (m_length - 1)))
 	    {
@@ -742,9 +742,9 @@ public class Metaphone3 {
 
 	    String target = m_inWord.substring(start, (start + length));
 	      
-		for(String strFragment : compareStrings)
+		for (String strFragment : compareStrings)
 		{
-			if(target.equals(strFragment))
+			if (target.equals(strFragment))
 			{
 				return true;
 			}			
@@ -765,7 +765,7 @@ public class Metaphone3 {
 		m_primary.setLength(0);
 	    m_secondary.setLength(0);
 
-	    if(m_length < 1)
+	    if (m_length < 1)
 		{
 	        return;
 		}
@@ -774,14 +774,14 @@ public class Metaphone3 {
 		m_last = m_length - 1;
 
 	    ///////////main loop//////////////////////////
-		while(!(m_primary.length() > m_metaphLength) && !(m_secondary.length() > m_metaphLength))
+		while (!(m_primary.length() > m_metaphLength) && !(m_secondary.length() > m_metaphLength))
 	    {
- 	        if(m_current >= m_length)
+ 	        if (m_current >= m_length)
 			{
 	            break;
 			}
 
- 	        switch(CharAt(m_current))
+ 	        switch (CharAt(m_current))
 	        {	                        
 	            case 'B':
 
@@ -917,7 +917,7 @@ public class Metaphone3 {
 
 	            default:
 	            	
-					if(IsVowel(CharAt(m_current)))
+					if (IsVowel(CharAt(m_current)))
 					{
 						Encode_Vowels();
 						break;
@@ -929,19 +929,19 @@ public class Metaphone3 {
 	    }
 
 	    //only give back m_metaphLength number of chars in m_metaph
-		if(m_primary.length() > m_metaphLength)
+		if (m_primary.length() > m_metaphLength)
 	    {
 			m_primary.setLength(m_metaphLength);
 	    }
 
-		if(m_secondary.length() > m_metaphLength)
+		if (m_secondary.length() > m_metaphLength)
 	    {
 			m_secondary.setLength(m_metaphLength);
 	    }
 
 		// it is possible for the two metaphs to be the same 
 		// after truncation. lose the second one if so
-		if((m_primary.toString()).equals(m_secondary.toString()))
+		if ((m_primary.toString()).equals(m_secondary.toString()))
 		{
 			m_secondary.setLength(0);
 		}
@@ -956,17 +956,17 @@ public class Metaphone3 {
 	*/
 	void Encode_Vowels()
 	{
-		if(m_current == 0)
+		if (m_current == 0)
 		{
 			// all init vowels map to 'A' 
 			// as of Double Metaphone
 			MetaphAdd("A"); 
 		}
-		else if(m_encodeVowels)
+		else if (m_encodeVowels)
 		{
-			if(CharAt(m_current) != 'E')
+			if (CharAt(m_current) != 'E')
 			{
-				if(Skip_Silent_UE())
+				if (Skip_Silent_UE())
 				{
 					return;
 				}
@@ -987,7 +987,7 @@ public class Metaphone3 {
 			}
 		}
 
-		if(!(!IsVowel(m_current - 2) && StringAt((m_current - 1), 4, "LEWA", "LEWO", "LEWI", "")))
+		if (!(!IsVowel(m_current - 2) && StringAt((m_current - 1), 4, "LEWA", "LEWO", "LEWI", "")))
 		{
 			m_current = SkipVowels(m_current);
 		}
@@ -1009,7 +1009,7 @@ public class Metaphone3 {
 	{
 		// special cases with two pronunciations
 		// 'agape' 'lame' 'resume'
-		if((StringAt(0, 4, "LAME", "SAKE", "PATE", "") && (m_length == 4))
+		if ((StringAt(0, 4, "LAME", "SAKE", "PATE", "") && (m_length == 4))
 			|| (StringAt(0, 5, "AGAPE", "") && (m_length == 5))
 			|| ((m_current == 5) && StringAt(0, 6, "RESUME", "")))
 		{
@@ -1018,7 +1018,7 @@ public class Metaphone3 {
 		}
 		
 		// special case "inge" => 'INGA', 'INJ'
-		if(StringAt(0, 4, "INGE", "")
+		if (StringAt(0, 4, "INGE", "")
 			&& (m_length == 4))
 		{
 			MetaphAdd("A", "");
@@ -1028,7 +1028,7 @@ public class Metaphone3 {
 		// special cases with two pronunciations
 		// special handling due to the difference in
 		// the pronunciation of the '-D'
-		if((m_current == 5) && StringAt(0, 7, "BLESSED", "LEARNED", ""))
+		if ((m_current == 5) && StringAt(0, 7, "BLESSED", "LEARNED", ""))
 		{
 			MetaphAddExactApprox("D", "AD", "T", "AT");
 			m_current += 2;
@@ -1036,7 +1036,7 @@ public class Metaphone3 {
 		}
 		
 		// encode all vowels and diphthongs to the same value
-		if((!E_Silent() 
+		if ((!E_Silent() 
 				&& !flag_AL_inversion 
 				&& !Silent_Internal_E())
 				|| E_Pronounced_Exceptions())
@@ -1082,13 +1082,13 @@ public class Metaphone3 {
 	*/
 	boolean E_Silent()
 	{	
-		if(E_Pronounced_At_End())
+		if (E_Pronounced_At_End())
 		{
 			return false;
 		}
 
 		// 'e' silent when last letter, altho
-		if((m_current == m_last)
+		if ((m_current == m_last)
 			// also silent if before plural 's'
 			// or past tense or participle 'd', e.g.
 			// 'grapes' and 'banished' => PNXT
@@ -1131,7 +1131,7 @@ public class Metaphone3 {
 	*/
 	boolean E_Pronounced_At_End()
 	{
-		if((m_current == m_last)
+		if ((m_current == m_last)
 			&& (StringAt((m_current - 6), 7, "STROPHE", "")
 			// if a vowel is before the 'E', vowel eater will have eaten it. 
 			//otherwise, consonant + 'E' will need 'E' pronounced
@@ -1173,7 +1173,7 @@ public class Metaphone3 {
 	boolean Silent_Internal_E()
 	{
 		// 'olesen' but not 'olen'	RAKE BLAKE 
-		if((StringAt(0, 3, "OLE", "") 
+		if ((StringAt(0, 3, "OLE", "") 
 				&& E_Silent_Suffix(3) && !E_Pronouncing_Suffix(3))
 		   || (StringAt(0, 4, "BARE", "FIRE", "FORE", "GATE", "HAGE", "HAVE",
 				             "HAZE", "HOLE", "CAPE", "HUSE", "LACE", "LINE", 
@@ -1202,7 +1202,7 @@ public class Metaphone3 {
 	 */
 	boolean E_Silent_Suffix(int at)
 	{
-		if((m_current == (at - 1)) 
+		if ((m_current == (at - 1)) 
 				&& (m_length > (at + 1)) 
 				&& (IsVowel((at + 1)) 
 				|| (StringAt(at, 2, "ST", "SL", "") 
@@ -1223,32 +1223,32 @@ public class Metaphone3 {
 	{		
 		// e.g. 'bridgewood' - the other vowels will get eaten
 		// up so we need to put one in here
-		if((m_length == (at + 4)) && StringAt(at, 4, "WOOD", ""))
+		if ((m_length == (at + 4)) && StringAt(at, 4, "WOOD", ""))
 		{
 			return true;
 		}
 		
 		// same as above
-		if((m_length == (at + 5)) && StringAt(at, 5, "WATER", "WORTH", ""))
+		if ((m_length == (at + 5)) && StringAt(at, 5, "WATER", "WORTH", ""))
 		{
 			return true;
 		}
 				
 		// e.g. 'bridgette'
-		if((m_length == (at + 3)) && StringAt(at, 3, "TTE", "LIA", "NOW", "ROS", "RAS", ""))
+		if ((m_length == (at + 3)) && StringAt(at, 3, "TTE", "LIA", "NOW", "ROS", "RAS", ""))
 		{
 			return true;
 		}
 		
 		// e.g. 'olena'
-		if((m_length == (at + 2)) && StringAt(at, 2, "TA", "TT", "NA", "NO", "NE",
+		if ((m_length == (at + 2)) && StringAt(at, 2, "TA", "TT", "NA", "NO", "NE",
 													 "RS", "RE", "LA", "AU", "RO", "RA", ""))
 		{
 			return true;
 		}
 		
 		// e.g. 'bridget'
-		if((m_length == (at + 1)) && StringAt(at, 1, "T", "R", ""))
+		if ((m_length == (at + 1)) && StringAt(at, 1, "T", "R", ""))
 		{
 			return true;
 		}
@@ -1268,7 +1268,7 @@ public class Metaphone3 {
 	boolean E_Pronounced_Exceptions()
 	{
 		// greek names e.g. "herakles" or hispanic names e.g. "robles", where 'e' is pronounced, other exceptions
-		if((((m_current + 1) == m_last) 
+		if ((((m_current + 1) == m_last) 
 				&& (StringAt((m_current - 3), 5, "OCLES", "ACLES", "AKLES", "")
 					|| StringAt(0, 4, "INES", "")
 					|| StringAt(0, 5, "LOPES", "ESTES", "GOMES", "NUNES", "ALVES", "ICKES", 
@@ -1305,7 +1305,7 @@ public class Metaphone3 {
 	boolean Skip_Silent_UE()
 	{
 		// always silent except for cases listed below
-		if((StringAt((m_current - 1), 3, "QUE", "GUE", "") 
+		if ((StringAt((m_current - 1), 3, "QUE", "GUE", "") 
 			&& !StringAt(0, 8, "BARBEQUE", "PALENQUE", "APPLIQUE", "")
 			// '-que' cases usually french but missing the acute accent
 			&& !StringAt(0, 6, "RISQUE", "")
@@ -1330,7 +1330,7 @@ public class Metaphone3 {
 	 */
 	void Encode_B()
 	{
-		if(Encode_Silent_B())
+		if (Encode_Silent_B())
 		{
 			return;
 		}
@@ -1339,7 +1339,7 @@ public class Metaphone3 {
 		// 'M', altho it should really be handled here...
 		MetaphAddExactApprox("B", "P");
 
-		if((CharAt(m_current + 1) == 'B')
+		if ((CharAt(m_current + 1) == 'B')
 			|| ((CharAt(m_current + 1) == 'P')
 			&& ((m_current + 1 < m_last) && (CharAt(m_current + 2) != 'H'))))
 		{
@@ -1361,7 +1361,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_B()
 	{
 		//'debt', 'doubt', 'subtle'
-		if(StringAt((m_current - 2), 4, "DEBT", "") 
+		if (StringAt((m_current - 2), 4, "DEBT", "") 
 			|| StringAt((m_current - 2), 5, "SUBTL", "") 
 			|| StringAt((m_current - 2), 6, "SUBTIL", "") 
 			|| StringAt((m_current - 3), 5, "DOUBT", ""))
@@ -1381,7 +1381,7 @@ public class Metaphone3 {
 	void Encode_C()
 	{
 
-		if(Encode_Silent_C_At_Beginning()
+		if (Encode_Silent_C_At_Beginning()
 			|| Encode_CA_To_S()
 			|| Encode_CO_To_S()
 			|| Encode_CH()
@@ -1397,24 +1397,24 @@ public class Metaphone3 {
 		}
 
 		//else
-		if(!StringAt((m_current - 1), 1, "C", "K", "G", "Q", ""))
+		if (!StringAt((m_current - 1), 1, "C", "K", "G", "Q", ""))
 		{
 			MetaphAdd("K");
 		}
 
 		//name sent in 'mac caffrey', 'mac gregor
-		if(StringAt((m_current + 1), 2, " C", " Q", " G", ""))
+		if (StringAt((m_current + 1), 2, " C", " Q", " G", ""))
 		{
 			m_current += 2;
 		}
 		else
 		{
-			if(StringAt((m_current + 1), 1, "C", "K", "Q", "") 
+			if (StringAt((m_current + 1), 1, "C", "K", "Q", "") 
 				&& !StringAt((m_current + 1), 2, "CE", "CI", ""))
 			{
 				m_current += 2;
 				// account for combinations such as Ro-ckc-liffe
-				if(StringAt((m_current), 1, "C", "K", "Q", "") 
+				if (StringAt((m_current), 1, "C", "K", "Q", "") 
 					&& !StringAt((m_current + 1), 2, "CE", "CI", ""))
 				{
 					m_current++;
@@ -1436,7 +1436,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_C_At_Beginning()
 	{
 	    //skip these when at start of word
-	    if((m_current == 0)
+	    if ((m_current == 0)
 			&& StringAt(m_current, 2, "CT", "CN", ""))
 		{
 	        m_current += 1;
@@ -1458,7 +1458,7 @@ public class Metaphone3 {
 	{
 		// Special case: 'caesar'. 
 		// Also, where cedilla not used, as in "linguica" => LNKS
-		if(((m_current == 0) && StringAt(m_current, 4, "CAES", "CAEC", "CAEM", ""))
+		if (((m_current == 0) && StringAt(m_current, 4, "CAES", "CAEC", "CAEM", ""))
 			|| StringAt(0, 8, "FRANCAIS", "FRANCAIX", "LINGUICA", "")
 			|| StringAt(0, 6, "FACADE", "")
 			|| StringAt(0, 9, "GONCALVES", "PROVENCAL", ""))
@@ -1481,7 +1481,7 @@ public class Metaphone3 {
 	boolean Encode_CO_To_S()
 	{
 		// e.g. 'coelecanth' => SLKN0
-		if((StringAt(m_current, 4, "COEL", "") 
+		if ((StringAt(m_current, 4, "COEL", "") 
 				&& (IsVowel(m_current + 4) || ((m_current + 3) == m_last)))
 			|| StringAt(m_current, 5, "COENA", "COENO", "")
 			|| StringAt(0, 8, "FRANCOIS", "MELANCON", "")
@@ -1503,9 +1503,9 @@ public class Metaphone3 {
 	 */
 	boolean Encode_CH()
 	{
-		if(StringAt(m_current, 2, "CH", ""))
+		if (StringAt(m_current, 2, "CH", ""))
 		{       
-			if(Encode_CHAE()
+			if (Encode_CHAE()
 				|| Encode_CH_To_H()
 				|| Encode_Silent_CH()
 				|| Encode_ARCH()
@@ -1521,9 +1521,9 @@ public class Metaphone3 {
 				return true;
 			}
 
-			if(m_current > 0)
+			if (m_current > 0)
 			{
-				if(StringAt(0, 2, "MC", "") 
+				if (StringAt(0, 2, "MC", "") 
 						&& (m_current == 1))
 				{
 					//e.g., "McHugh"
@@ -1554,13 +1554,13 @@ public class Metaphone3 {
 	boolean Encode_CHAE()
 	{
 		// e.g. 'michael'
-		if(((m_current > 0) && StringAt((m_current + 2), 2, "AE", "")))
+		if (((m_current > 0) && StringAt((m_current + 2), 2, "AE", "")))
 		{
-			if(StringAt(0, 7, "RACHAEL", ""))
+			if (StringAt(0, 7, "RACHAEL", ""))
 			{
 				MetaphAdd("X");
 			}
-			else if(!StringAt((m_current - 1), 1, "C", "K", "G", "Q", ""))
+			else if (!StringAt((m_current - 1), 1, "C", "K", "G", "Q", ""))
 			{
 				MetaphAdd("K");
 			}
@@ -1584,7 +1584,7 @@ public class Metaphone3 {
 	boolean Encode_CH_To_H()
 	{
 		// hebrew => 'H', e.g. 'channukah', 'chabad'
-		if(((m_current == 0) 
+		if (((m_current == 0) 
 			&& (StringAt((m_current + 2), 3, "AIM", "ETH", "ELM", "")
 			|| StringAt((m_current + 2), 4, "ASID", "AZAN", "")
 			|| StringAt((m_current + 2), 5, "UPPAH", "UTZPA", "ALLAH", "ALUTZ", "AMETZ", "")
@@ -1610,7 +1610,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_CH()
 	{
 		// '-ch-' not pronounced
-		if(StringAt((m_current - 2), 7, "FUCHSIA", "")
+		if (StringAt((m_current - 2), 7, "FUCHSIA", "")
 			|| StringAt((m_current - 2), 5, "YACHT", "")
 			|| StringAt(0, 8, "STRACHAN", "")
 			|| StringAt(0, 8, "CRICHTON", "")
@@ -1634,7 +1634,7 @@ public class Metaphone3 {
 	boolean Encode_CH_To_X()
 	{
 		// e.g. 'approach', 'beach'
-		if((StringAt((m_current - 2), 4, "OACH", "EACH", "EECH", "OUCH", "OOCH", "MUCH", "SUCH", "")
+		if ((StringAt((m_current - 2), 4, "OACH", "EACH", "EECH", "OUCH", "OOCH", "MUCH", "SUCH", "")
 				&& !StringAt((m_current - 3), 5, "JOACH", ""))
 			// e.g. 'dacha', 'macho'
 			|| (((m_current + 2) == m_last ) && StringAt((m_current - 1), 4, "ACHA", "ACHO", ""))
@@ -1667,7 +1667,7 @@ public class Metaphone3 {
 	boolean Encode_English_CH_To_K()
 	{
 		//'ache', 'echo', alternate spelling of 'michael'
-		if(((m_current == 1) && RootOrInflections(m_inWord, "ACHE"))
+		if (((m_current == 1) && RootOrInflections(m_inWord, "ACHE"))
 			|| (((m_current > 3) && RootOrInflections(m_inWord.substring(m_current - 1), "ACHE"))
 				&& (StringAt(0, 3, "EAR", "")
 					|| StringAt(0, 4, "HEAD", "BACK", "")
@@ -1696,7 +1696,7 @@ public class Metaphone3 {
 	{
 		// various germanic
 		// "<consonant><vowel>CH-"implies a german word where 'ch' => K
-		if(((m_current > 1)
+		if (((m_current > 1)
 			&& !IsVowel(m_current - 2) 
 			&& StringAt((m_current - 1), 3, "ACH", "")
 			&& !StringAt((m_current - 2), 7, "MACHADO", "MACHUCA", "LACHANC", "LACHAPE", "KACHATU", "")
@@ -1731,7 +1731,7 @@ public class Metaphone3 {
 		{       
 			// "CHR/L-" e.g. 'chris' do not get
 			// alt pronunciation of 'X'
-			if(StringAt((m_current + 2), 1, "R", "L", "")
+			if (StringAt((m_current + 2), 1, "R", "L", "")
 				|| SlavoGermanic())
 			{
 				MetaphAdd("K");
@@ -1756,11 +1756,11 @@ public class Metaphone3 {
 	 */
 	boolean Encode_ARCH()
 	{
-		if(StringAt((m_current - 2), 4, "ARCH", ""))
+		if (StringAt((m_current - 2), 4, "ARCH", ""))
 		{
 			// "-ARCH-" has many combining forms where "-CH-" => K because of its
 			// derivation from the greek
-			if(((IsVowel(m_current + 2) && StringAt((m_current - 2), 5, "ARCHA", "ARCHI", "ARCHO", "ARCHU", "ARCHY", ""))
+			if (((IsVowel(m_current + 2) && StringAt((m_current - 2), 5, "ARCHA", "ARCHI", "ARCHO", "ARCHU", "ARCHY", ""))
 				|| StringAt((m_current - 2), 6, "ARCHEA", "ARCHEG", "ARCHEO", "ARCHET", "ARCHEL", "ARCHES", "ARCHEP", 
 												"ARCHEM", "ARCHEN", "")
 				|| (StringAt((m_current - 2), 4, "ARCH", "") && (((m_current + 1) == m_last)))
@@ -1802,9 +1802,9 @@ public class Metaphone3 {
 	boolean Encode_Greek_CH_Initial()
 	{
 		// greek roots e.g. 'chemistry', 'chorus', ch at beginning of root
-		if((StringAt(m_current, 6, "CHAMOM", "CHARAC", "CHARIS", "CHARTO", "CHARTU", "CHARYB", "CHRIST", "CHEMIC", "CHILIA", "") 
+		if ((StringAt(m_current, 6, "CHAMOM", "CHARAC", "CHARIS", "CHARTO", "CHARTU", "CHARYB", "CHRIST", "CHEMIC", "CHILIA", "") 
 			|| (StringAt(m_current, 5, "CHEMI", "CHEMO", "CHEMU", "CHEMY", "CHOND", "CHONA", "CHONI", "CHOIR", "CHASM", 
-									   "CHARO", "CHROM", "CHROI", "CHAMA", "CHALC", "CHALD", "CHAET","CHIRO", "CHILO", "CHELA", "CHOUS", 
+									   "CHARO", "CHROM", "CHROI", "CHAMA", "CHALC", "CHALD", "CHAET", "CHIRO", "CHILO", "CHELA", "CHOUS", 
 									   "CHEIL", "CHEIR", "CHEIM", "CHITI", "CHEOP", "")
 				&& !(StringAt(m_current, 6, "CHEMIN", "") || StringAt((m_current - 2), 8, "ANCHONDO", "")))
 			|| (StringAt(m_current, 5, "CHISM", "CHELI", "")
@@ -1836,7 +1836,7 @@ public class Metaphone3 {
 		{
 			// "CHR/L-" e.g. 'christ', 'chlorine' do not get
 			// alt pronunciation of 'X'
-			if(StringAt((m_current + 2), 1, "R", "L", ""))
+			if (StringAt((m_current + 2), 1, "R", "L", ""))
 			{
 				MetaphAdd("K");
 			}
@@ -1860,7 +1860,7 @@ public class Metaphone3 {
 	boolean Encode_Greek_CH_Non_Initial()
 	{
 		//greek & other roots e.g. 'tachometer', 'orchid', ch in middle or end of root
-		if(StringAt((m_current - 2), 6, "ORCHID", "NICHOL", "MECHAN", "LICHEN", "MACHIC", "PACHEL", "RACHIF", "RACHID", 
+		if (StringAt((m_current - 2), 6, "ORCHID", "NICHOL", "MECHAN", "LICHEN", "MACHIC", "PACHEL", "RACHIF", "RACHID", 
 										"RACHIS", "RACHIC", "MICHAL", "")
 			|| StringAt((m_current - 3), 5, "MELCH", "GLOCH", "TRACH", "TROCH", "BRACH", "SYNCH", "PSYCH", 
 											"STICH", "PULCH", "EPOCH", "")
@@ -1872,7 +1872,7 @@ public class Metaphone3 {
 			|| (StringAt((m_current - 1), 5, "OCHER", "ECHIN", "ECHID", "") && ((m_current == 1) || (m_current == 2)))
 			|| StringAt((m_current - 4), 6, "BRONCH", "STOICH", "STRYCH", "TELECH", "PLANCH", "CATECH", "MANICH", "MALACH", 
 											"BIANCH", "DIDACH", "")
-			|| (StringAt((m_current - 1), 4, "ICHA", "ICHN","") && (m_current == 1))
+			|| (StringAt((m_current - 1), 4, "ICHA", "ICHN", "") && (m_current == 1))
 			|| StringAt((m_current - 2), 8, "ORCHESTR", "")
 			|| StringAt((m_current - 4), 8, "BRANCHIO", "BRANCHIF", "")
 			|| (StringAt((m_current - 1), 5, "ACHAB", "ACHAD", "ACHAN", "ACHAZ", "")
@@ -1909,7 +1909,7 @@ public class Metaphone3 {
 	boolean Encode_CCIA()
 	{
 		//e.g., 'focaccia'
-		if(StringAt((m_current + 1), 3, "CIA", ""))
+		if (StringAt((m_current + 1), 3, "CIA", ""))
 		{
 			MetaphAdd("X", "S");
 			m_current += 2;
@@ -1928,7 +1928,7 @@ public class Metaphone3 {
 	boolean Encode_CC()
 	{
 		//double 'C', but not if e.g. 'McClellan'
-		if(StringAt(m_current, 2, "CC", "") && !((m_current == 1) && (CharAt(0) == 'M')))
+		if (StringAt(m_current, 2, "CC", "") && !((m_current == 1) && (CharAt(0) == 'M')))
 		{
 			// exception
 			if (StringAt((m_current - 3), 7, "FLACCID", ""))
@@ -1939,7 +1939,7 @@ public class Metaphone3 {
 			}
 
 			//'bacci', 'bertucci', other italian
-			if((((m_current + 2) == m_last) && StringAt((m_current + 2), 1, "I", ""))
+			if ((((m_current + 2) == m_last) && StringAt((m_current + 2), 1, "I", ""))
 				|| StringAt((m_current + 2), 2, "IO", "")
 				|| (((m_current + 4) == m_last) && StringAt((m_current + 2), 3, "INO", "INI", "")))
 			{
@@ -1949,7 +1949,7 @@ public class Metaphone3 {
 			}
 
 			//'accident', 'accede' 'succeed'
-			if(StringAt((m_current + 2), 1, "I", "E", "Y", "")
+			if (StringAt((m_current + 2), 1, "I", "E", "Y", "")
 				//except 'bellocchio','bacchus', 'soccer' get K
 				&& !((CharAt(m_current + 2) == 'H') 
 					|| StringAt((m_current - 2), 6, "SOCCER", "")))
@@ -1979,10 +1979,10 @@ public class Metaphone3 {
 	 */
 	boolean Encode_CK_CG_CQ()
 	{
-		if(StringAt(m_current, 2, "CK", "CG", "CQ", ""))
+		if (StringAt(m_current, 2, "CK", "CG", "CQ", ""))
 		{
 			// eastern european spelling e.g. 'gorecki' == 'goresky'
-			if(StringAt(m_current, 3, "CKI", "CKY", "") 
+			if (StringAt(m_current, 3, "CKI", "CKY", "") 
 				&& ((m_current + 2) == m_last)
 				&& (m_length > 6))
 			{
@@ -1994,7 +1994,7 @@ public class Metaphone3 {
 			}
 			m_current += 2;
 
-			if(StringAt(m_current, 1, "K", "G", "Q", ""))
+			if (StringAt(m_current, 1, "K", "G", "Q", ""))
 			{
 				m_current++;
 			}
@@ -2013,9 +2013,9 @@ public class Metaphone3 {
 	 */
 	boolean Encode_C_Front_Vowel()
 	{
-		if(StringAt(m_current, 2, "CI", "CE", "CY", ""))
+		if (StringAt(m_current, 2, "CI", "CE", "CY", ""))
 		{
-			if(Encode_British_Silent_CE()
+			if (Encode_British_Silent_CE()
 				|| Encode_CE()
 				|| Encode_CI()
 				|| Encode_Latinate_Suffixes())
@@ -2040,7 +2040,7 @@ public class Metaphone3 {
 	boolean Encode_British_Silent_CE()
 	{
 		// english place names like e.g.'gloucester' pronounced glo-ster
-		if((StringAt((m_current + 1), 5, "ESTER", "") && ((m_current + 5) == m_last))
+		if ((StringAt((m_current + 1), 5, "ESTER", "") && ((m_current + 5) == m_last))
 			|| StringAt((m_current + 1), 10, "ESTERSHIRE", ""))
 		{
 			return true;
@@ -2057,7 +2057,7 @@ public class Metaphone3 {
 	boolean Encode_CE()
 	{
 		// 'ocean', 'commercial', 'provincial', 'cello', 'fettucini', 'medici'
-		if((StringAt((m_current + 1), 3, "EAN", "") && IsVowel(m_current - 1))
+		if ((StringAt((m_current + 1), 3, "EAN", "") && IsVowel(m_current - 1))
 			// e.g. 'rosacea'
 			|| (StringAt((m_current - 1), 4, "ACEA", "") 
 				&& ((m_current + 2) == m_last)
@@ -2087,7 +2087,7 @@ public class Metaphone3 {
 	{
 		// with consonant before C
 		// e.g. 'fettucini', but exception for the americanized pronunciation of 'mancini'
-		if(((StringAt((m_current + 1), 3, "INI", "") && !StringAt(0, 7, "MANCINI", "")) && ((m_current + 3) == m_last))
+		if (((StringAt((m_current + 1), 3, "INI", "") && !StringAt(0, 7, "MANCINI", "")) && ((m_current + 3) == m_last))
 			// e.g. 'medici'
 			|| (StringAt((m_current - 1), 3, "ICI", "") && ((m_current + 1) == m_last))
 			// e.g. "commercial', 'provincial', 'cistercian'
@@ -2101,13 +2101,13 @@ public class Metaphone3 {
 		}
 
 		// with vowel before C (or at beginning?)
-		if(((StringAt(m_current, 3, "CIO", "CIE", "CIA", "")
+		if (((StringAt(m_current, 3, "CIO", "CIE", "CIA", "")
 			&& IsVowel(m_current - 1))
 			// e.g. "ciao"
 			|| StringAt((m_current + 1), 3, "IAO", ""))
 			&& !StringAt((m_current - 4), 8, "COERCION", ""))
 		{			
-			if((StringAt(m_current, 4, "CIAN", "CIAL", "CIAO", "CIES", "CIOL", "CION", "")
+			if ((StringAt(m_current, 4, "CIAN", "CIAL", "CIAO", "CIES", "CIOL", "CION", "")
 				// exception - "glacier" => 'X' but "spacier" = > 'S'
 				|| StringAt((m_current - 3), 7, "GLACIER", "")
 				|| StringAt(m_current, 5, "CIENT", "CIENC", "CIOUS", "CIATE", "CIATI", "CIATO", "CIABL", "CIARY", "")
@@ -2143,7 +2143,7 @@ public class Metaphone3 {
 		}
 		
 		// exception
-		if(StringAt((m_current - 4), 8, "COERCION", ""))
+		if (StringAt((m_current - 4), 8, "COERCION", ""))
 		{
 			MetaphAdd("J");
 			return true;
@@ -2159,7 +2159,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_Latinate_Suffixes()
 	{
-		if(StringAt((m_current + 1), 4, "EOUS", "IOUS", ""))
+		if (StringAt((m_current + 1), 4, "EOUS", "IOUS", ""))
 		{
 			MetaphAdd("X", "S");
 			return true;
@@ -2176,7 +2176,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_Silent_C()
 	{
-		if(StringAt((m_current + 1), 1, "T", "S", ""))
+		if (StringAt((m_current + 1), 1, "T", "S", ""))
 		{
 			if (StringAt(0, 11, "CONNECTICUT", "") 
 				|| StringAt(0, 6, "INDICT", "TUCSON", ""))
@@ -2198,10 +2198,10 @@ public class Metaphone3 {
 	 */
 	boolean Encode_CZ()
 	{
-		if(StringAt((m_current + 1), 1, "Z", "")
+		if (StringAt((m_current + 1), 1, "Z", "")
 			&& !StringAt((m_current - 1), 6, "ECZEMA", ""))
 		{
-			if(StringAt(m_current, 4, "CZAR", ""))
+			if (StringAt(m_current, 4, "CZAR", ""))
 			{
 				MetaphAdd("S");
 			}
@@ -2228,14 +2228,14 @@ public class Metaphone3 {
 		// give an 'etymological' 2nd
 		// encoding for "kovacs" so
 		// that it matches "kovach"
-		if(StringAt(0, 6, "KOVACS", ""))
+		if (StringAt(0, 6, "KOVACS", ""))
 		{
 			MetaphAdd("KS", "X");
 			m_current += 2;
 			return true;
 		}
 	
-		if(StringAt((m_current - 1), 3, "ACS", "")
+		if (StringAt((m_current - 1), 3, "ACS", "")
 			&& ((m_current + 1) == m_last)
 			&& !StringAt((m_current - 4), 6, "ISAACS", ""))
 		{
@@ -2253,7 +2253,7 @@ public class Metaphone3 {
 	 */
 	void Encode_D()
 	{
-		if(Encode_DG()
+		if (Encode_DG()
 			|| Encode_DJ()
 			|| Encode_DT_DD()
 			|| Encode_D_To_J()
@@ -2263,11 +2263,11 @@ public class Metaphone3 {
 			return;
 		}
 
-		if(m_encodeExact)
+		if (m_encodeExact)
 		{
 			// "final de-voicing" in this case
 			// e.g. 'missed' == 'mist'
-			if((m_current == m_last)
+			if ((m_current == m_last)
 				&& StringAt((m_current - 3), 4, "SSED", ""))
 			{
 				MetaphAdd("T");
@@ -2292,12 +2292,12 @@ public class Metaphone3 {
 	 */
 	boolean Encode_DG()
 	{
-		if(StringAt(m_current, 2, "DG", ""))
+		if (StringAt(m_current, 2, "DG", ""))
 		{
 			// excludes exceptions e.g. 'edgar', 
 			// or cases where 'g' is first letter of combining form 
 			// e.g. 'handgun', 'waldglas'
-			if(StringAt((m_current + 2), 1, "A", "O", "")
+			if (StringAt((m_current + 2), 1, "A", "O", "")
 				// e.g. "midgut"
 				|| StringAt((m_current + 1), 3, "GUN", "GUT", "")
 				// e.g. "handgrip"
@@ -2330,7 +2330,7 @@ public class Metaphone3 {
 	boolean Encode_DJ()
 	{
 		// e.g. "adjacent"
-		if(StringAt(m_current, 2, "DJ", ""))
+		if (StringAt(m_current, 2, "DJ", ""))
 		{
 			MetaphAdd("J");
 			m_current += 2;
@@ -2349,19 +2349,19 @@ public class Metaphone3 {
 	boolean Encode_DT_DD()
 	{
 		// eat redundant 'T' or 'D'
-		if(StringAt(m_current, 2, "DT", "DD", ""))
+		if (StringAt(m_current, 2, "DT", "DD", ""))
 		{
-			if(StringAt(m_current, 3, "DTH",  ""))
+			if (StringAt(m_current, 3, "DTH",  ""))
 			{
 				MetaphAddExactApprox("D0", "T0");
 				m_current += 3;
 			}
 			else
 			{
-				if(m_encodeExact)
+				if (m_encodeExact)
 				{
 					// devoice it
-					if(StringAt(m_current, 2, "DT", ""))
+					if (StringAt(m_current, 2, "DT", ""))
 					{
 						MetaphAdd("T");
 					}
@@ -2391,7 +2391,7 @@ public class Metaphone3 {
 	boolean Encode_D_To_J()
 	{
 		// e.g. "module", "adulate"
-		if((StringAt(m_current, 3, "DUL", "") 
+		if ((StringAt(m_current, 3, "DUL", "") 
 				&& (IsVowel(m_current - 1) && IsVowel(m_current + 3)))
 			// e.g. "soldier", "grandeur", "procedure"
 			|| (((m_current + 3) == m_last) 
@@ -2419,7 +2419,7 @@ public class Metaphone3 {
 	boolean Encode_DOUS()
 	{
 		// e.g. "assiduous", "arduous"
-		if(StringAt((m_current + 1), 4, "UOUS", ""))
+		if (StringAt((m_current + 1), 4, "UOUS", ""))
 		{
 			MetaphAddExactApprox("J", "D", "J", "T");
 			AdvanceCounter(4, 1);
@@ -2438,7 +2438,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_D()
 	{
 		// silent 'D' e.g. 'wednesday', 'handsome'
-		if(StringAt((m_current - 2), 9, "WEDNESDAY", "")
+		if (StringAt((m_current - 2), 9, "WEDNESDAY", "")
 			|| StringAt((m_current - 3), 7, "HANDKER", "HANDSOM", "WINDSOR", "")
 			// french silent D at end in words or names familiar to americans
 			|| StringAt((m_current - 5), 6, "PERNOD", "ARTAUD", "RENAUD", "")
@@ -2460,7 +2460,7 @@ public class Metaphone3 {
 		// Encode cases where "-FT-" => "T" is usually silent
 		// e.g. 'often', 'soften'
 		// This should really be covered under "T"!
-		if(StringAt((m_current - 1), 5, "OFTEN", ""))
+		if (StringAt((m_current - 1), 5, "OFTEN", ""))
 		{
 			MetaphAdd("F", "FT");
 			m_current += 2;
@@ -2468,7 +2468,7 @@ public class Metaphone3 {
 		}
 
 		// eat redundant 'F'
-		if(CharAt(m_current + 1) == 'F')
+		if (CharAt(m_current + 1) == 'F')
 		{
 			m_current += 2;
 		}
@@ -2487,7 +2487,7 @@ public class Metaphone3 {
 	 */
 	void Encode_G()
 	{
-		if(Encode_Silent_G_At_Beginning()
+		if (Encode_Silent_G_At_Beginning()
 			|| Encode_GG()
 			|| Encode_GK()
 			|| Encode_GH()
@@ -2504,7 +2504,7 @@ public class Metaphone3 {
 			return;
 		}
 
-		if(!StringAt((m_current - 1), 1, "C", "K", "G", "Q", ""))
+		if (!StringAt((m_current - 1), 1, "C", "K", "G", "Q", ""))
 		{
 			MetaphAddExactApprox("G", "K");
 		}
@@ -2521,7 +2521,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_G_At_Beginning()
 	{    
 		//skip these when at start of word
-	    if((m_current == 0)
+	    if ((m_current == 0)
 			&& StringAt(m_current, 2, "GN", ""))
 		{
 	        m_current += 1;
@@ -2539,10 +2539,10 @@ public class Metaphone3 {
 	 */
 	boolean Encode_GG()
 	{
-		if(CharAt(m_current + 1) == 'G')
+		if (CharAt(m_current + 1) == 'G')
 		{
 			// italian e.g, 'loggia', 'caraveggio', also 'suggest' and 'exaggerate'
-			if(StringAt((m_current - 1), 5, "AGGIA", "OGGIA", "AGGIO", "EGGIO", "EGGIA", "IGGIO", "")
+			if (StringAt((m_current - 1), 5, "AGGIA", "OGGIA", "AGGIO", "EGGIO", "EGGIA", "IGGIO", "")
 				// 'ruggiero' but not 'snuggies'
 				|| (StringAt((m_current - 1), 5, "UGGIE", "") && !(((m_current + 3) == m_last) || ((m_current + 4) == m_last)))
 				|| (((m_current + 2) == m_last) && StringAt((m_current - 1), 4, "AGGI", "OGGI", ""))
@@ -2577,7 +2577,7 @@ public class Metaphone3 {
 	boolean Encode_GK()
 	{
 		// 'gingko'
-		if(CharAt(m_current + 1) == 'K')
+		if (CharAt(m_current + 1) == 'K')
 		{
 			MetaphAdd("K");
 			m_current += 2;
@@ -2595,9 +2595,9 @@ public class Metaphone3 {
 	 */
 	boolean Encode_GH()
 	{
-		if(CharAt(m_current + 1) == 'H')
+		if (CharAt(m_current + 1) == 'H')
 		{
-			if(Encode_GH_After_Consonant()
+			if (Encode_GH_After_Consonant()
 				|| Encode_Initial_GH()
 				|| Encode_GH_To_J()
 				|| Encode_GH_To_H()
@@ -2625,7 +2625,7 @@ public class Metaphone3 {
 	boolean Encode_GH_After_Consonant()
 	{
 		// e.g. 'burgher', 'bingham'
-		if((m_current > 0) 
+		if ((m_current > 0) 
 			&& !IsVowel(m_current - 1)
 			// not e.g. 'greenhalgh'
 			&& !(StringAt((m_current - 3), 5, "HALGH", "") 
@@ -2646,12 +2646,12 @@ public class Metaphone3 {
 	 */
 	boolean Encode_Initial_GH()
 	{
-		if(m_current < 3)
+		if (m_current < 3)
 		{
 			// e.g. "ghislane", "ghiradelli"
-			if(m_current == 0)
+			if (m_current == 0)
 			{ 
-				if(CharAt(m_current + 2) == 'I')
+				if (CharAt(m_current + 2) == 'I')
 				{
 					MetaphAdd("J");
 				}
@@ -2676,7 +2676,7 @@ public class Metaphone3 {
 	boolean Encode_GH_To_J()
 	{
 		// e.g., 'greenhalgh', 'dunkenhalgh', english names
-		if(StringAt((m_current - 2), 4, "ALGH", "") && ((m_current + 1) == m_last))
+		if (StringAt((m_current - 2), 4, "ALGH", "") && ((m_current + 1) == m_last))
 		{
 			MetaphAdd("J", "");
 			m_current += 2;
@@ -2695,7 +2695,7 @@ public class Metaphone3 {
 	{
 		// special cases
 		// e.g., 'donoghue', 'donaghy'
-		if((StringAt((m_current - 4), 4, "DONO", "DONA", "") && IsVowel(m_current + 2))
+		if ((StringAt((m_current - 4), 4, "DONO", "DONA", "") && IsVowel(m_current + 2))
 			|| StringAt((m_current - 5), 9, "CALLAGHAN", ""))
 		{
 			MetaphAdd("H");
@@ -2714,7 +2714,7 @@ public class Metaphone3 {
 	boolean Encode_UGHT()
 	{
 		//e.g. "ought", "aught", "daughter", "slaughter"    
-		if(StringAt((m_current - 1), 4, "UGHT", ""))
+		if (StringAt((m_current - 1), 4, "UGHT", ""))
 		{
 			if ((StringAt((m_current - 3), 5, "LAUGH", "")
 				&& !(StringAt((m_current - 4), 7, "SLAUGHT", "")
@@ -2760,7 +2760,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_GH()
 	{
 		//Parker's rule (with some further refinements) - e.g., 'hugh'
-		if(((((m_current > 1) && StringAt((m_current - 2), 1, "B", "H", "D", "G", "L", "") )
+		if (((((m_current > 1) && StringAt((m_current - 2), 1, "B", "H", "D", "G", "L", "") )
 			//e.g., 'bough'
 			|| ((m_current > 2) 
 				&& StringAt((m_current - 3), 1, "B", "H", "D", "K", "W", "N", "P", "V", "")
@@ -2820,37 +2820,37 @@ public class Metaphone3 {
 		boolean handled = false;
 
 		// special case: 'hiccough' == 'hiccup'
-		if(StringAt((m_current - 6), 8, "HICCOUGH", ""))
+		if (StringAt((m_current - 6), 8, "HICCOUGH", ""))
 		{
 			MetaphAdd("P");
 			handled = true;
 		}
 		// special case: 'lough' alt spelling for scots 'loch'
-		else if(StringAt(0, 5, "LOUGH", ""))
+		else if (StringAt(0, 5, "LOUGH", ""))
 		{
 			MetaphAdd("K");
 			handled = true;
 		}
 		// hungarian
-		else if(StringAt(0, 6, "BALOGH", ""))
+		else if (StringAt(0, 6, "BALOGH", ""))
 		{
 			MetaphAddExactApprox("G", "", "K", "");
 			handled = true;
 		}
 		// "maclaughlin"
-		else if(StringAt((m_current - 3), 8, "LAUGHLIN", "COUGHLAN", "LOUGHLIN", ""))
+		else if (StringAt((m_current - 3), 8, "LAUGHLIN", "COUGHLAN", "LOUGHLIN", ""))
 		{
 			MetaphAdd("K", "F");
 			handled = true;
 		}
-		else if(StringAt((m_current - 3), 5, "GOUGH", "")
+		else if (StringAt((m_current - 3), 5, "GOUGH", "")
 				|| StringAt((m_current - 7), 9, "COLCLOUGH", ""))
 		{
 			MetaphAdd("", "F");
 			handled = true;
 		}
 		
-		if(handled)
+		if (handled)
 		{
 			m_current += 2;
 			return true;
@@ -2868,14 +2868,14 @@ public class Metaphone3 {
 	{
 		// the cases covered here would fall under
 		// the GH_To_F rule below otherwise
-		if(Encode_GH_Special_Cases())
+		if (Encode_GH_Special_Cases())
 		{
 			return true;
 		}
 		else
 		{
 			//e.g., 'laugh', 'cough', 'rough', 'tough'
-			if((m_current > 2) 
+			if ((m_current > 2) 
 				&& (CharAt(m_current - 1) == 'U')
 				&& IsVowel(m_current - 2)
 				&& StringAt((m_current - 3), 1, "C", "G", "L", "R", "T", "N", "S", "")
@@ -2899,7 +2899,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_G()
 	{
 		// e.g. "phlegm", "apothegm", "voigt"
-		if((((m_current + 1) == m_last) 
+		if ((((m_current + 1) == m_last) 
 			&& (StringAt((m_current - 1), 3, "EGM", "IGM", "AGM", "")
 				|| StringAt(m_current, 2, "GT", "")))
 			|| (StringAt(0, 5, "HUGES", "") && (m_length == 5)))
@@ -2909,7 +2909,7 @@ public class Metaphone3 {
 		}
 		
 		// vietnamese names e.g. "Nguyen" but not "Ng"
-		if(StringAt(0, 2, "NG", "") && (m_current != m_last))
+		if (StringAt(0, 2, "NG", "") && (m_current != m_last))
 		{
 			m_current++;
 			return true;
@@ -2926,11 +2926,11 @@ public class Metaphone3 {
 	 */
 	boolean Encode_GN()
 	{
-		if(CharAt(m_current + 1) == 'N')
+		if (CharAt(m_current + 1) == 'N')
 		{
 			// 'align' 'sign', 'resign' but not 'resignation'
 			// also 'impugn', 'impugnable', but not 'repugnant'
-			if(((m_current > 1) 
+			if (((m_current > 1) 
 				&& ((StringAt((m_current - 1), 1, "I", "U", "E", "") 
 					|| StringAt((m_current - 3), 9, "LORGNETTE", "")
 					|| StringAt((m_current - 2), 9, "LAGNIAPPE", "")
@@ -2981,7 +2981,7 @@ public class Metaphone3 {
 	{
 		//'tagliaro', 'puglia' BUT add K in alternative 
 		// since americans sometimes do this
-		if(StringAt((m_current + 1), 3, "LIA", "LIO", "LIE", "") 
+		if (StringAt((m_current + 1), 3, "LIA", "LIO", "LIE", "") 
 			&& IsVowel(m_current - 1))
 		{
 			MetaphAddExactApprox("L", "GL", "L", "KL");
@@ -2999,7 +2999,7 @@ public class Metaphone3 {
 	 */
 	boolean Initial_G_Soft()
 	{
-		if(((StringAt((m_current + 1), 2, "EL", "EM", "EN", "EO", "ER", "ES", "IA", "IN", "IO", "IP", "IU", "YM", "YN", "YP", "YR", "EE", "")
+		if (((StringAt((m_current + 1), 2, "EL", "EM", "EN", "EO", "ER", "ES", "IA", "IN", "IO", "IP", "IU", "YM", "YN", "YP", "YR", "EE", "")
 				|| StringAt((m_current + 1), 3, "IRA", "IRO", ""))
 			// except for smaller set of cases where => K, e.g. "gerber"
 			&& !(StringAt((m_current + 1), 3, "ELD", "ELT", "ERT", "INZ", "ERH", "ITE", "ERD", "ERL", "ERN", 
@@ -3010,14 +3010,14 @@ public class Metaphone3 {
 					|| StringAt((m_current + 1), 6, "ESTALT", "ESTAPO", "INGHAM", "ERRITY", "ERRISH", "ESSNER", "ENGLER", "")
 					|| StringAt((m_current + 1), 7, "YNAECOL", "YNECOLO", "ENTHNER", "ERAGHTY", "")
 					|| StringAt((m_current + 1), 8, "INGERICH", "EOGHEGAN", "")))
-			||(IsVowel(m_current + 1)
+			|| (IsVowel(m_current + 1)
 				&& (StringAt((m_current + 1), 3, "EE ", "EEW", "")
 						|| (StringAt((m_current + 1), 3, "IGI", "IRA", "IBE", "AOL", "IDE", "IGL", "") 
 														&& !StringAt((m_current + 1), 5, "IDEON", "") )
 					|| StringAt((m_current + 1), 4, "ILES", "INGI", "ISEL", "")
 					|| (StringAt((m_current + 1), 5, "INGER", "") && !StringAt((m_current + 1), 8, "INGERICH", "")) 
 					|| StringAt((m_current + 1), 5, "IBBER", "IBBET", "IBLET", "IBRAN", "IGOLO", "IRARD", "IGANT", "")
-					|| StringAt((m_current + 1), 6, "IRAFFE", "EEWHIZ","")
+					|| StringAt((m_current + 1), 6, "IRAFFE", "EEWHIZ", "")
 					|| StringAt((m_current + 1), 7, "ILLETTE", "IBRALTA", ""))))
 		{
 			return true;
@@ -3036,22 +3036,22 @@ public class Metaphone3 {
 	boolean Encode_Initial_G_Front_Vowel()
 	{
 		// 'g' followed by vowel at beginning
-		if((m_current == 0) && Front_Vowel(m_current + 1))
+		if ((m_current == 0) && Front_Vowel(m_current + 1))
 		{
 			// special case "gila" as in "gila monster"
-			if(StringAt((m_current + 1), 3, "ILA", "")
+			if (StringAt((m_current + 1), 3, "ILA", "")
 				&& (m_length == 4))
 			{
 				MetaphAdd("H");
 			}
-			else if(Initial_G_Soft())
+			else if (Initial_G_Soft())
 			{
 				MetaphAddExactApprox("J", "G", "J", "K");
 			}
 			else
 			{
 				// only code alternate 'J' if front vowel
-				if((m_inWord.charAt(m_current + 1) == 'E') || (m_inWord.charAt(m_current + 1) == 'I'))
+				if ((m_inWord.charAt(m_current + 1) == 'E') || (m_inWord.charAt(m_current + 1) == 'I'))
 				{
 					MetaphAddExactApprox("G", "J", "K", "J");
 				}
@@ -3076,13 +3076,13 @@ public class Metaphone3 {
 	 */
 	boolean Encode_NGER()
 	{
-		if((m_current > 1)
+		if ((m_current > 1)
 			&& StringAt((m_current - 1), 4, "NGER", ""))
 		{
 			// default 'G' => J  such as 'ranger', 'stranger', 'manger', 'messenger', 'orangery', 'granger'
 			// 'boulanger', 'challenger', 'danger', 'changer', 'harbinger', 'lounger', 'ginger', 'passenger'
 			// except for these the following
-			if(!(RootOrInflections(m_inWord, "ANGER")
+			if (!(RootOrInflections(m_inWord, "ANGER")
 				|| RootOrInflections(m_inWord, "LINGER")
 				|| RootOrInflections(m_inWord, "MALINGER")
 				|| RootOrInflections(m_inWord, "FINGER")
@@ -3129,12 +3129,12 @@ public class Metaphone3 {
 	 */
 	boolean Encode_GER()
 	{
-		if((m_current > 0)
+		if ((m_current > 0)
 			&& StringAt((m_current + 1), 2, "ER", ""))
 		{
 			// Exceptions to 'GE' where 'G' => K
 			// e.g. "JAGER", "TIGER", "LIGER", "LAGER", "LUGER", "AUGER", "EAGER", "HAGER", "SAGER"
-			if((((m_current == 2) && IsVowel(m_current - 1) && !IsVowel(m_current - 2) 
+			if ((((m_current == 2) && IsVowel(m_current - 1) && !IsVowel(m_current - 2) 
 					&& !(StringAt((m_current - 2), 5, "PAGER", "WAGER", "NIGER", "ROGER", "LEGER", "CAGER", ""))
 				|| StringAt((m_current - 2), 5, "AUGER", "EAGER", "INGER", "YAGER", "")) 
 				|| StringAt((m_current - 3), 6, "SEEGER", "JAEGER", "GEIGER", "KRUGER", "SAUGER", "BURGER", 
@@ -3158,7 +3158,7 @@ public class Metaphone3 {
 						|| StringAt(0, 7, "MARGERY", "")
 						|| StringAt((m_current - 3), 8, "BERGERAC", "")))
 			{				
-				if(SlavoGermanic())
+				if (SlavoGermanic())
 				{
 					MetaphAddExactApprox("G", "K");
 				}
@@ -3188,12 +3188,12 @@ public class Metaphone3 {
 	boolean Encode_GEL()
 	{
 		// more likely to be "-GEL-" => JL
-		if(StringAt((m_current + 1), 2, "EL", "")
+		if (StringAt((m_current + 1), 2, "EL", "")
 			&& (m_current > 0))
 		{
 			// except for
 			// "BAGEL", "HEGEL", "HUGEL", "KUGEL", "NAGEL", "VOGEL", "FOGEL", "PAGEL"
-			if(((m_length == 5) 
+			if (((m_length == 5) 
 					&& IsVowel(m_current - 1) 
 					&& !IsVowel(m_current - 2)
 					&& !StringAt((m_current - 2), 5, "NIGEL", "RIGEL", ""))
@@ -3203,7 +3203,7 @@ public class Metaphone3 {
 				|| StringAt((m_current - 4), 7, "SPEIGEL", "STEIGEL", "WRANGEL", "SPIEGEL", "")
 				|| StringAt((m_current - 4), 8, "DANEGELD", ""))
 			{
-				if(SlavoGermanic())
+				if (SlavoGermanic())
 				{
 					MetaphAddExactApprox("G", "K");
 				}
@@ -3235,15 +3235,15 @@ public class Metaphone3 {
 	boolean Encode_Non_Initial_G_Front_Vowel()
 	{
 		// -gy-, gi-, ge-
-		if(StringAt((m_current + 1), 1, "E", "I", "Y", ""))
+		if (StringAt((m_current + 1), 1, "E", "I", "Y", ""))
 		{
 			// '-ge' at end
 			// almost always 'j 'sound
-			if(StringAt(m_current, 2, "GE", "") && (m_current == (m_last - 1)))
+			if (StringAt(m_current, 2, "GE", "") && (m_current == (m_last - 1)))
 			{
-				if(Hard_GE_At_End())
+				if (Hard_GE_At_End())
 				{
-					if(SlavoGermanic())
+					if (SlavoGermanic())
 					{
 						MetaphAddExactApprox("G", "K");
 					}
@@ -3259,13 +3259,13 @@ public class Metaphone3 {
 			}
 			else
 			{
-				if(Internal_Hard_G())
+				if (Internal_Hard_G())
 				{
 					// don't encode KG or KK if e.g. "mcgill"
-					if(!((m_current == 2) && StringAt(0, 2, "MC", "")) 
+					if (!((m_current == 2) && StringAt(0, 2, "MC", "")) 
 						   || StringAt(0, 3, "MAC", ""))
 					{
-						if(SlavoGermanic())
+						if (SlavoGermanic())
 						{
 							MetaphAddExactApprox("G", "K");
 						}
@@ -3296,7 +3296,7 @@ public class Metaphone3 {
 	 */
 	boolean Hard_GE_At_End()
 	{
-		if(StringAt(0, 6, "RENEGE", "STONGE", "STANGE", "PRANGE", "KRESGE", "") 
+		if (StringAt(0, 6, "RENEGE", "STONGE", "STANGE", "PRANGE", "KRESGE", "") 
 			|| StringAt(0, 5, "BYRGE", "BIRGE", "BERGE", "HAUGE", "")
 			|| StringAt(0, 4, "HAGE", "")					
 			|| StringAt(0, 5, "LANGE", "SYNGE", "BENGE", "RUNGE", "HELGE", "")
@@ -3319,7 +3319,7 @@ public class Metaphone3 {
 	boolean Internal_Hard_G()
 	{
 		// if not "-GE" at end
-		if(!(((m_current + 1) == m_last) && (CharAt(m_current + 1) == 'E') ) 
+		if (!(((m_current + 1) == m_last) && (CharAt(m_current + 1) == 'E') ) 
 				&& (Internal_Hard_NG()
 					|| Internal_Hard_GEN_GIN_GET_GIT()
 					|| Internal_Hard_G_Open_Syllable()
@@ -3340,7 +3340,7 @@ public class Metaphone3 {
 	 */
 	boolean Internal_Hard_G_Other()
 	{
-		if((StringAt(m_current, 4, "GETH", "GEAR", "GEIS", "GIRL", "GIVI", "GIVE", "GIFT", 
+		if ((StringAt(m_current, 4, "GETH", "GEAR", "GEIS", "GIRL", "GIVI", "GIVE", "GIFT", 
 								   "GIRD", "GIRT", "GILV", "GILD", "GELD", "")
 					&& !StringAt((m_current - 3), 6, "GINGIV", "") )
 				// "gish" but not "largish"
@@ -3376,7 +3376,7 @@ public class Metaphone3 {
 	 */
 	boolean Internal_Hard_G_Open_Syllable()
 	{
-		if(StringAt((m_current + 1), 3, "EYE", "")
+		if (StringAt((m_current + 1), 3, "EYE", "")
 			|| StringAt((m_current - 2), 4, "FOGY", "POGY", "YOGI", "") 
 			|| StringAt((m_current - 2), 5, "MAGEE", "MCGEE", "HAGIO", "") 
 			|| StringAt((m_current - 1), 4, "RGEY", "OGEY", "") 
@@ -3399,7 +3399,7 @@ public class Metaphone3 {
 	 */
 	boolean Internal_Hard_GEN_GIN_GET_GIT()
 	{
-		if((StringAt((m_current - 3), 6, "FORGET", "TARGET", "MARGIT", "MARGET", "TURGEN", 
+		if ((StringAt((m_current - 3), 6, "FORGET", "TARGET", "MARGIT", "MARGET", "TURGEN", 
 										 "BERGEN", "MORGEN", "JORGEN", "HAUGEN", "JERGEN", 
 										 "JURGEN", "LINGEN", "BORGEN", "LANGEN", "KLAGEN", "STIGER", "BERGER", "") 
 					&& !StringAt(m_current, 7, "GENETIC", "GENESIS", "")
@@ -3429,7 +3429,7 @@ public class Metaphone3 {
 	 */
 	boolean Internal_Hard_NG()
 	{
-		if((StringAt((m_current - 3), 4, "DANG", "FANG", "SING", "") 
+		if ((StringAt((m_current - 3), 4, "DANG", "FANG", "SING", "") 
 			// exception to exception
 					&& !StringAt((m_current - 5), 8, "DISINGEN", "") )
 			|| StringAt(0, 5, "INGEB", "ENGEB", "")
@@ -3459,7 +3459,7 @@ public class Metaphone3 {
 	boolean Encode_GA_To_J()
 	{
 		// 'margary', 'margarine'
-		if((StringAt((m_current - 3), 7, "MARGARY", "MARGARI", "")
+		if ((StringAt((m_current - 3), 7, "MARGARY", "MARGARI", "")
 			// but not in spanish forms such as "margatita"
 			&& !StringAt((m_current - 3), 8, "MARGARIT", ""))
 			|| StringAt(0, 4, "GAOL", "")
@@ -3480,7 +3480,7 @@ public class Metaphone3 {
 	 */
 	void Encode_H()
 	{
-		if(Encode_Initial_Silent_H()
+		if (Encode_Initial_Silent_H()
 			|| Encode_Initial_HS()
 			|| Encode_Initial_HU_HW()
 			|| Encode_Non_Initial_Silent_H())
@@ -3489,7 +3489,7 @@ public class Metaphone3 {
 		}
 
 		//only keep if first & before vowel or btw. 2 vowels
-		if(!Encode_H_Pronounced())
+		if (!Encode_H_Pronounced())
 		{
 			//also takes care of 'HH'
 			m_current++;
@@ -3505,16 +3505,16 @@ public class Metaphone3 {
 	boolean Encode_Initial_Silent_H()
 	{
 		//'hour', 'herb', 'heir', 'honor'
-		if(StringAt((m_current + 1), 3, "OUR", "ERB", "EIR", "")
+		if (StringAt((m_current + 1), 3, "OUR", "ERB", "EIR", "")
 			|| StringAt((m_current + 1), 4, "ONOR", "")
 			|| StringAt((m_current + 1), 5, "ONOUR", "ONEST", ""))
 		{
 			// british pronounce H in this word
 			// americans give it 'H' for the name,
 			// no 'H' for the plant
-			if((m_current == 0) && StringAt(m_current, 4, "HERB", ""))
+			if ((m_current == 0) && StringAt(m_current, 4, "HERB", ""))
 			{
-				if(m_encodeVowels)
+				if (m_encodeVowels)
 				{
 					MetaphAdd("HA", "A");
 				}
@@ -3523,7 +3523,7 @@ public class Metaphone3 {
 					MetaphAdd("H", "A");
 				}
 			}
-			else if((m_current == 0) || m_encodeVowels)
+			else if ((m_current == 0) || m_encodeVowels)
 			{
 				MetaphAdd("A");
 			}
@@ -3568,11 +3568,11 @@ public class Metaphone3 {
 		// spanish spellings and chinese pinyin transliteration
 		if (StringAt(0, 3, "HUA", "HUE", "HWA", ""))
 		{
-			if(!StringAt(m_current, 4, "HUEY", ""))
+			if (!StringAt(m_current, 4, "HUEY", ""))
 			{
 				MetaphAdd("A");
 
-				if(!m_encodeVowels)
+				if (!m_encodeVowels)
 				{
 					m_current += 3;
 				}
@@ -3580,7 +3580,7 @@ public class Metaphone3 {
 				{
 					m_current++;
 					// don't encode vowels twice
-					while(IsVowel(m_current) || (CharAt(m_current) == 'W'))
+					while (IsVowel(m_current) || (CharAt(m_current) == 'W'))
 					{
 						m_current++;
 					}
@@ -3602,14 +3602,14 @@ public class Metaphone3 {
 	{
 		//exceptions - 'h' not pronounced
 		// "PROHIB" BUT NOT "PROHIBIT"
-		if(StringAt((m_current - 2), 5, "NIHIL", "VEHEM", "LOHEN", "NEHEM", 
+		if (StringAt((m_current - 2), 5, "NIHIL", "VEHEM", "LOHEN", "NEHEM", 
 										"MAHON", "MAHAN", "COHEN", "GAHAN", "")
 			|| StringAt((m_current - 3), 6, "GRAHAM", "PROHIB", "FRAHER", 
 											"TOOHEY", "TOUHEY", "")
 			|| StringAt((m_current - 3), 5, "TOUHY", "")
 			|| StringAt(0, 9, "CHIHUAHUA", ""))
 		{
-			if(!m_encodeVowels)
+			if (!m_encodeVowels)
 			{
 				m_current += 2;
 			}
@@ -3633,7 +3633,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_H_Pronounced()
 	{
-		if((((m_current == 0) 
+		if ((((m_current == 0) 
 				|| IsVowel(m_current - 1) 
 				|| ((m_current > 0) 
 					&& (CharAt(m_current - 1) == 'W'))) 
@@ -3655,7 +3655,7 @@ public class Metaphone3 {
 	 */
 	void Encode_J()
 	{
-		if(Encode_Spanish_J()
+		if (Encode_Spanish_J()
 			|| Encode_Spanish_OJ_UJ())
 		{
 			return;
@@ -3673,7 +3673,7 @@ public class Metaphone3 {
 	boolean Encode_Spanish_J()
 	{
 		//obvious spanish, e.g. "jose", "san jacinto"
-		if((StringAt((m_current + 1), 3, "UAN", "ACI", "ALI", "EFE", "ICA", "IME", "OAQ", "UAR", "")
+		if ((StringAt((m_current + 1), 3, "UAN", "ACI", "ALI", "EFE", "ICA", "IME", "OAQ", "UAR", "")
 				&& !StringAt(m_current, 8, "JIMERSON", "JIMERSEN", ""))
 			|| (StringAt((m_current + 1), 3, "OSE", "") && ((m_current + 3) == m_last))
 			|| StringAt((m_current + 1), 4, "EREZ", "UNTA", "AIME", "AVIE", "AVIA", "")
@@ -3702,13 +3702,13 @@ public class Metaphone3 {
 			// and "marijuana" and "tijuana" also
 			// do not get the 'H' as in spanish, so
 			// just treat it like a vowel in these cases
-			if(!(StringAt(m_current, 4, "JUAN", "") || StringAt(m_current, 4, "JOAQ", "")))
+			if (!(StringAt(m_current, 4, "JUAN", "") || StringAt(m_current, 4, "JOAQ", "")))
 			{
 				MetaphAdd("H");
 			}
 			else
 			{
-				if(m_current == 0)
+				if (m_current == 0)
 				{
 					MetaphAdd("A");
 				}
@@ -3718,13 +3718,13 @@ public class Metaphone3 {
 		}
 		
 		// Jorge gets 2nd HARHA. also JULIO, JESUS
-		if(StringAt((m_current + 1), 4, "ORGE", "ULIO", "ESUS", "")
+		if (StringAt((m_current + 1), 4, "ORGE", "ULIO", "ESUS", "")
 			&& !StringAt(0, 6, "JORGEN", ""))
 		{
 			// get both consonants for "jorge"
-			if(((m_current + 4) == m_last) && StringAt((m_current + 1), 4, "ORGE", ""))
+			if (((m_current + 4) == m_last) && StringAt((m_current + 1), 4, "ORGE", ""))
 			{
-				if(m_encodeVowels)
+				if (m_encodeVowels)
 				{
 					MetaphAdd("JARJ", "HARHA");				
 				}
@@ -3753,7 +3753,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_German_J()
 	{
-		if(StringAt((m_current + 1), 2, "AH", "")
+		if (StringAt((m_current + 1), 2, "AH", "")
 			|| (StringAt((m_current + 1), 5, "OHANN", "") && ((m_current + 5) == m_last))
 			|| (StringAt((m_current + 1), 3, "UNG", "") && !StringAt((m_current + 1), 4, "UNGL", ""))
 			|| StringAt((m_current + 1), 3, "UGO", ""))
@@ -3774,9 +3774,9 @@ public class Metaphone3 {
 	 */
 	boolean Encode_Spanish_OJ_UJ()
 	{
-		if(StringAt((m_current + 1), 5, "OJOBA", "UJUY ", ""))
+		if (StringAt((m_current + 1), 5, "OJOBA", "UJUY ", ""))
 		{
-			if(m_encodeVowels)
+			if (m_encodeVowels)
 			{
 				MetaphAdd("HAH");
 			}
@@ -3800,14 +3800,14 @@ public class Metaphone3 {
 	 */
 	boolean Encode_J_To_J()
 	{
-		if(IsVowel(m_current + 1))
+		if (IsVowel(m_current + 1))
 		{
-			if((m_current == 0) 
+			if ((m_current == 0) 
 				&& Names_Beginning_With_J_That_Get_Alt_Y())
 			{
 				// 'Y' is a vowel so encode
 				// is as 'A'
-				if(m_encodeVowels)
+				if (m_encodeVowels)
 				{
 					MetaphAdd("JA", "A");
 				}
@@ -3818,7 +3818,7 @@ public class Metaphone3 {
 			}
 			else
 			{
-				if(m_encodeVowels)
+				if (m_encodeVowels)
 				{
 					MetaphAdd("JA");
 				}
@@ -3851,7 +3851,7 @@ public class Metaphone3 {
 	boolean Encode_Spanish_J_2()
 	{
 		// spanish forms e.g. "brujo", "badajoz"
-		if((((m_current - 2) == 0) 
+		if ((((m_current - 2) == 0) 
 			&& StringAt((m_current - 2), 4, "BOJA", "BAJA", "BEJA", "BOJO", "MOJA", "MOJI", "MEJI", ""))
 			|| (((m_current - 3) == 0)
 			&& StringAt((m_current - 3), 5, "FRIJO", "BRUJO", "BRUJA", "GRAJE", "GRIJA", "LEIJA", "QUIJA", ""))
@@ -3878,14 +3878,14 @@ public class Metaphone3 {
 	 */
 	boolean Encode_J_As_Vowel()
 	{
-		if(StringAt(m_current, 5, "JEWSK", ""))
+		if (StringAt(m_current, 5, "JEWSK", ""))
 		{
 			MetaphAdd("J", "");
 			return true;
 		}
 		
 		// e.g. "stijl", "sejm" - dutch, scandanavian, and eastern european spellings
-		if((StringAt((m_current + 1), 1, "L", "T", "K", "S", "N", "M", "")
+		if ((StringAt((m_current + 1), 1, "L", "T", "K", "S", "N", "M", "")
 				// except words from hindi and arabic
 				&& !StringAt((m_current + 2), 1, "A", ""))
 			|| StringAt(0, 9, "HALLELUJA", "LJUBLJANA", "")
@@ -3910,15 +3910,15 @@ public class Metaphone3 {
 	 */
 	void Encode_Other_J()
 	{
-		if(m_current == 0)
+		if (m_current == 0)
 		{
-			if(Encode_German_J())
+			if (Encode_German_J())
 			{
 				return;
 			}
 			else
 			{
-				if(Encode_J_To_J())
+				if (Encode_J_To_J())
 				{
 					return;
 				}
@@ -3926,18 +3926,18 @@ public class Metaphone3 {
 		}
 		else
 		{
-			if(Encode_Spanish_J_2())
+			if (Encode_Spanish_J_2())
 			{
 				return;
 			}
-			else if(!Encode_J_As_Vowel())
+			else if (!Encode_J_As_Vowel())
 			{
 				MetaphAdd("J");
 			}
 			
 			//it could happen! e.g. "hajj"
 			// eat redundant 'J'
-			if(CharAt(m_current + 1) == 'J')
+			if (CharAt(m_current + 1) == 'J')
 			{
 				m_current += 2;
 			}
@@ -3955,12 +3955,12 @@ public class Metaphone3 {
 	 */
 	void Encode_K()
 	{
-		if(!Encode_Silent_K())
+		if (!Encode_Silent_K())
 		{
 			MetaphAdd("K");
 
 			// eat redundant 'K's and 'Q's
-			if((CharAt(m_current + 1) == 'K')
+			if ((CharAt(m_current + 1) == 'K')
 				|| (CharAt(m_current + 1) == 'Q'))
 			{
 				m_current += 2;
@@ -3981,10 +3981,10 @@ public class Metaphone3 {
 	boolean Encode_Silent_K()
 	{
 	    //skip this except for special cases
-	    if((m_current == 0)
+	    if ((m_current == 0)
 			&& StringAt(m_current, 2, "KN", ""))
 	    {
-	        if(!(StringAt((m_current + 2), 5, "ESSET", "IEVEL", "") || StringAt((m_current + 2), 3, "ISH", "") ))
+	        if (!(StringAt((m_current + 2), 5, "ESSET", "IEVEL", "") || StringAt((m_current + 2), 3, "ISH", "") ))
 	        {
 	            m_current += 1;
 				return true;
@@ -3992,7 +3992,7 @@ public class Metaphone3 {
 	    }
 
 		// e.g. "know", "knit", "knob"	
-		if((StringAt((m_current + 1), 3, "NOW", "NIT", "NOT", "NOB", "")
+		if ((StringAt((m_current + 1), 3, "NOW", "NIT", "NOT", "NOB", "")
 				// exception, "slipknot" => SLPNT but "banknote" => PNKNT
 				&& !StringAt(0, 8, "BANKNOTE", ""))
 			|| StringAt((m_current + 1), 4, "NOCK", "NUCK", "NIFE", "NACK", "")
@@ -4030,7 +4030,7 @@ public class Metaphone3 {
 
 		Interpolate_Vowel_When_Cons_L_At_End();
 		
-		if(Encode_LELY_To_L()
+		if (Encode_LELY_To_L()
 			|| Encode_COLONEL()
 			|| Encode_French_AULT()
 			|| Encode_French_EUIL()
@@ -4042,7 +4042,7 @@ public class Metaphone3 {
 			return;
 		}
 
-		if(Encode_LL_As_Vowel_Cases())
+		if (Encode_LL_As_Vowel_Cases())
 		{
 			return;
 		}
@@ -4057,10 +4057,10 @@ public class Metaphone3 {
 	 */
 	void Interpolate_Vowel_When_Cons_L_At_End()
 	{
-		if(m_encodeVowels == true)
+		if (m_encodeVowels == true)
 		{
 			// e.g. "ertl", "vogl"
-			if((m_current == m_last) 
+			if ((m_current == m_last) 
 				&& StringAt((m_current - 1), 1, "D", "G", "T", ""))
 			{
 				MetaphAdd("A");
@@ -4078,7 +4078,7 @@ public class Metaphone3 {
 	boolean Encode_LELY_To_L()
 	{
 		// e.g. "agilely", "docilely"
-		if(StringAt((m_current - 1), 5, "ILELY", "")
+		if (StringAt((m_current - 1), 5, "ILELY", "")
 			&& ((m_current + 3) == m_last))
 		{
 			MetaphAdd("L");
@@ -4098,7 +4098,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_COLONEL()
 	{
-		if(StringAt((m_current - 2), 7, "COLONEL", ""))
+		if (StringAt((m_current - 2), 7, "COLONEL", ""))
 		{
 			MetaphAdd("R");
 			m_current += 2;
@@ -4117,11 +4117,11 @@ public class Metaphone3 {
 	boolean Encode_French_AULT()
 	{
 		// e.g. "renault" and "foucault", well known to americans, but not "fault"
-		if((m_current > 3)
+		if ((m_current > 3)
 			&& (StringAt((m_current - 3), 5, "RAULT", "NAULT", "BAULT", "SAULT", "GAULT", "CAULT", "")
 				|| StringAt((m_current - 4), 6, "REAULT", "RIAULT", "NEAULT", "BEAULT", ""))
 			&& !(RootOrInflections(m_inWord, "ASSAULT") 
-				|| StringAt((m_current - 8), 10, "SOMERSAULT","")
+				|| StringAt((m_current - 8), 10, "SOMERSAULT", "")
 				|| StringAt((m_current - 9), 11, "SUMMERSAULT", "")))
 		{
 			m_current += 2;
@@ -4140,7 +4140,7 @@ public class Metaphone3 {
 	boolean Encode_French_EUIL()
 	{
 		// e.g. "auteuil"
-		if(StringAt((m_current - 3), 4, "EUIL", "") && (m_current == m_last))
+		if (StringAt((m_current - 3), 4, "EUIL", "") && (m_current == m_last))
 		{
 			m_current++;
 			return true;
@@ -4158,7 +4158,7 @@ public class Metaphone3 {
 	boolean Encode_French_OULX()
 	{
 		// e.g. "proulx"
-		if(StringAt((m_current - 2), 4, "OULX", "") && ((m_current + 1) == m_last))
+		if (StringAt((m_current - 2), 4, "OULX", "") && ((m_current + 1) == m_last))
 		{
 			m_current += 2;
 			return true;
@@ -4175,10 +4175,10 @@ public class Metaphone3 {
 	 */
 	boolean Encode_Silent_L_In_LM()
 	{
-		if(StringAt(m_current, 2, "LM", "LN", ""))
+		if (StringAt(m_current, 2, "LM", "LN", ""))
 		{
 			// e.g. "lincoln", "holmes", "psalm", "salmon"
-			if((StringAt((m_current - 2), 4, "COLN", "CALM", "BALM", "MALM", "PALM", "")
+			if ((StringAt((m_current - 2), 4, "COLN", "CALM", "BALM", "MALM", "PALM", "")
 				|| (StringAt((m_current - 1), 3, "OLM", "") && ((m_current + 1) == m_last))
 				|| StringAt((m_current - 3), 5, "PSALM", "QUALM", "")
 				|| StringAt((m_current - 2), 6,  "SALMON", "HOLMES", "")
@@ -4211,7 +4211,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_Silent_L_In_LK_LV()
 	{
-		if((StringAt((m_current - 2), 4, "WALK", "YOLK", "FOLK", "HALF", "TALK", "CALF", "BALK", "CALK", "")
+		if ((StringAt((m_current - 2), 4, "WALK", "YOLK", "FOLK", "HALF", "TALK", "CALF", "BALK", "CALK", "")
 			|| (StringAt((m_current - 2), 4, "POLK", "") 
 				&& !StringAt((m_current - 2), 5, "POLKA", "WALKO", ""))
 			|| (StringAt((m_current - 2), 4, "HALV", "") 
@@ -4242,7 +4242,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_L_In_OULD()
 	{
 		//'would', 'could'
-		if(StringAt((m_current - 3), 5, "WOULD", "COULD", "") 
+		if (StringAt((m_current - 3), 5, "WOULD", "COULD", "") 
 			|| (StringAt((m_current - 4), 6, "SHOULD", "") 
 				&& !StringAt((m_current - 4), 8, "SHOULDER", "")))
 		{
@@ -4263,7 +4263,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_LL_As_Vowel_Special_Cases()
 	{
-		if(StringAt((m_current - 5), 8, "TORTILLA", "") 
+		if (StringAt((m_current - 5), 8, "TORTILLA", "") 
 			|| StringAt((m_current - 8), 11, "RATATOUILLE", "")
 			// e.g. 'guillermo', "veillard"
 			|| (StringAt(0, 5, "GUILL", "VEILL", "GAILL", "")
@@ -4296,7 +4296,7 @@ public class Metaphone3 {
 		//spanish e.g. "cabrillo", "gallegos" but also "gorilla", "ballerina" -
 		// give both pronounciations since an american might pronounce "cabrillo"
 		// in the spanish or the american fashion.
-		if((((m_current + 3) == m_length) 
+		if ((((m_current + 3) == m_length) 
 			&& StringAt((m_current - 1), 4, "ILLO", "ILLA", "ALLE", ""))
 			|| (((StringAt((m_last - 1), 2, "AS", "OS", "")
 					|| StringAt(m_last, 2, "AS", "OS", "")
@@ -4322,13 +4322,13 @@ public class Metaphone3 {
 	 */
 	boolean Encode_LL_As_Vowel_Cases()
 	{
-		if(CharAt(m_current + 1) == 'L')
+		if (CharAt(m_current + 1) == 'L')
 		{
-			if(Encode_LL_As_Vowel_Special_Cases())
+			if (Encode_LL_As_Vowel_Special_Cases())
 			{
 				return true;
 			}
-			else if(Encode_LL_As_Vowel())
+			else if (Encode_LL_As_Vowel())
 			{
 				return true;
 			}
@@ -4353,7 +4353,7 @@ public class Metaphone3 {
 	{
 		// transposition of vowel sound and L occurs in many words,
 		// e.g. "bristle", "dazzle", "goggle" => KAKAL
-		if(m_encodeVowels 
+		if (m_encodeVowels 
 			&& (save_current > 1) 
 			&& !IsVowel(save_current - 1) 
 			&& (CharAt(save_current + 1) == 'E')
@@ -4388,7 +4388,7 @@ public class Metaphone3 {
 			flag_AL_inversion = true;
 
 			// eat redundant 'L'
-			if(CharAt(save_current + 2) == 'L')
+			if (CharAt(save_current + 2) == 'L')
 			{
 				m_current = save_current + 3;
 			}
@@ -4410,7 +4410,7 @@ public class Metaphone3 {
 		// an example of where the vowel would NOT need to be preserved
 		// would be, say, "hustled", where there is no vowel pronounced
 		// between the 'l' and the 'd'
-		if(m_encodeVowels
+		if (m_encodeVowels
 			&& !IsVowel(save_current - 1) 
 			&& (CharAt(save_current + 1) == 'E')
 			&& (save_current > 1) 
@@ -4435,13 +4435,13 @@ public class Metaphone3 {
 	 */
 	void Encode_LE_Cases(int save_current)
 	{
-		if(Encode_Vowel_LE_Transposition(save_current))
+		if (Encode_Vowel_LE_Transposition(save_current))
 		{
 			return;
 		}
 		else
 		{
-			if(Encode_Vowel_Preserve_Vowel_After_L(save_current))
+			if (Encode_Vowel_Preserve_Vowel_After_L(save_current))
 			{
 				return;
 			}
@@ -4458,7 +4458,7 @@ public class Metaphone3 {
 	 */
 	void Encode_M()
 	{
-		if(Encode_Silent_M_At_Beginning()
+		if (Encode_Silent_M_At_Beginning()
 			|| Encode_MR_And_MRS()
 			|| Encode_MAC()
 			|| Encode_MPT())
@@ -4482,7 +4482,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_M_At_Beginning()
 	{    
 		//skip these when at start of word
-	    if((m_current == 0)
+	    if ((m_current == 0)
 			&& StringAt(m_current, 2, "MN", ""))
 		{
 	        m_current += 1;
@@ -4500,12 +4500,12 @@ public class Metaphone3 {
 	 */
 	boolean Encode_MR_And_MRS()
 	{
-		if((m_current == 0) && StringAt(m_current, 2, "MR", ""))
+		if ((m_current == 0) && StringAt(m_current, 2, "MR", ""))
 		{
 			// exceptions for "mr." and "mrs."
-			if((m_length == 2) && StringAt(m_current, 2, "MR", ""))
+			if ((m_length == 2) && StringAt(m_current, 2, "MR", ""))
 			{
-				if(m_encodeVowels)
+				if (m_encodeVowels)
 				{
 					MetaphAdd("MASTAR");
 				}
@@ -4516,9 +4516,9 @@ public class Metaphone3 {
 				m_current += 2;
 				return true;
 			}
-			else if((m_length == 3) && StringAt(m_current, 3, "MRS", "")) 
+			else if ((m_length == 3) && StringAt(m_current, 3, "MRS", "")) 
 			{
-				if(m_encodeVowels)
+				if (m_encodeVowels)
 				{
 					MetaphAdd("MASAS");
 				}
@@ -4544,13 +4544,13 @@ public class Metaphone3 {
 	{
 		// should only find irish and 
 		// scottish names e.g. 'macintosh'
-		if((m_current == 0) 
+		if ((m_current == 0) 
 				&& (StringAt(0, 7, "MACIVER", "MACEWEN", "")
 				|| StringAt(0, 8, "MACELROY", "MACILROY", "")
 				||  StringAt(0, 9, "MACINTOSH", "")
 				|| StringAt(0, 2, "MC", "")	))
 		{
-			if(m_encodeVowels)
+			if (m_encodeVowels)
 			{
 				MetaphAdd("MAK");
 			}
@@ -4559,9 +4559,9 @@ public class Metaphone3 {
 				MetaphAdd("MK");
 			}
 			
-			if(StringAt(0, 2, "MC", ""))
+			if (StringAt(0, 2, "MC", ""))
 			{	
-				if(StringAt((m_current + 2), 1, "K", "G", "Q", "")
+				if (StringAt((m_current + 2), 1, "K", "G", "Q", "")
 					// watch out for e.g. "McGeorge"
 					&& !StringAt((m_current + 2), 4, "GEOR", ""))
 				{
@@ -4591,7 +4591,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_MPT()
 	{
-		if(StringAt((m_current - 2), 8, "COMPTROL", "")
+		if (StringAt((m_current - 2), 8, "COMPTROL", "")
 			|| StringAt((m_current - 4), 7, "ACCOMPT", ""))
 
 		{
@@ -4727,9 +4727,9 @@ public class Metaphone3 {
 	 */
 	void Encode_MB()
 	{
-		if(Test_Silent_MB_1())
+		if (Test_Silent_MB_1())
 		{
-			if(Test_Pronounced_MB())
+			if (Test_Pronounced_MB())
 			{
 				m_current++;
 			}
@@ -4738,9 +4738,9 @@ public class Metaphone3 {
 				m_current += 2; 
 			}
 		}
-		else if(Test_Silent_MB_2())
+		else if (Test_Silent_MB_2())
 		{
-			if(Test_Pronounced_MB_2())
+			if (Test_Pronounced_MB_2())
 			{
 				m_current++;
 			}
@@ -4749,7 +4749,7 @@ public class Metaphone3 {
 				m_current += 2; 
 			}
 		}
-		else if(Test_MN())
+		else if (Test_MN())
 		{
 			m_current += 2; 
 		}
@@ -4773,13 +4773,13 @@ public class Metaphone3 {
 	 */
 	void Encode_N()
 	{
-		if(Encode_NCE())
+		if (Encode_NCE())
 		{
 			return;
 		}
 
 		// eat redundant 'N'
-		if(CharAt(m_current + 1) == 'N')
+		if (CharAt(m_current + 1) == 'N')
 		{
 			m_current += 2;
 		}
@@ -4806,7 +4806,7 @@ public class Metaphone3 {
 	boolean Encode_NCE()
 	{
 		//'acceptance', 'accountancy'
-		if(StringAt((m_current + 1), 1, "C", "S", "")
+		if (StringAt((m_current + 1), 1, "C", "S", "")
 			&& StringAt((m_current + 2), 1, "E", "Y", "I", "")
 			&& (((m_current + 2) == m_last)
 				|| (((m_current + 3) == m_last)) 
@@ -4826,7 +4826,7 @@ public class Metaphone3 {
 	 */
 	void Encode_P()
 	{
-		if(Encode_Silent_P_At_Beginning()
+		if (Encode_Silent_P_At_Beginning()
 		   || Encode_PT()
 		   || Encode_PH()
 		   || Encode_PPH()
@@ -4853,7 +4853,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_P_At_Beginning()
 	{
 	    //skip these when at start of word
-	    if((m_current == 0)
+	    if ((m_current == 0)
 			&& StringAt(m_current, 2, "PN", "PF", "PS", "PT", ""))
 		{
 	        m_current += 1;
@@ -4872,7 +4872,7 @@ public class Metaphone3 {
 	boolean Encode_PT()
 	{
 		// 'pterodactyl', 'receipt', 'asymptote'
-		if((CharAt(m_current + 1) == 'T'))
+		if ((CharAt(m_current + 1) == 'T'))
 		{
 			if (((m_current == 0) && StringAt(m_current, 5, "PTERO", ""))
 				|| StringAt((m_current - 5), 7, "RECEIPT", "")
@@ -4897,7 +4897,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_PH()
 	{
-		if(CharAt(m_current + 1) == 'H')
+		if (CharAt(m_current + 1) == 'H')
 		{
 			// 'PH' silent in these contexts
 			if (StringAt(m_current, 9, "PHTHALEIN", "")
@@ -4909,11 +4909,11 @@ public class Metaphone3 {
 			}
 			// combining forms
 			//'sheepherd', 'upheaval', 'cupholder'
-			else if((m_current > 0)
+			else if ((m_current > 0)
 				&& (StringAt((m_current + 2), 3, "EAD", "OLE", "ELD", "ILL", "OLD", "EAP", "ERD", 
 												 "ARD", "ANG", "ORN", "EAV", "ART", "")
 					|| StringAt((m_current + 2), 4, "OUSE", "")
-					|| (StringAt((m_current + 2), 2, "AM", "") && !StringAt((m_current -1), 5, "LPHAM", ""))
+					|| (StringAt((m_current + 2), 2, "AM", "") && !StringAt((m_current - 1), 5, "LPHAM", ""))
 					|| StringAt((m_current + 2), 5, "AMMER", "AZARD", "UGGER", "")
 					|| StringAt((m_current + 2), 6, "OLSTER", ""))
 						&& !StringAt((m_current - 3), 5, "LYMPH", "NYMPH", ""))
@@ -4942,7 +4942,7 @@ public class Metaphone3 {
 	boolean Encode_PPH()
 	{
 		// 'sappho'
-		if((CharAt(m_current + 1) == 'P') 
+		if ((CharAt(m_current + 1) == 'P') 
 				&& ((m_current + 2) < m_length) && (CharAt(m_current + 2) == 'H'))
 		{
 			MetaphAdd("F");
@@ -4963,7 +4963,7 @@ public class Metaphone3 {
 	boolean Encode_RPS()
 	{
 		//'-corps-', 'corpsman'
-		if(StringAt((m_current - 3), 5, "CORPS", "") 
+		if (StringAt((m_current - 3), 5, "CORPS", "") 
 			&& !StringAt((m_current - 3), 6, "CORPSE", ""))
 		{
 			m_current += 2;
@@ -4983,7 +4983,7 @@ public class Metaphone3 {
 	boolean Encode_COUP()
 	{
 		//'coup'
-		if((m_current == m_last) 
+		if ((m_current == m_last) 
 			&& StringAt((m_current - 3), 4, "COUP", "")
 			&& !StringAt((m_current - 5), 6, "RECOUP", ""))
 		{
@@ -5004,7 +5004,7 @@ public class Metaphone3 {
 	boolean Encode_PNEUM()
 	{
 		//'-pneum-'
-		if(StringAt((m_current + 1), 4, "NEUM", ""))
+		if (StringAt((m_current + 1), 4, "NEUM", ""))
 		{
 			MetaphAdd("N");
 			m_current += 2;
@@ -5025,9 +5025,9 @@ public class Metaphone3 {
 	boolean Encode_PSYCH()
 	{
 		//'-psych-'
-		if(StringAt((m_current + 1), 4, "SYCH", ""))
+		if (StringAt((m_current + 1), 4, "SYCH", ""))
 		{
-			if(m_encodeVowels)
+			if (m_encodeVowels)
 			{
 				MetaphAdd("SAK");
 			}
@@ -5053,10 +5053,10 @@ public class Metaphone3 {
 	boolean Encode_PSALM()
 	{
 		//'-psalm-'
-		if(StringAt((m_current + 1), 4, "SALM", ""))
+		if (StringAt((m_current + 1), 4, "SALM", ""))
 		{
 			// go ahead and encode entire word
-			if(m_encodeVowels)
+			if (m_encodeVowels)
 			{
 				MetaphAdd("SAM");
 			}
@@ -5080,7 +5080,7 @@ public class Metaphone3 {
 	{
 		// e.g. "campbell", "raspberry"
 		// eat redundant 'P' or 'B'
-		if(StringAt((m_current + 1), 1, "P", "B", ""))
+		if (StringAt((m_current + 1), 1, "P", "B", ""))
 		{
 			m_current += 2;
 		}
@@ -5097,7 +5097,7 @@ public class Metaphone3 {
 	void Encode_Q()
 	{
 		// current pinyin
-		if(StringAt(m_current, 3, "QIN", ""))
+		if (StringAt(m_current, 3, "QIN", ""))
 		{
 			MetaphAdd("X");
 			m_current++;
@@ -5105,7 +5105,7 @@ public class Metaphone3 {
 		}
 
 		// eat redundant 'Q'
-		if(CharAt(m_current + 1) == 'Q')
+		if (CharAt(m_current + 1) == 'Q')
 		{
 			m_current += 2;
 		}
@@ -5123,21 +5123,21 @@ public class Metaphone3 {
 	 */
 	void Encode_R()
 	{
-		if(Encode_RZ())
+		if (Encode_RZ())
 		{
 			return;
 		}
 		
-		if(!Test_Silent_R())
+		if (!Test_Silent_R())
 		{
-			if(!Encode_Vowel_RE_Transposition())
+			if (!Encode_Vowel_RE_Transposition())
 			{
 				MetaphAdd("R");
 			}
 		}
 		
 		// eat redundant 'R'; also skip 'S' as well as 'R' in "poitiers"
-		if((CharAt(m_current + 1) == 'R') || StringAt((m_current - 6), 8, "POITIERS", ""))
+		if ((CharAt(m_current + 1) == 'R') || StringAt((m_current - 6), 8, "POITIERS", ""))
 		{
 			m_current += 2;
 		}
@@ -5156,7 +5156,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_RZ()
 	{
-		if(StringAt((m_current - 2), 4, "GARZ", "KURZ", "MARZ", "MERZ", "HERZ", "PERZ", "WARZ", "")
+		if (StringAt((m_current - 2), 4, "GARZ", "KURZ", "MARZ", "MERZ", "HERZ", "PERZ", "WARZ", "")
 			|| StringAt(m_current, 5, "RZANO", "RZOLA", "")
 			|| StringAt((m_current - 1), 4, "ARZA", "ARZN", ""))
 		{
@@ -5165,7 +5165,7 @@ public class Metaphone3 {
 		
 		// 'yastrzemski' usually has 'z' silent in
 		// united states, but should get 'X' in poland
-		if(StringAt((m_current - 4), 11, "YASTRZEMSKI", ""))
+		if (StringAt((m_current - 4), 11, "YASTRZEMSKI", ""))
 		{
 			MetaphAdd("R", "X");
 			m_current += 2;
@@ -5174,7 +5174,7 @@ public class Metaphone3 {
 		// 'BRZEZINSKI' gets two pronunciations
 		// in the united states, neither of which
 		// are authentically polish
-		if(StringAt((m_current - 1), 10, "BRZEZINSKI", ""))
+		if (StringAt((m_current - 1), 10, "BRZEZINSKI", ""))
 		{
 			MetaphAdd("RS", "RJ");
 			// skip over 2nd 'Z'
@@ -5183,7 +5183,7 @@ public class Metaphone3 {
 		}
 		// 'z' in 'rz after voiceless consonant gets 'X'
 		// in alternate polish style pronunciation
-		else if(StringAt((m_current - 1), 3, "TRZ", "PRZ", "KRZ", "")
+		else if (StringAt((m_current - 1), 3, "TRZ", "PRZ", "KRZ", "")
 				|| (StringAt(m_current, 2, "RZ", "")
 						&& (IsVowel(m_current - 1) || (m_current == 0))))
 		{
@@ -5193,7 +5193,7 @@ public class Metaphone3 {
 		}
 		// 'z' in 'rz after voiceled consonant, vowel, or at
 		// beginning gets 'J' in alternate polish style pronunciation
-		else if(StringAt((m_current - 1), 3, "BRZ", "DRZ", "GRZ", ""))
+		else if (StringAt((m_current - 1), 3, "BRZ", "DRZ", "GRZ", ""))
 		{
 			MetaphAdd("RS", "J");
 			m_current += 2;
@@ -5214,7 +5214,7 @@ public class Metaphone3 {
 		// test cases where 'R' is silent, either because the 
 		// word is from the french or because it is no longer pronounced.
 		// e.g. "rogier", "monsieur", "surburban"
-		if(((m_current == m_last)
+		if (((m_current == m_last)
 			// reliably french word ending
 			&& StringAt((m_current - 2), 3, "IER", "")
 			// e.g. "metier"
@@ -5254,7 +5254,7 @@ public class Metaphone3 {
 		// -re inversion is just like
 		// -le inversion
 		// e.g. "fibre" => FABAR or "centre" => SANTAR
-		if((m_encodeVowels)
+		if ((m_encodeVowels)
 			&& (CharAt(m_current + 1) == 'E')
 			&& (m_length > 3)
 			&& !StringAt(0, 5, "OUTRE", "LIBRE", "ANDRE", "")
@@ -5278,7 +5278,7 @@ public class Metaphone3 {
 	 */
 	void Encode_S()
 	{
-		if(Encode_SKJ()
+		if (Encode_SKJ()
 			|| Encode_Special_SW()
 			|| Encode_SJ()
 			|| Encode_Silent_French_S_Final()
@@ -5307,7 +5307,7 @@ public class Metaphone3 {
 
 		MetaphAdd("S");
 
-		if(StringAt((m_current + 1), 1, "S", "Z", "")
+		if (StringAt((m_current + 1), 1, "S", "Z", "")
 			&& !StringAt((m_current + 1), 2, "SH", ""))
 		{
 			m_current += 2;
@@ -5328,10 +5328,10 @@ public class Metaphone3 {
 	 */
 	boolean Encode_Special_SW()
 	{
-		if(m_current == 0)
+		if (m_current == 0)
 		{
 			// 
-			if(Names_Beginning_With_SW_That_Get_Alt_SV())
+			if (Names_Beginning_With_SW_That_Get_Alt_SV())
 			{
 				MetaphAdd("S", "SV");
 				m_current += 2;
@@ -5339,7 +5339,7 @@ public class Metaphone3 {
 			}
 	
 			// 
-			if(Names_Beginning_With_SW_That_Get_Alt_XV())
+			if (Names_Beginning_With_SW_That_Get_Alt_XV())
 			{
 				MetaphAdd("S", "XV");
 				m_current += 2;
@@ -5360,7 +5360,7 @@ public class Metaphone3 {
 	boolean Encode_SKJ()
 	{
 		// scandinavian
-		if(StringAt(m_current, 4, "SKJO", "SKJU", "")
+		if (StringAt(m_current, 4, "SKJO", "SKJU", "")
 			&& IsVowel(m_current + 3))
 		{
 			MetaphAdd("X");
@@ -5379,7 +5379,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_SJ()
 	{
-		if(StringAt(0, 2, "SJ", ""))
+		if (StringAt(0, 2, "SJ", ""))
 		{
 			MetaphAdd("X");
 			m_current += 2;
@@ -5399,7 +5399,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_French_S_Final()
 	{
 		// "louis" is an exception because it gets two pronuncuations
-		if(StringAt(0, 5, "LOUIS", "") && (m_current == m_last))
+		if (StringAt(0, 5, "LOUIS", "") && (m_current == m_last))
 		{
 			MetaphAdd("S", "");
 			m_current++;
@@ -5407,7 +5407,7 @@ public class Metaphone3 {
 		}
 				
 		// french words familiar to americans where final s is silent
-		if((m_current == m_last) 
+		if ((m_current == m_last) 
 			&& (StringAt(0, 4, "YVES", "")
 			|| (StringAt(0, 4, "HORS", "") && (m_current == 3))
 			|| StringAt((m_current - 4), 5, "CAMUS", "YPRES", "")
@@ -5439,7 +5439,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_French_S_Internal()
 	{
 		// french words familiar to americans where internal s is silent
-		if(StringAt((m_current - 2), 9, "DESCARTES", "")
+		if (StringAt((m_current - 2), 9, "DESCARTES", "")
 			|| StringAt((m_current - 2), 7, "DESCHAM", "DESPRES", "DESROCH", "DESROSI", "DESJARD", "DESMARA", 
 						"DESCHEN", "DESHOTE", "DESLAUR", "")
 			|| StringAt((m_current - 2), 6, "MESNES", "")
@@ -5466,7 +5466,7 @@ public class Metaphone3 {
 	boolean Encode_ISL()
 	{
 		//special cases 'island', 'isle', 'carlisle', 'carlysle'
-		if((StringAt((m_current - 2), 4, "LISL", "LYSL", "AISL", "") 
+		if ((StringAt((m_current - 2), 4, "LISL", "LYSL", "AISL", "") 
 			&& !StringAt((m_current - 3), 7, "PAISLEY", "BAISLEY", "ALISLAM", "ALISLAH", "ALISLAA", ""))
 			|| ((m_current == 1) 
 				&& ((StringAt((m_current - 1), 4, "ISLE", "") 
@@ -5490,7 +5490,7 @@ public class Metaphone3 {
 	boolean Encode_STL()
 	{
 		//'hustle', 'bustle', 'whistle'
-		if((StringAt(m_current, 4, "STLE", "STLI", "") 
+		if ((StringAt(m_current, 4, "STLE", "STLI", "") 
 				&& !StringAt((m_current + 2), 4, "LESS", "LIKE", "LINE", ""))
 			|| StringAt((m_current - 3), 7, "THISTLY", "BRISTLY",  "GRISTLY", "")
 			// e.g. "corpuscle"
@@ -5498,7 +5498,7 @@ public class Metaphone3 {
 		{
 			// KRISTEN, KRYSTLE, CRYSTLE, KRISTLE all pronounce the 't'
 			// also, exceptions where "-LING" is a nominalizing suffix
-			if(StringAt(0, 7, "KRISTEN", "KRYSTLE", "CRYSTLE", "KRISTLE", "")
+			if (StringAt(0, 7, "KRISTEN", "KRYSTLE", "CRYSTLE", "KRISTLE", "")
 				|| StringAt(0, 11, "CHRISTENSEN", "CHRISTENSON", "")
 				|| StringAt((m_current - 3), 9, "FIRSTLING", "")
 				|| StringAt((m_current - 2), 8,  "NESTLING",  "WESTLING", ""))
@@ -5508,7 +5508,7 @@ public class Metaphone3 {
 			}
 			else
 			{
-				if(m_encodeVowels 
+				if (m_encodeVowels 
 					&& (CharAt(m_current + 3) == 'E') 
 					&& (CharAt(m_current + 4) != 'R')
 					&& !StringAt((m_current + 3), 4, "ETTE", "ETTA", "")
@@ -5538,7 +5538,7 @@ public class Metaphone3 {
 	boolean Encode_Christmas()
 	{
 		//'christmas'
-		if(StringAt((m_current - 4), 8, "CHRISTMA", ""))
+		if (StringAt((m_current - 4), 8, "CHRISTMA", ""))
 		{
 			MetaphAdd("SM");
 			m_current += 3;
@@ -5558,7 +5558,7 @@ public class Metaphone3 {
 	boolean Encode_STHM()
 	{
 		//'asthma', 'isthmus'
-		if(StringAt(m_current, 4, "STHM", ""))
+		if (StringAt(m_current, 4, "STHM", ""))
 		{
 			MetaphAdd("SM");
 			m_current += 4;
@@ -5578,10 +5578,10 @@ public class Metaphone3 {
 	boolean Encode_ISTEN()
 	{
 		// 't' is silent in verb, pronounced in name
-		if(StringAt(0, 8, "CHRISTEN", ""))
+		if (StringAt(0, 8, "CHRISTEN", ""))
 		{
 			// the word itself
-			if(RootOrInflections(m_inWord, "CHRISTEN")
+			if (RootOrInflections(m_inWord, "CHRISTEN")
 				|| StringAt(0, 11, "CHRISTENDOM", ""))
 			{
 				MetaphAdd("S", "ST");
@@ -5596,7 +5596,7 @@ public class Metaphone3 {
 		}
 		
 		//e.g. 'glisten', 'listen'
-		if(StringAt((m_current - 2), 6, "LISTEN", "RISTEN", "HASTEN", "FASTEN", "MUSTNT", "")
+		if (StringAt((m_current - 2), 6, "LISTEN", "RISTEN", "HASTEN", "FASTEN", "MUSTNT", "")
 			|| StringAt((m_current - 3), 7,  "MOISTEN", ""))
 		{
 			MetaphAdd("S");
@@ -5616,7 +5616,7 @@ public class Metaphone3 {
 	boolean Encode_Sugar()
 	{
 		//special case 'sugar-'
-		if(StringAt(m_current, 5, "SUGAR", ""))
+		if (StringAt(m_current, 5, "SUGAR", ""))
 		{
 			MetaphAdd("X");
 			m_current++;
@@ -5636,10 +5636,10 @@ public class Metaphone3 {
 	 */
 	boolean Encode_SH()
 	{
-		if(StringAt(m_current, 2, "SH", ""))
+		if (StringAt(m_current, 2, "SH", ""))
 		{
 			// exception
-			if(StringAt((m_current - 2), 8, "CASHMERE", ""))
+			if (StringAt((m_current - 2), 8, "CASHMERE", ""))
 			{
 				MetaphAdd("J");				
 				m_current += 2;
@@ -5647,7 +5647,7 @@ public class Metaphone3 {
 			}
 			
 			//combining forms, e.g. 'clotheshorse', 'woodshole'
-			if((m_current > 0)
+			if ((m_current > 0)
 				// e.g. "mishap"
 				&& ((StringAt((m_current + 1), 3, "HAP", "") && ((m_current + 3) == m_last))
 				// e.g. "hartsheim", "clothshorse"
@@ -5694,9 +5694,9 @@ public class Metaphone3 {
 	boolean Encode_SCH()
 	{
 		// these words were combining forms many centuries ago
-		if(StringAt((m_current + 1), 2, "CH", ""))
+		if (StringAt((m_current + 1), 2, "CH", ""))
 		{
-			if((m_current > 0)
+			if ((m_current > 0)
 				// e.g. "mischief", "escheat"
 				&& (StringAt((m_current + 3), 3, "IEF", "EAT", "")
 				// e.g. "mischance"
@@ -5711,7 +5711,7 @@ public class Metaphone3 {
 
 			//Schlesinger's rule
 			//dutch, danish, italian, greek origin, e.g. "school", "schooner", "schiavone", "schiz-"
-			if((StringAt((m_current + 3), 2, "OO", "ER", "EN", "UY", "ED", "EM", "IA", "IZ", "IS", "OL", "")
+			if ((StringAt((m_current + 3), 2, "OO", "ER", "EN", "UY", "ED", "EM", "IA", "IZ", "IS", "OL", "")
 					&& !StringAt(m_current, 6, "SCHOLT", "SCHISL", "SCHERR", ""))
 				|| StringAt((m_current + 3), 3, "ISZ", "")
 				|| (StringAt((m_current - 1), 6, "ESCHAT", "ASCHIN", "ASCHAL", "ISCHAE", "ISCHIA", "")
@@ -5720,7 +5720,7 @@ public class Metaphone3 {
 				|| (CharAt(m_current + 3) == 'Y'))
 			{
 				// e.g. "schermerhorn", "schenker", "schistose"
-				if(StringAt((m_current + 3), 2, "ER", "EN", "IS", "")
+				if (StringAt((m_current + 3), 2, "ER", "EN", "IS", "")
 					&& (((m_current + 4) == m_last) 
 						|| StringAt((m_current + 3), 3, "ENK", "ENB", "IST", "")))
 				{
@@ -5754,7 +5754,7 @@ public class Metaphone3 {
 	boolean Encode_SUR()
 	{
 		// 'erasure', 'usury'
-		if(StringAt((m_current + 1), 3, "URE", "URA", "URY", ""))
+		if (StringAt((m_current + 1), 3, "URE", "URA", "URY", ""))
 		{
 			//'sure', 'ensure'
 			if ((m_current == 0)
@@ -5786,15 +5786,15 @@ public class Metaphone3 {
 	boolean Encode_SU()
 	{
 		//'sensuous', 'consensual'
-		if(StringAt((m_current + 1), 2, "UO", "UA", "") && (m_current != 0))
+		if (StringAt((m_current + 1), 2, "UO", "UA", "") && (m_current != 0))
 		{
 			// exceptions e.g. "persuade"
-			if(StringAt((m_current - 1), 4, "RSUA", ""))
+			if (StringAt((m_current - 1), 4, "RSUA", ""))
 			{
 				MetaphAdd("S");
 			}
 			// exceptions e.g. "casual"
-			else if(IsVowel(m_current - 1))
+			else if (IsVowel(m_current - 1))
 			{
 				MetaphAdd("J", "S");
 			}
@@ -5819,7 +5819,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_SSIO()
 	{
-		if(StringAt((m_current + 1), 4, "SION", ""))
+		if (StringAt((m_current + 1), 4, "SION", ""))
 		{
 			//"abcission"
 			if (StringAt((m_current - 2), 2, "CI", ""))
@@ -5851,7 +5851,7 @@ public class Metaphone3 {
 	boolean Encode_SS()
 	{
 		// e.g. "russian", "pressure"
-		if(StringAt((m_current - 1), 5, "USSIA", "ESSUR", "ISSUR", "ISSUE", "")
+		if (StringAt((m_current - 1), 5, "USSIA", "ESSUR", "ISSUR", "ISSUE", "")
 			// e.g. "hessian", "assurance"
 			|| StringAt((m_current - 1), 6, "ESSIAN", "ASSURE", "ASSURA", "ISSUAB", "ISSUAN", "ASSIUS", ""))
 		{
@@ -5873,7 +5873,7 @@ public class Metaphone3 {
 	boolean Encode_SIA()
 	{
 		// e.g. "controversial", also "fuchsia", "ch" is silent
-		if(StringAt((m_current - 2), 5, "CHSIA", "")
+		if (StringAt((m_current - 2), 5, "CHSIA", "")
 			|| StringAt((m_current - 1), 5, "RSIAL", ""))
 		{
 			MetaphAdd("X");
@@ -5882,7 +5882,7 @@ public class Metaphone3 {
 		}
 		
 		// names generally get 'X' where terms, e.g. "aphasia" get 'J'
-		if((StringAt(0, 6, "ALESIA", "ALYSIA", "ALISIA", "STASIA", "")
+		if ((StringAt(0, 6, "ALESIA", "ALYSIA", "ALISIA", "STASIA", "")
 				&& (m_current == 3)
 				&& !StringAt(0, 9, "ANASTASIA", ""))
 			|| StringAt((m_current - 5), 9, "DIONYSIAN", "")
@@ -5893,7 +5893,7 @@ public class Metaphone3 {
 			return true;
 		}
 
-		if((StringAt(m_current, 3, "SIA", "") && ((m_current + 2) == m_last)) 
+		if ((StringAt(m_current, 3, "SIA", "") && ((m_current + 2) == m_last)) 
 			|| (StringAt(m_current, 4, "SIAN", "") && ((m_current + 3) == m_last))
 			|| StringAt((m_current - 5), 9, "AMBROSIAL", ""))
 		{
@@ -5929,14 +5929,14 @@ public class Metaphone3 {
 	boolean Encode_SIO()
 	{
 		// special case, irish name
-		if(StringAt(0, 7, "SIOBHAN", ""))
+		if (StringAt(0, 7, "SIOBHAN", ""))
 		{
 			MetaphAdd("X");
 			AdvanceCounter(3, 1);
 			return true;
 		}
 		
-		if(StringAt((m_current + 1), 3, "ION", ""))
+		if (StringAt((m_current + 1), 3, "ION", ""))
 		{
 			// e.g. "vision", "version"
 			if (IsVowel(m_current - 1) || StringAt((m_current - 2), 2, "ER", "UR", ""))
@@ -5967,14 +5967,14 @@ public class Metaphone3 {
 	{
 		//german & anglicisations, e.g. 'smith' match 'schmidt', 'snider' match 'schneider'
 		//also, -sz- in slavic language altho in hungarian it is pronounced 's'
-		if(((m_current == 0) 
+		if (((m_current == 0) 
 			&& StringAt((m_current + 1), 1, "M", "N", "L", ""))
 			|| StringAt((m_current + 1), 1, "Z", ""))
 		{
 			MetaphAdd("S", "X");
 
 			// eat redundant 'Z'
-			if(StringAt((m_current + 1), 1, "Z", ""))
+			if (StringAt((m_current + 1), 1, "Z", ""))
 			{
 				m_current += 2;
 			}
@@ -5998,20 +5998,20 @@ public class Metaphone3 {
 	 */
 	boolean Encode_SC()
 	{
-		if(StringAt(m_current, 2, "SC", ""))
+		if (StringAt(m_current, 2, "SC", ""))
 		{
 			// exception 'viscount'
-			if(StringAt((m_current - 2), 8, "VISCOUNT", ""))
+			if (StringAt((m_current - 2), 8, "VISCOUNT", ""))
 			{
 				m_current += 1;
 				return true;
 			}
 
 			// encode "-SC<front vowel>-"
-			if(StringAt((m_current + 2), 1, "I", "E", "Y", ""))
+			if (StringAt((m_current + 2), 1, "I", "E", "Y", ""))
 			{
 				// e.g. "conscious"
-				if(StringAt((m_current + 2), 4, "IOUS", "") 
+				if (StringAt((m_current + 2), 4, "IOUS", "") 
 					// e.g. "prosciutto"
 					|| StringAt((m_current + 2), 3, "IUT", "")
 					|| StringAt((m_current - 4), 9, "OMNISCIEN", "")
@@ -6021,7 +6021,7 @@ public class Metaphone3 {
 				{
 					MetaphAdd("X");
 				}
-				else if(StringAt(m_current, 7, "SCEPTIC", "SCEPSIS", "")
+				else if (StringAt(m_current, 7, "SCEPTIC", "SCEPSIS", "")
 							|| StringAt(m_current, 5, "SCIVV", "SCIRO", "")
 							// commonly pronounced this way in u.s.
 							|| StringAt(m_current, 6, "SCIPIO", "")
@@ -6056,12 +6056,12 @@ public class Metaphone3 {
 	{
 		// "nausea" by itself has => NJ as a more likely encoding. Other forms
 		// using "nause-" (see Encode_SEA()) have X or S as more familiar pronounciations
-		if((StringAt((m_current - 3), 6, "NAUSEA", "") && ((m_current + 2) == m_last))
+		if ((StringAt((m_current - 3), 6, "NAUSEA", "") && ((m_current + 2) == m_last))
 			// e.g. "casuistry", "frasier", "hoosier"
 			|| StringAt((m_current - 2), 5, "CASUI", "")
 			|| (StringAt((m_current - 1), 5, "OSIER", "ASIER", "")
-					&& !(StringAt(0, 6, "EASIER","") 
-						|| StringAt(0, 5, "OSIER","") 
+					&& !(StringAt(0, 6, "EASIER", "") 
+						|| StringAt(0, 5, "OSIER", "") 
 						|| StringAt((m_current - 2), 6, "ROSIER", "MOSIER", ""))))
 		{
 			MetaphAdd("J", "X");
@@ -6080,7 +6080,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_SEA()
 	{
-		if((StringAt(0, 4, "SEAN", "") && ((m_current + 3) == m_last))
+		if ((StringAt(0, 4, "SEAN", "") && ((m_current + 3) == m_last))
 			|| (StringAt((m_current - 3), 6, "NAUSEO", "")
 			&& !StringAt((m_current - 3), 7, "NAUSEAT", "")))
 		{
@@ -6098,7 +6098,7 @@ public class Metaphone3 {
 	 */
 	void Encode_T()
 	{
-		if(Encode_T_Initial()
+		if (Encode_T_Initial()
 			|| Encode_TCH()
 			|| Encode_Silent_French_T()
 			|| Encode_TUN_TUL_TUA_TUO()
@@ -6116,7 +6116,7 @@ public class Metaphone3 {
 		}
 
 		// eat redundant 'T' or 'D'
-		if(StringAt((m_current + 1), 1, "T", "D", ""))
+		if (StringAt((m_current + 1), 1, "T", "D", ""))
 		{
 			m_current += 2;
 		}
@@ -6136,7 +6136,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_T_Initial()
 	{
-		if(m_current == 0)
+		if (m_current == 0)
 		{
 			// americans usually pronounce "tzar" as "zar"
 			if (StringAt((m_current + 1), 3, "SAR", "ZAR", ""))
@@ -6194,7 +6194,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_TCH()
 	{
-		if(StringAt((m_current + 1), 2, "CH", ""))
+		if (StringAt((m_current + 1), 2, "CH", ""))
 		{
 			MetaphAdd("X");
 			m_current += 3;
@@ -6214,7 +6214,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_French_T()
 	{
 		// french silent T familiar to americans
-		if(((m_current == m_last) && StringAt((m_current - 4), 5, "MONET", "GENET", "CHAUT", ""))
+		if (((m_current == m_last) && StringAt((m_current - 4), 5, "MONET", "GENET", "CHAUT", ""))
 			|| StringAt((m_current - 2), 9, "POTPOURRI", "")
 			|| StringAt((m_current - 3), 9, "BOATSWAIN", "")
 			|| StringAt((m_current - 3), 8, "MORTGAGE", "")
@@ -6244,7 +6244,7 @@ public class Metaphone3 {
 	boolean Encode_TUN_TUL_TUA_TUO()
 	{
 		// e.g. "fortune", "fortunate"               
-		if(StringAt((m_current - 3), 6, "FORTUN", "")
+		if (StringAt((m_current - 3), 6, "FORTUN", "")
 			// e.g. "capitulate"
 			|| (StringAt(m_current, 3, "TUL", "")
 				&& (IsVowel(m_current - 1) && IsVowel(m_current + 3)))
@@ -6271,7 +6271,7 @@ public class Metaphone3 {
 	boolean Encode_TUE_TEU_TEOU_TUL_TIE()
 	{
 		// 'constituent', 'pasteur'
-		if(StringAt((m_current + 1), 4, "UENT", "")
+		if (StringAt((m_current + 1), 4, "UENT", "")
 			|| StringAt((m_current - 4), 9, "RIGHTEOUS",  "")
 			|| StringAt((m_current - 3), 7, "STATUTE",  "")
 			|| StringAt((m_current - 3), 7, "AMATEUR",  "")
@@ -6304,7 +6304,7 @@ public class Metaphone3 {
 	boolean Encode_TUR_TIU_Suffixes()
 	{
 		// 'adventure', 'musculature'
-		if((m_current > 0) && StringAt((m_current + 1), 3, "URE", "URA", "URI", "URY", "URO", "IUS", ""))
+		if ((m_current > 0) && StringAt((m_current + 1), 3, "URE", "URA", "URI", "URY", "URO", "IUS", ""))
 		{
 			// exceptions e.g. 'tessitura', mostly from romance languages
 			if ((StringAt((m_current + 1), 3, "URA", "URO", "") 
@@ -6340,14 +6340,14 @@ public class Metaphone3 {
 	{
 		// '-tio-', '-tia-', '-tiu-'
 		// except combining forms where T already pronounced e.g 'rooseveltian'
-		if((StringAt((m_current + 1), 2, "IO", "") && !StringAt((m_current - 1), 5, "ETIOL", ""))
+		if ((StringAt((m_current + 1), 2, "IO", "") && !StringAt((m_current - 1), 5, "ETIOL", ""))
 			|| StringAt((m_current + 1), 3, "IAL", "")
 			|| StringAt((m_current - 1), 5, "RTIUM", "ATIUM", "")
 			|| ((StringAt((m_current + 1), 3, "IAN", "") && (m_current > 0))
 					&& !(StringAt((m_current - 4), 8, "FAUSTIAN", "")
 			|| StringAt((m_current - 5), 9, "PROUSTIAN", "")
 			|| StringAt((m_current - 2), 7, "TATIANA", "")
-			||(StringAt((m_current - 3), 7, "KANTIAN", "GENTIAN", "")
+			|| (StringAt((m_current - 3), 7, "KANTIAN", "GENTIAN", "")
 			|| StringAt((m_current - 8), 12, "ROOSEVELTIAN", "")))
 			|| (((m_current + 2) == m_last) 
 					&& StringAt(m_current, 3, "TIA", "")
@@ -6359,22 +6359,22 @@ public class Metaphone3 {
 			|| StringAt((m_current + 1), 4, "IATE", "IATI", "IABL", "IATO", "IARY", "")
 			|| StringAt((m_current - 5), 9, "CHRISTIAN", "")))
 		{
-			if(((m_current == 2) && StringAt(0, 4, "ANTI", ""))
+			if (((m_current == 2) && StringAt(0, 4, "ANTI", ""))
 				|| StringAt(0, 5, "PATIO", "PITIA", "DUTIA", ""))
 			{
 				MetaphAdd("T");
 			}
-			else if(StringAt((m_current - 4), 8, "EQUATION", ""))
+			else if (StringAt((m_current - 4), 8, "EQUATION", ""))
 			{
 				MetaphAdd("J");
 			}
 			else
 			{
-				if(StringAt(m_current, 4, "TION", ""))
+				if (StringAt(m_current, 4, "TION", ""))
 				{
 					MetaphAdd("X");
 				}
-				else if(StringAt(0, 5, "KATIA", "LATIA", ""))
+				else if (StringAt(0, 5, "KATIA", "LATIA", ""))
 				{
 					MetaphAdd("T", "X");
 				}
@@ -6400,7 +6400,7 @@ public class Metaphone3 {
 	boolean Encode_TIENT()
 	{
 		// e.g. 'patient'
-		if(StringAt((m_current + 1), 4, "IENT", ""))
+		if (StringAt((m_current + 1), 4, "IENT", ""))
 		{
 			MetaphAdd("X", "T");
 			AdvanceCounter(3, 1);
@@ -6419,7 +6419,7 @@ public class Metaphone3 {
 	boolean Encode_TSCH()
 	{
 		//'deutsch'
-		if(StringAt(m_current, 4, "TSCH", "")
+		if (StringAt(m_current, 4, "TSCH", "")
 			// combining forms in german where the 'T' is pronounced seperately
 			&& !StringAt((m_current - 3), 4, "WELT", "KLAT", "FEST", ""))
 		{
@@ -6443,7 +6443,7 @@ public class Metaphone3 {
 	boolean Encode_TZSCH()
 	{
 		//'neitzsche'
-		if(StringAt(m_current, 5, "TZSCH", ""))
+		if (StringAt(m_current, 5, "TZSCH", ""))
 		{
 			MetaphAdd("X");
 			m_current += 5;
@@ -6465,7 +6465,7 @@ public class Metaphone3 {
 	boolean Encode_TH_Pronounced_Separately()
 	{
 		//'adulthood', 'bithead', 'apartheid'
-		if(((m_current > 0) 
+		if (((m_current > 0) 
 				&& StringAt((m_current + 1), 4, "HOOD", "HEAD", "HEID", "HAND", "HILL", "HOLD", 
 												"HAWK", "HEAP", "HERD", "HOLE", "HOOK", "HUNT",   
 												"HUMO", "HAUS", "HOFF", "HARD", "")
@@ -6513,7 +6513,7 @@ public class Metaphone3 {
 	boolean Encode_TTH()
 	{
 		// 'matthew' vs. 'outthink'
-		if(StringAt(m_current, 3, "TTH", ""))
+		if (StringAt(m_current, 3, "TTH", ""))
 		{
 			if (StringAt((m_current - 2), 5, "MATTH", ""))
 			{
@@ -6539,10 +6539,10 @@ public class Metaphone3 {
 	 */
 	boolean Encode_TH()
 	{
-		if(StringAt(m_current, 2, "TH", "") )
+		if (StringAt(m_current, 2, "TH", "") )
 		{
 			//'-clothes-'
-			if(StringAt((m_current - 3), 7, "CLOTHES", ""))
+			if (StringAt((m_current - 3), 7, "CLOTHES", ""))
 			{
 				// vowel already encoded so skip right to S
 				m_current += 3;
@@ -6550,7 +6550,7 @@ public class Metaphone3 {
 			}
 
 			//special case "thomas", "thames", "beethoven" or germanic words
-			if(StringAt((m_current + 2), 4, "OMAS", "OMPS", "OMPK", "OMSO", "OMSE", 
+			if (StringAt((m_current + 2), 4, "OMAS", "OMPS", "OMPK", "OMSO", "OMSE", 
 											"AMES", "OVEN", "OFEN", "ILDA", "ILDE", "") 
 				|| (StringAt(0, 4, "THOM", "")  && (m_length == 4))
 				|| (StringAt(0, 5, "THOMS", "")  && (m_length == 5))
@@ -6564,7 +6564,7 @@ public class Metaphone3 {
 			{
 				// give an 'etymological' 2nd
 				// encoding for "smith"
-				if(StringAt(0, 2, "SM", ""))
+				if (StringAt(0, 2, "SM", ""))
 				{
 					MetaphAdd("0", "T");
 				}
@@ -6588,7 +6588,7 @@ public class Metaphone3 {
 	void Encode_V()
 	{
 		// eat redundant 'V'
-		if(CharAt(m_current + 1) == 'V')
+		if (CharAt(m_current + 1) == 'V')
 		{
 			m_current += 2;
 		}
@@ -6606,7 +6606,7 @@ public class Metaphone3 {
 	 */
 	void Encode_W()
 	{
-		if(Encode_Silent_W_At_Beginning()
+		if (Encode_Silent_W_At_Beginning()
 			|| Encode_WITZ_WICZ()
 			|| Encode_WR()
 			|| Encode_Initial_W_Vowel()
@@ -6617,7 +6617,7 @@ public class Metaphone3 {
 		}
 
 		// e.g. 'zimbabwe'
-		if(m_encodeVowels
+		if (m_encodeVowels
 			&& StringAt(m_current, 2, "WE", "")
 			&& ((m_current + 1) == m_last))
 		{
@@ -6638,7 +6638,7 @@ public class Metaphone3 {
 	boolean Encode_Silent_W_At_Beginning()
 	{    
 		//skip these when at start of word
-	    if((m_current == 0)
+	    if ((m_current == 0)
 			&& StringAt(m_current, 2, "WR", ""))
 		{
 	        m_current += 1;
@@ -6661,11 +6661,11 @@ public class Metaphone3 {
 	boolean Encode_WITZ_WICZ()
 	{
 		//polish e.g. 'filipowicz'
-		if(((m_current + 3) == m_last) && StringAt(m_current, 4, "WICZ", "WITZ", ""))
+		if (((m_current + 3) == m_last) && StringAt(m_current, 4, "WICZ", "WITZ", ""))
 		{
-			if(m_encodeVowels)
+			if (m_encodeVowels)
 			{
-				if((m_primary.length() > 0)
+				if ((m_primary.length() > 0)
 					&& m_primary.charAt(m_primary.length() - 1) == 'A')
 				{
 					MetaphAdd("TS", "FAX");
@@ -6695,7 +6695,7 @@ public class Metaphone3 {
 	boolean Encode_WR()
 	{
 		//can also be in middle of word
-		if(StringAt(m_current, 2, "WR", ""))
+		if (StringAt(m_current, 2, "WR", ""))
 		{
 			MetaphAdd("R");
 			m_current += 2;
@@ -6715,12 +6715,12 @@ public class Metaphone3 {
 	 */
 	boolean Encode_Initial_W_Vowel()
 	{
-		if((m_current == 0) && IsVowel(m_current + 1))
+		if ((m_current == 0) && IsVowel(m_current + 1))
 		{
 			//Witter should match Vitter
-			if(Germanic_Or_Slavic_Name_Beginning_With_W())
+			if (Germanic_Or_Slavic_Name_Beginning_With_W())
 			{
-				if(m_encodeVowels)
+				if (m_encodeVowels)
 				{
 					MetaphAddExactApprox("A", "VA", "A", "FA");
 				}
@@ -6752,11 +6752,11 @@ public class Metaphone3 {
 	 */
 	boolean Encode_WH()
 	{
-		if(StringAt(m_current, 2, "WH", ""))
+		if (StringAt(m_current, 2, "WH", ""))
 		{
 			// cases where it is pronounced as H
 			// e.g. 'who', 'whole'
-			if((CharAt(m_current + 2) == 'O')
+			if ((CharAt(m_current + 2) == 'O')
 				// exclude cases where it is pronounced like a vowel
 				&& !(StringAt((m_current + 2), 4, "OOSH", "")
 				|| StringAt((m_current + 2), 3, "OOP", "OMP", "ORL", "ORT", "")
@@ -6769,7 +6769,7 @@ public class Metaphone3 {
 			else
 			{
 				// combining forms, e.g. 'hollowhearted', 'rawhide'
-				if(StringAt((m_current + 2), 3, "IDE", "ARD", "EAD", "AWK", "ERD", 
+				if (StringAt((m_current + 2), 3, "IDE", "ARD", "EAD", "AWK", "ERD", 
 												"OOK", "AND", "OLE", "OOD", "")
 					|| StringAt((m_current + 2), 4, "EART", "OUSE", "OUND", "")
 					|| StringAt((m_current + 2), 5, "AMMER", ""))
@@ -6778,7 +6778,7 @@ public class Metaphone3 {
 					m_current += 2;
 					return true;
 				}
-				else if(m_current == 0)
+				else if (m_current == 0)
 				{
 					MetaphAdd("A");
 					m_current += 2;
@@ -6805,7 +6805,7 @@ public class Metaphone3 {
 	boolean Encode_Eastern_European_W()
 	{
 		//Arnow should match Arnoff
-		if(((m_current == m_last) && IsVowel(m_current - 1)) 
+		if (((m_current == m_last) && IsVowel(m_current - 1)) 
 			|| StringAt((m_current - 1), 5, "EWSKI", "EWSKY", "OWSKI", "OWSKY", "")
 			|| (StringAt(m_current, 5, "WICKI", "WACKI", "") && ((m_current + 4) == m_last))
 			|| StringAt(m_current, 4, "WIAK", "") && ((m_current + 3) == m_last)
@@ -6825,7 +6825,7 @@ public class Metaphone3 {
 	 */
 	void Encode_X()
 	{
-		if(Encode_Initial_X()
+		if (Encode_Initial_X()
 			|| Encode_Greek_X()
 			|| Encode_X_Special_Cases()
 			|| Encode_X_To_H()
@@ -6836,7 +6836,7 @@ public class Metaphone3 {
 		}
 
 		// eat redundant 'X' or other redundant cases
-		if(StringAt((m_current + 1), 1, "X", "Z", "S", "")
+		if (StringAt((m_current + 1), 1, "X", "Z", "S", "")
 			// e.g. "excite", "exceed"
 			|| StringAt((m_current + 1), 2, "CI", "CE", ""))
 		{
@@ -6857,7 +6857,7 @@ public class Metaphone3 {
 	boolean Encode_Initial_X()
 	{		
 		// current chinese pinyin spelling
-		if(StringAt(0, 3, "XIA", "XIO", "XIE", "")
+		if (StringAt(0, 3, "XIA", "XIO", "XIE", "")
 			|| StringAt(0, 2, "XU", ""))
 		{
 			MetaphAdd("X");
@@ -6866,7 +6866,7 @@ public class Metaphone3 {
 		}
 		
 		// else
-		if((m_current == 0))
+		if ((m_current == 0))
 		{
 			MetaphAdd("S");
 			m_current++;
@@ -6885,7 +6885,7 @@ public class Metaphone3 {
 	boolean Encode_Greek_X()
 	{
 		// 'xylophone', xylem', 'xanthoma', 'xeno-'
-		if(StringAt((m_current + 1), 3, "YLO", "YLE", "ENO", "")
+		if (StringAt((m_current + 1), 3, "YLO", "YLE", "ENO", "")
 			|| StringAt((m_current + 1), 4, "ANTH", ""))
 		{
 			MetaphAdd("S");
@@ -6905,7 +6905,7 @@ public class Metaphone3 {
 	boolean Encode_X_Special_Cases()
 	{
 		// 'luxury'
-		if(StringAt((m_current - 2), 5, "LUXUR", ""))
+		if (StringAt((m_current - 2), 5, "LUXUR", ""))
 		{
 			MetaphAddExactApprox("GJ", "KJ");
 			m_current++;
@@ -6913,7 +6913,7 @@ public class Metaphone3 {
 		}
 		
 		// 'texeira' portuguese/galician name
-		if(StringAt(0, 7, "TEXEIRA", "")
+		if (StringAt(0, 7, "TEXEIRA", "")
 			|| StringAt(0, 8, "TEIXEIRA", ""))
 		{
 			MetaphAdd("X");
@@ -6935,7 +6935,7 @@ public class Metaphone3 {
 	{
 		// TODO: look for other mexican indian words
 		// where 'X' is usually pronounced this way
-		if(StringAt((m_current - 2), 6, "OAXACA", "")
+		if (StringAt((m_current - 2), 6, "OAXACA", "")
 			|| StringAt((m_current - 3), 7, "QUIXOTE", ""))
 		{
 			MetaphAdd("H");
@@ -6957,7 +6957,7 @@ public class Metaphone3 {
 	boolean Encode_X_Vowel()
 	{
 		// e.g. "sexual", "connexion" (british), "noxious"
-		if(StringAt((m_current + 1), 3, "UAL", "ION", "IOU", ""))
+		if (StringAt((m_current + 1), 3, "UAL", "ION", "IOU", ""))
 		{
 			MetaphAdd("KX", "KS");
 			AdvanceCounter(3, 1);
@@ -6977,7 +6977,7 @@ public class Metaphone3 {
 	boolean Encode_French_X_Final()
 	{
 		//french e.g. "breaux", "paix"
-		if(!((m_current == m_last) 
+		if (!((m_current == m_last) 
 			&& (StringAt((m_current - 3), 3, "IAU", "EAU", "IEU", "") 
 			|| StringAt((m_current - 2), 2, "AI", "AU", "OU", "OI", "EU", ""))) )
 		{
@@ -6993,7 +6993,7 @@ public class Metaphone3 {
 	 */
 	void Encode_Z()
 	{
-		if(Encode_ZZ()
+		if (Encode_ZZ()
 			|| Encode_ZU_ZIER_ZS()
 			|| Encode_French_EZ()
 			|| Encode_German_Z())
@@ -7001,7 +7001,7 @@ public class Metaphone3 {
 			return;
 		}
 
-		if(Encode_ZH())
+		if (Encode_ZH())
 		{
 			return;
 		}
@@ -7011,7 +7011,7 @@ public class Metaphone3 {
 		}
 
 		// eat redundant 'Z'
-		if(CharAt(m_current + 1) == 'Z')
+		if (CharAt(m_current + 1) == 'Z')
 		{
 			m_current += 2;
 		}
@@ -7031,7 +7031,7 @@ public class Metaphone3 {
 	boolean Encode_ZZ()
 	{
 		// "abruzzi", 'pizza' 
-		if((CharAt(m_current + 1) == 'Z') 
+		if ((CharAt(m_current + 1) == 'Z') 
 			&& ((StringAt((m_current + 2), 1, "I", "O", "A", "") 
 			&& ((m_current + 2) == m_last))
 			|| StringAt((m_current - 2), 9, "MOZZARELL", "PIZZICATO", "PUZZONLAN", "")))
@@ -7052,14 +7052,14 @@ public class Metaphone3 {
 	 */
 	boolean Encode_ZU_ZIER_ZS()
 	{
-		if(((m_current == 1) && StringAt((m_current - 1), 4, "AZUR", "")) 
+		if (((m_current == 1) && StringAt((m_current - 1), 4, "AZUR", "")) 
 			|| (StringAt(m_current, 4, "ZIER", "") 
 					&& !StringAt((m_current - 2), 6, "VIZIER", ""))
 			|| StringAt(m_current, 3, "ZSA", ""))
 		{
 			MetaphAdd("J", "S");
 			
-			if(StringAt(m_current, 3, "ZSA", ""))
+			if (StringAt(m_current, 3, "ZSA", ""))
 			{
 				m_current += 2;
 			}
@@ -7082,7 +7082,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_French_EZ()
 	{
-		if(((m_current == 3) && StringAt((m_current - 3), 4, "CHEZ", ""))
+		if (((m_current == 3) && StringAt((m_current - 3), 4, "CHEZ", ""))
 			|| StringAt((m_current - 5), 6, "RENDEZ", ""))
 		{
 			m_current++;
@@ -7101,7 +7101,7 @@ public class Metaphone3 {
 	 */
 	boolean Encode_German_Z()
 	{
-		if(((m_current == 2) && ((m_current + 1) == m_last) && StringAt((m_current - 2), 4, "NAZI", ""))
+		if (((m_current == 2) && ((m_current + 1) == m_last) && StringAt((m_current - 2), 4, "NAZI", ""))
 			|| StringAt((m_current - 2), 6, "NAZIFY", "MOZART", "")
 			|| StringAt((m_current - 3), 4, "HOLZ", "HERZ", "MERZ", "FITZ", "")
 			|| (StringAt((m_current - 3), 4, "GANZ", "") && !IsVowel(m_current + 1))
@@ -7113,7 +7113,7 @@ public class Metaphone3 {
 			|| ((m_current > 0) && StringAt(m_current, 4, "ZEIT", ""))
 			|| StringAt((m_current - 3), 4, "WEIZ", ""))
 		{
-			if((m_current > 0) && m_inWord.charAt(m_current - 1) == 'T')
+			if ((m_current > 0) && m_inWord.charAt(m_current - 1) == 'T')
 			{
 				MetaphAdd("S");
 			}
@@ -7137,7 +7137,7 @@ public class Metaphone3 {
 	boolean Encode_ZH()
 	{
 		//chinese pinyin e.g. 'zhao', also english "phonetic spelling"
-		if(CharAt(m_current + 1) == 'H')
+		if (CharAt(m_current + 1) == 'H')
 		{
 			MetaphAdd("J");
 			m_current += 2;
@@ -7157,7 +7157,7 @@ public class Metaphone3 {
 	 */
 	boolean Names_Beginning_With_SW_That_Get_Alt_SV()
 	{
-		if(StringAt(0, 7, "SWANSON", "SWENSON", "SWINSON", "SWENSEN", 
+		if (StringAt(0, 7, "SWANSON", "SWENSON", "SWINSON", "SWENSEN", 
 						  "SWOBODA", "")
 			|| StringAt(0, 9, "SWIDERSKI", "SWARTHOUT", "")
 			|| StringAt(0, 10, "SWEARENGIN", ""))
@@ -7178,7 +7178,7 @@ public class Metaphone3 {
 	 */
 	boolean Names_Beginning_With_SW_That_Get_Alt_XV()
 	{
-		if(StringAt(0, 5, "SWART", "")
+		if (StringAt(0, 5, "SWART", "")
 			|| StringAt(0, 6, "SWARTZ", "SWARTS", "SWIGER", "")
 			|| StringAt(0, 7, "SWITZER", "SWANGER", "SWIGERT", 
 						      "SWIGART", "SWIHART", "")
@@ -7202,7 +7202,7 @@ public class Metaphone3 {
 	 */
 	boolean Germanic_Or_Slavic_Name_Beginning_With_W()
 	{
-		if(StringAt(0, 3, "WEE", "WIX", "WAX", "")
+		if (StringAt(0, 3, "WEE", "WIX", "WAX", "")
 			|| StringAt(0, 4, "WOLF", "WEIS", "WAHL", "WALZ", "WEIL", "WERT", 
 							  "WINE", "WILK", "WALT", "WOLL", "WADA", "WULF", 
 							  "WEHR", "WURM", "WYSE", "WENZ", "WIRT", "WOLK", 
@@ -7285,7 +7285,7 @@ public class Metaphone3 {
 	 */
 	boolean Names_Beginning_With_J_That_Get_Alt_Y()
 	{
-		if(StringAt(0, 3, "JAN", "JON", "JAN", "JIN", "JEN", "")
+		if (StringAt(0, 3, "JAN", "JON", "JAN", "JIN", "JEN", "")
 			|| StringAt(0, 4, "JUHL", "JULY", "JOEL", "JOHN", "JOSH", 
 							  "JUDE", "JUNE", "JONI", "JULI", "JENA", 
 							  "JUNG", "JINA", "JANA", "JENI", "JOEL", 

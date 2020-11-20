@@ -92,7 +92,7 @@ abstract public class DualExpressionsNumberComparisonRowFilter implements RowFil
             } // else, fall through
         }
         
-        return checkValue(x_value,y_value);
+        return checkValue(x_value, y_value);
     }
         
     protected boolean checkValue(Object vx, Object vy) {
@@ -106,7 +106,7 @@ abstract public class DualExpressionsNumberComparisonRowFilter implements RowFil
                         !Double.isNaN(dx) && 
                         !Double.isInfinite(dy) && 
                         !Double.isNaN(dy) && 
-                        checkValues(dx,dy));
+                        checkValues(dx, dy));
             } else {
                 return false;
             }

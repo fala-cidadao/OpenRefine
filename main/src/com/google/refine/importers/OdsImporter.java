@@ -82,7 +82,7 @@ public class OdsImporter extends TabularImportingParserBase {
         JSONUtilities.safePut(options, "sheetRecords", sheetRecords);
         OdfDocument odfDoc = null;
         try {
-            for (int index = 0;index < fileRecords.size();index++) {
+            for (int index = 0; index < fileRecords.size(); index++) {
                 ObjectNode fileRecord = fileRecords.get(index);
                 File file = ImportingUtilities.getFile(job, fileRecord);
                 InputStream is = new FileInputStream(file);
@@ -107,10 +107,10 @@ public class OdsImporter extends TabularImportingParserBase {
                 }
             }
         } catch (FileNotFoundException e) {
-            logger.info("File not found",e);
+            logger.info("File not found", e);
         } catch (Exception e) {
             // ODF throws *VERY* wide exceptions
-            logger.info("Error reading ODF spreadsheet",e);
+            logger.info("Error reading ODF spreadsheet", e);
         } finally {
             if (odfDoc != null) {
                 odfDoc.close();
@@ -142,7 +142,7 @@ public class OdsImporter extends TabularImportingParserBase {
         List<OdfTable> tables = odfDoc.getTableList();
 
         ArrayNode sheets = JSONUtilities.getArray(options, "sheets");
-        for(int i=0;i<sheets.size();i++)  {
+        for (int i= 0; i< sheets.size(); i++)  {
             String[] fileNameAndSheetIndex = new String[2];
             ObjectNode sheetObj = JSONUtilities.getObjectElement(sheets, i);
             // value is fileName#sheetIndex

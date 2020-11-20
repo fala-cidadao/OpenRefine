@@ -47,7 +47,7 @@ public class JSONUtilities {
     
     static public ObjectNode getObject(ObjectNode obj, String key) {
     	JsonNode node = obj.get(key);
-    	if(node != null && node instanceof ObjectNode) {
+    	if (node != null && node instanceof ObjectNode) {
     		return (ObjectNode)node;
     	}
     	return null;
@@ -78,7 +78,7 @@ public class JSONUtilities {
     }
 
     static public ArrayNode getArray(ObjectNode obj, String key) {
-        if( obj.has(key) && obj.get(key) instanceof ArrayNode) {
+        if (obj.has(key) && obj.get(key) instanceof ArrayNode) {
         	return (ArrayNode) obj.get(key);
         } 
         return null;
@@ -99,7 +99,7 @@ public class JSONUtilities {
     	}
     	int[] r = new int[a.size()];
     	int i = 0;
-    	for(JsonNode n : a) {
+    	for (JsonNode n : a) {
     		r[i] = n.asInt();
     		i++;
     	}

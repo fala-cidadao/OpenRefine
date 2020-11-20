@@ -50,10 +50,10 @@ import com.google.refine.process.QuickHistoryEntryProcess;
  *  projects.
  */
 @JsonTypeInfo(
-        use=JsonTypeInfo.Id.CUSTOM,
-        include=JsonTypeInfo.As.PROPERTY,
-        property="op",
-        visible=true) // for UnknownOperation, which needs to read its own id
+        use= JsonTypeInfo.Id.CUSTOM,
+        include= JsonTypeInfo.As.PROPERTY,
+        property= "op",
+        visible= true) // for UnknownOperation, which needs to read its own id
 @JsonTypeIdResolver(OperationResolver.class)
 abstract public class AbstractOperation  {
     public Process createProcess(Project project, Properties options) throws Exception {

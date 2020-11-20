@@ -165,7 +165,7 @@ public class TimeRangeFacet implements Facet {
     @JsonProperty(MIN)
     @JsonInclude(Include.NON_NULL)
     public Double getMin() {
-        if(getError() == null) {
+        if (getError() == null) {
             return _min;
         }
         return null;
@@ -174,7 +174,7 @@ public class TimeRangeFacet implements Facet {
     @JsonProperty(MAX)
     @JsonInclude(Include.NON_NULL)
     public Double getMax() {
-        if(getError() == null) {
+        if (getError() == null) {
             return _max;
         }
         return null;

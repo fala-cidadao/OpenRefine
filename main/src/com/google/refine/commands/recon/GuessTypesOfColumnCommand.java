@@ -106,7 +106,7 @@ public class GuessTypesOfColumnCommand extends Command {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	if(!hasValidCSRFToken(request)) {
+    	if (!hasValidCSRFToken(request)) {
     		respondCSRFError(response);
     		return;
     	}

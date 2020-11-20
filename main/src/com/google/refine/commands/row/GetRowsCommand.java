@@ -206,9 +206,9 @@ public class GetRowsCommand extends Command {
             }
             
             // Pool all the recons occuring in the rows seen
-            for(WrappedRow wr : rwv.results) {
-                for(Cell c : wr.row.cells) {
-                    if(c != null && c.recon != null) {
+            for (WrappedRow wr : rwv.results) {
+                for (Cell c : wr.row.cells) {
+                    if (c != null && c.recon != null) {
                         pool.pool(c.recon);
                     }
                 }

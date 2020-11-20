@@ -46,7 +46,7 @@ public class ParseXml implements Function {
 
     @Override
     public Object call(Properties bindings, Object[] args) {
-        return call(bindings,args,"xml");
+        return call(bindings, args, "xml");
     }
     
     public Object call(Properties bindings, Object[] args, String mode) {
@@ -56,7 +56,7 @@ public class ParseXml implements Function {
                 if (mode.equals("html")) {
                     return Jsoup.parse(o1.toString());
                 } else if (mode.equals("xml")) {
-                    return Jsoup.parse(o1.toString(), "",Parser.xmlParser());
+                    return Jsoup.parse(o1.toString(), "", Parser.xmlParser());
                 } else {
                     return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " unable to identify which parser to use");
                 }

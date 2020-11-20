@@ -84,7 +84,7 @@ public class EditOneCellCommand extends Command {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	if(!hasValidCSRFToken(request)) {
+    	if (!hasValidCSRFToken(request)) {
     		respondCSRFError(response);
     		return;
     	}
@@ -131,7 +131,7 @@ public class EditOneCellCommand extends Command {
                  * so the client side can update the cell's rendering right away.
                  */
                 Pool pool = new Pool();
-                if(process.newCell != null && process.newCell.recon != null) {
+                if (process.newCell != null && process.newCell.recon != null) {
                     pool.pool(process.newCell.recon);
                 }
                 respondJSON(response, new EditResult("ok", historyEntry, process.newCell, pool));

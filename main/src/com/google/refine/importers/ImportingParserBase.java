@@ -180,7 +180,7 @@ abstract public class ImportingParserBase implements ImportingParser {
                 return 0;
             } catch (ModelException e) {
                 // Shouldn't happen: We already checked for duplicate name.
-                logger.error("ModelException adding Filename column",e);
+                logger.error("ModelException adding Filename column", e);
             }
             return -1;
         } else {

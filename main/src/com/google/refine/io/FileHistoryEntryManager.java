@@ -64,7 +64,7 @@ public class FileHistoryEntryManager implements HistoryEntryManager{
     @Override
     public void save(HistoryEntry historyEntry, Writer writer, Properties options) {
         try {
-        	if("save".equals(options.getProperty("mode"))) {
+        	if ("save".equals(options.getProperty("mode"))) {
         		ParsingUtilities.saveWriter.writeValue(writer, historyEntry);
         	} else {
         		ParsingUtilities.defaultWriter.writeValue(writer, historyEntry);
@@ -118,7 +118,7 @@ public class FileHistoryEntryManager implements HistoryEntryManager{
             out.putNextEntry(new ZipEntry("change.txt"));
             try {
                 History.writeOneChange(out, historyEntry.getChange(), pool);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 out.closeEntry();

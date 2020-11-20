@@ -55,7 +55,7 @@ public class ToTitlecase implements Function {
             String s = o instanceof String ? (String) o : o.toString();
             o = args[1];
             String delims = o instanceof String ? (String) o: o.toString(); 
-            return WordUtils.capitalizeFully(s,delims.toCharArray());
+            return WordUtils.capitalizeFully(s, delims.toCharArray());
         } else { 
             return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " expects a one or two strings");
         }

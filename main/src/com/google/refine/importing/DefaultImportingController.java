@@ -280,7 +280,7 @@ public class DefaultImportingController implements ImportingController {
         throws ServletException, IOException {
         
         Writer w = response.getWriter();
-        ParsingUtilities.defaultWriter.writeValue(w, new JobResponse("ok",job));
+        ParsingUtilities.defaultWriter.writeValue(w, new JobResponse("ok", job));
         w.flush();
         w.close();
     }

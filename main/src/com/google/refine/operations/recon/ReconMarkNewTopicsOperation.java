@@ -126,7 +126,7 @@ public class ReconMarkNewTopicsOperation extends EngineDependentMassCellOperatio
             }
             
             private Recon createNewRecon() {
-                if(reconConfig != null) {
+                if (reconConfig != null) {
                     return reconConfig.createNewRecon(historyEntryID);
                 } else {
                     // This should only happen when marking cells as reconciled

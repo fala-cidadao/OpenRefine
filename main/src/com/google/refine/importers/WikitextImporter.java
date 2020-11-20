@@ -247,7 +247,7 @@ public class WikitextImporter extends TabularImportingParserBase {
         }
         
         private void finishRow() {
-            if(currentRow.size() > 0) {
+            if (currentRow.size() > 0) {
                 rows.add(currentRow);
                 references.add(currentRowReferences);
                 rowId++;
@@ -322,19 +322,19 @@ public class WikitextImporter extends TabularImportingParserBase {
         }
         
         public void visit(WtXmlEmptyTag tag) {
-            if("br".equals(tag.getName())) {
+            if ("br".equals(tag.getName())) {
                 writeText("\n");
             }
         }
         
         public void visit(WtXmlStartTag tag) {
-            if("br".equals(tag.getName())) {
+            if ("br".equals(tag.getName())) {
                 writeText("\n");
             }
         }
         
         public void visit(WtXmlEndTag tag) {
-            if("br".equals(tag.getName())) {
+            if ("br".equals(tag.getName())) {
                 writeText("\n");
             }
         }
@@ -372,7 +372,7 @@ public class WikitextImporter extends TabularImportingParserBase {
              */
             String contents = body.getContent();
             Matcher matcher = urlPattern.matcher(contents);
-            while(matcher.find()) {
+            while (matcher.find()) {
                 lastExternalLink = contents.substring(matcher.start(), matcher.end());
             }
         }
@@ -400,7 +400,7 @@ public class WikitextImporter extends TabularImportingParserBase {
                 // Add blank cells to represent the current spanning cell
                 SpanningCell cell = spanningCell();
                 if (cell.row + cell.rowspan >= rowId + 1) {
-                    while(currentRow.size() < cell.col + cell.colspan) {
+                    while (currentRow.size() < cell.col + cell.colspan) {
                         if (blankSpanningCells) {
                             currentRow.add(null);
                             currentRowReferences.add(null);
@@ -408,13 +408,13 @@ public class WikitextImporter extends TabularImportingParserBase {
                             currentRow.add(cell.value);
                             currentRowReferences.add(cell.reference);
                             if (cell.reconciled != null) {
-                                wikilinkedCells.add(new WikilinkedCell(cell.reconciled, rowId, currentRow.size()-1));
+                                wikilinkedCells.add(new WikilinkedCell(cell.reconciled, rowId, currentRow.size()- 1));
                             }
                         }
                     }
                 }
                 // Check if this spanning cell has been fully represented
-                if(cell.row + cell.rowspan <= rowId + 1) {
+                if (cell.row + cell.rowspan <= rowId + 1) {
                     spanningCells.remove(spanningCellIdx);
                 } else {
                     spanningCellIdx++;
@@ -470,7 +470,7 @@ public class WikitextImporter extends TabularImportingParserBase {
             WtUrl url = e.getTarget();
             String externalLink = url.getProtocol() + ":" + url.getPath();
             if (cellStringBuilder != null) {
-                if(rowId >= 0) {
+                if (rowId >= 0) {
                     // We are inside the table: all hyperlinks
                     // should be converted to their URLs regardless of
                     // their label.
@@ -508,7 +508,7 @@ public class WikitextImporter extends TabularImportingParserBase {
         public void visit(WtTemplate e) {
             // only render templates if we are told to do so or inside a reference
             if (includeRawTemplates || currentReferenceName != null) {
-                writeText("{{"+e.getName().getAsString());
+                writeText("{{"+ e.getName().getAsString());
                 WtTemplateArguments args = e.getArgs();
                 for (int i = 0; i != args.size(); i++) {
                     writeText("|");
@@ -522,7 +522,7 @@ public class WikitextImporter extends TabularImportingParserBase {
             // do not render templates that are inside a reference
             if (currentReferenceName == null) {
                 writeText("|");
-                if(e.hasName()) {
+                if (e.hasName()) {
                     writeText(e.getName().getAsString());
                     writeText("=");
                 }
@@ -531,7 +531,7 @@ public class WikitextImporter extends TabularImportingParserBase {
         }
         
         public void visit(WtImageLink e) {
-            if(includeRawTemplates) {
+            if (includeRawTemplates) {
                 writeText("[[");
                 writeText(e.getTarget().getAsString());
                 writeText("]]");
@@ -600,7 +600,7 @@ public class WikitextImporter extends TabularImportingParserBase {
             List<Object> row = null;
             List<String> origRow = null;
             List<String> refRow = null;
-            if(currentRow < this.visitor.rows.size()) {
+            if (currentRow < this.visitor.rows.size()) {
                 origRow = this.visitor.rows.get(currentRow);
                 refRow = this.visitor.references.get(currentRow);
             }
@@ -623,8 +623,8 @@ public class WikitextImporter extends TabularImportingParserBase {
                     if (columnReferenced != null && i < columnReferenced.size() && columnReferenced.get(i)) {
                         String refValue = null;
                         // for headers
-                        if(currentRow == -1) {
-                            refValue = origRow.get(i)+"_ref";
+                        if (currentRow == - 1) {
+                            refValue = origRow.get(i)+ "_ref";
                         } else {
                             refValue = refRow.get(i);
                         }
@@ -641,7 +641,7 @@ public class WikitextImporter extends TabularImportingParserBase {
         }
         
         private void reconcileToQids(String wikiBaseUrl, StandardReconConfig cfg) {
-            if("null".equals(wikiBaseUrl)) {
+            if ("null".equals(wikiBaseUrl)) {
                 return; // TODO: more thorough URL validation instead
             }
             
@@ -753,7 +753,7 @@ public class WikitextImporter extends TabularImportingParserBase {
             
             // Add reconciliation statistics
             if (dataReader.columnReconciled != null) {
-                for(int i = 0; i != dataReader.columnReconciled.size(); i++) {
+                for (int i = 0; i != dataReader.columnReconciled.size(); i++) {
                     if (dataReader.columnReconciled.get(i)) {
                         Column col = project.columnModel.columns.get(i);
                         col.setReconStats(ReconStats.create(project, i));

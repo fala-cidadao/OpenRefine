@@ -51,7 +51,7 @@ public class Diff implements Function {
             Object o2 = args[1];
             if (o1 != null && o2 != null) {
                 if (args.length == 2 && o1 instanceof String && o2 instanceof String) {
-                    return StringUtils.difference((String) o1,(String) o2);
+                    return StringUtils.difference((String) o1, (String) o2);
                 } else if (o1 instanceof OffsetDateTime && o2 instanceof OffsetDateTime && args.length == 3) {
                     Object o3 = args[2];
                     if (o3 != null && o3 instanceof String) {

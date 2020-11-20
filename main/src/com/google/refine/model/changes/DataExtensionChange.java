@@ -304,7 +304,7 @@ public class DataExtensionChange implements Change {
         }
         writer.write("columnTypeCount="); writer.write(Integer.toString(_columnTypes.size())); writer.write('\n');
         for (ReconType type : _columnTypes) {
-            if(type != null) {
+            if (type != null) {
                 ParsingUtilities.defaultWriter.writeValue(writer, type);
             }
             writer.write('\n');

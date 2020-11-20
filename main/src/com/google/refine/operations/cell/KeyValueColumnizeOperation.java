@@ -242,7 +242,7 @@ public class KeyValueColumnizeOperation extends AbstractOperation {
         allColumns.addAll(newNoteColumns);
         
         // clean up the empty rows 
-        for (int i = newRows.size() - 1;i>=0;i--) {
+        for (int i = newRows.size() - 1; i>= 0; i--) {
             if (newRows.get(i).isEmpty())
                 newRows.remove(i);
         }

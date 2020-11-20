@@ -51,7 +51,7 @@ public class Even implements Function {
 
     public static double roundUpToEven(double d){
         double temp = Math.ceil(d);
-        return ((temp % 2) == 0) ? temp : temp+1;
+        return ((temp % 2) == 0) ? temp : temp+ 1;
     }
 
     @Override

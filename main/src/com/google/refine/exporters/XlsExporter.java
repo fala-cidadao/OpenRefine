@@ -135,7 +135,7 @@ public class XlsExporter implements StreamExporter {
                             		hl.setLabel(cellData.text);
                             		hl.setAddress(cellData.link);
                             		c.setHyperlink(hl);
-                            	} catch(IllegalArgumentException e) {
+                            	} catch (IllegalArgumentException e) {
                             		// If we failed to create the hyperlink and add it to the cell,
                             		// we just use the string value as fallback
                             	}

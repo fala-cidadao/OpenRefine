@@ -40,7 +40,7 @@ public class ToggleStarredExpressionCommand extends Command {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	if(!hasValidCSRFToken(request)) {
+    	if (!hasValidCSRFToken(request)) {
     		respondCSRFError(response);
     		return;
     	}
@@ -56,7 +56,7 @@ public class ToggleStarredExpressionCommand extends Command {
             starredExpressions.add(expression);
         }
 
-        if(request.getParameter("returnList") != null) {
+        if (request.getParameter("returnList") != null) {
             try {
                 respondJSON(response, GetStarredExpressionsCommand.getExpressionsList());
             } catch (Exception e) {

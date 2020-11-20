@@ -70,7 +70,7 @@ public class SqlExporter implements WriterExporter {
     @Override
     public void export(final Project project, Properties params, Engine engine, final Writer writer)
             throws IOException {
-        if(logger.isDebugEnabled()) {
+        if (logger.isDebugEnabled()) {
             logger.debug("export sql with params: {}", params);
         }
        
@@ -148,9 +148,9 @@ public class SqlExporter implements WriterExporter {
                     for (CellData cellData : cells) {
 
                         if (cellData != null) {
-                           if(cellData.text == null || cellData.text.isEmpty()) {
+                           if (cellData.text == null || cellData.text.isEmpty()) {
                                values.add(new SqlData(cellData.columnName, "", ""));
-                           }else {
+                           } else {
                                values.add(new SqlData(cellData.columnName, cellData.value, cellData.text)); 
                            }
 

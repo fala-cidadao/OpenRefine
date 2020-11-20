@@ -47,7 +47,7 @@ public class UnknownOperation extends AbstractOperation {
 	}
 	
 	@JsonAnyGetter
-	public Map<String,Object> getAttributes() {
+	public Map<String, Object> getAttributes() {
 		return properties;
 	}
 	

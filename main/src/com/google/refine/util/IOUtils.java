@@ -67,10 +67,10 @@ public class IOUtils {
         } finally {
             try {
                 output.close();
-            } catch (IOException e) {}
+            } catch (IOException e) { }
             try {
                 input.close();
-            } catch (IOException e) {}
+            } catch (IOException e) { }
         }
         return count;
     }

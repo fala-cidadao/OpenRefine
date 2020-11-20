@@ -46,8 +46,8 @@ public class RandomNumber implements Function {
     @Override
     public Object call(Properties bindings, Object[] args) {
         if (args.length == 2 && args[0] != null && args[0] instanceof Number
-                && args[1] != null && args[1] instanceof Number && ((Number) args[0]).intValue()<((Number) args[1]).intValue()) {
-            int randomNum = ThreadLocalRandom.current().nextInt(((Number) args[0]).intValue(), ((Number) args[1]).intValue()+1);
+                && args[1] != null && args[1] instanceof Number && ((Number) args[0]).intValue()< ((Number) args[1]).intValue()) {
+            int randomNum = ThreadLocalRandom.current().nextInt(((Number) args[0]).intValue(), ((Number) args[1]).intValue()+ 1);
             return randomNum;
         }
         return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " expects two numbers, the first must be less than the second");
