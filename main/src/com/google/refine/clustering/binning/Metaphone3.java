@@ -278,20 +278,21 @@ public class Metaphone3 {
 	*/
 	boolean SetKeyLength(int inKeyLength)
 	{
-	    if(inKeyLength < 1)
+		int key = inKeyLength;
+	    if(key < 1)
 		{
 			// can't have that -
 			// no room for terminating null
-			inKeyLength = 1;
+	    	key = 1;
 		}
 
-		if(inKeyLength > MAX_KEY_ALLOCATION)
+		if(key > MAX_KEY_ALLOCATION)
 	    {
 	        m_metaphLength = MAX_KEY_ALLOCATION;
 	        return false;
 	    }
 
-	     m_metaphLength = inKeyLength;
+	     m_metaphLength = key;
 	     return true;
 	}
 
@@ -570,45 +571,46 @@ public class Metaphone3 {
 	 */
 	int SkipVowels(int at)
 	{
-	    if(at < 0)
+		int control = at;
+	    if(control < 0)
 		{
 	        return 0;
 		}
 
-	    if(at >= m_length)
+	    if(control >= m_length)
 		{
 	        return m_length;
 		}
 
-	    char it = CharAt(at);
+	    char it = CharAt(control);
 
 	    while(IsVowel(it) || (it == 'W'))
 	    {
-	        if(StringAt(at, 4, "WICZ", "WITZ", "WIAK", "")
-				|| StringAt((at - 1), 5, "EWSKI", "EWSKY", "OWSKI", "OWSKY", "")
-				|| (StringAt(at, 5, "WICKI", "WACKI", "") && ((at + 4) == m_last)))
+	        if(StringAt(control, 4, "WICZ", "WITZ", "WIAK", "")
+				|| StringAt((control - 1), 5, "EWSKI", "EWSKY", "OWSKI", "OWSKY", "")
+				|| (StringAt(control, 5, "WICKI", "WACKI", "") && ((control) == m_last)))
 	        {
 	            break;
 	        }
 
-	        at++;
-	        if(((CharAt(at - 1) == 'W') && (CharAt(at) == 'H'))
-	            && !(StringAt(at, 3, "HOP", "")
-	                  || StringAt(at, 4, "HIDE", "HARD", "HEAD", "HAWK", "HERD", "HOOK", "HAND", "HOLE", "")
-	                  || StringAt(at, 5, "HEART", "HOUSE", "HOUND", "")
-	                  || StringAt(at, 6, "HAMMER", "")))
+	        control++;
+	        if(((CharAt(control - 1) == 'W') && (CharAt(control) == 'H'))
+	            && !(StringAt(control, 3, "HOP", "")
+	                  || StringAt(control, 4, "HIDE", "HARD", "HEAD", "HAWK", "HERD", "HOOK", "HAND", "HOLE", "")
+	                  || StringAt(control, 5, "HEART", "HOUSE", "HOUND", "")
+	                  || StringAt(control, 6, "HAMMER", "")))
 			{
-	            at++;
+	        	control++;
 			}
 	        
-	        if(at > (m_length - 1))
+	        if(control > (m_length - 1))
 	        {
 	        	break;
 	        }
-	        it = CharAt(at);
+	        it = CharAt(control);
 	    }
 
-	    return at;
+	    return control;
 	}
 
 	/**
@@ -659,18 +661,19 @@ public class Metaphone3 {
 	boolean RootOrInflections(String inWord, String root)
 	{
 		int len = root.length();
+		String rootMod;
+		rootMod = root;
 		String test;
-
-		test = root + "S";
-		if((inWord.equals(root))
+		test = rootMod + "S";
+		if((inWord.equals(rootMod))
 				|| (inWord.equals(test)))
 		{
 			return true;
 		}
 
-		if(root.charAt(len - 1) != 'E')
+		if(rootMod.charAt(len - 1) != 'E')
 		{
-			test = root + "ES";
+			test = rootMod + "ES";
 		}
 		
 		if(inWord.equals(test))
@@ -678,13 +681,13 @@ public class Metaphone3 {
 			return true;
 		}
 
-		if(root.charAt(len - 1) != 'E')
+		if(rootMod.charAt(len - 1) != 'E')
 		{
-			test = root + "ED";
+			test = rootMod + "ED";
 		}
 		else
 		{
-			test = root + "D";
+			test = rootMod + "D";
 		}
 		
 		if(inWord.equals(test))
@@ -692,24 +695,24 @@ public class Metaphone3 {
 			return true;
 		}
 
-		if(root.charAt(len - 1) == 'E')
+		if(rootMod.charAt(len - 1) == 'E')
 		{
-			root = root.substring(0, len - 1);
+			rootMod = rootMod.substring(0, len - 1);
 		}
 
-		test = root + "ING";
+		test = rootMod + "ING";
 		if(inWord.equals(test))
 		{
 			return true;
 		}
 
-		test = root + "INGLY";
+		test = rootMod + "INGLY";
 		if(inWord.equals(test))
 		{
 			return true;
 		}
 
-		test = root + "Y";
+		test = rootMod + "Y";
 		if(inWord.equals(test))
 		{
 			return true;
@@ -7456,5 +7459,4 @@ public class Metaphone3 {
 		
 	}
 }
-
 
