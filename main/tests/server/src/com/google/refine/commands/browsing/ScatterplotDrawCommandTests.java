@@ -48,17 +48,17 @@ public class ScatterplotDrawCommandTests {
     		+ "\"ex\":\"value\","
     		+ "\"ey\":\"value\","
     		+ "\"dot\":0.8,"
-    		+ "\"dim_x\":\"log\","
-    		+ "\"dim_y\":\"lin\","
+    		+ "\"dimX\":\"log\","
+    		+ "\"dimY\":\"lin\","
     		+ "\"type\":\"scatterplot\","
-    		+ "\"from_x\":1,"
-    		+ "\"to_x\":2,"
-    		+ "\"from_y\":3,"
-    		+ "\"to_y\":4,"
+    		+ "\"fromX\":1,"
+    		+ "\"toX\":2,"
+    		+ "\"fromY\":3,"
+    		+ "\"toY\":4,"
     		+ "\"color\":\"ff6a00\""
     		+ "}";
-    
-    
+
+
     public static String configJsonWithNone = "{"
     		+ "\"name\":\"b (x) vs. y (y)\","
     		+ "\"cx\":\"b\","
@@ -67,23 +67,23 @@ public class ScatterplotDrawCommandTests {
     		+ "\"ex\":\"value\","
     		+ "\"ey\":\"value\","
     		+ "\"dot\":1.4,"
-    		+ "\"dim_x\":\"lin\","
-    		+ "\"dim_y\":\"lin\","
+    		+ "\"dimX\":\"lin\","
+    		+ "\"dimY\":\"lin\","
     		+ "\"r\":\"none\","
     		+ "\"type\":\"scatterplot\","
-    		+ "\"from_x\":0,"
-    		+ "\"to_x\":0,"
-    		+ "\"from_y\":0,"
-    		+ "\"to_y\":0,"
+    		+ "\"fromX\":0,"
+    		+ "\"toX\":0,"
+    		+ "\"fromY\":0,"
+    		+ "\"toY\":0,"
     		+ "\"color\":\"ff6a00\"}";
-    
+
     @Test
     public void testParseConfig() throws JsonParseException, JsonMappingException, IOException {
     	GetScatterplotCommand.PlotterConfig config = ParsingUtilities.mapper.readValue(configJson, GetScatterplotCommand.PlotterConfig.class);
-    	Assert.assertEquals("a", config.columnName_x);
-    	Assert.assertEquals("b", config.columnName_y);
-    	Assert.assertEquals(ScatterplotFacet.LOG, config.dim_x);
-    	Assert.assertEquals(ScatterplotFacet.LIN, config.dim_y);
+    	Assert.assertEquals("a", config.columnNameX);
+    	Assert.assertEquals("b", config.columnNameY);
+    	Assert.assertEquals(ScatterplotFacet.LOG, config.dimX);
+    	Assert.assertEquals(ScatterplotFacet.LIN, config.dimY);
     }
     
     @Test
