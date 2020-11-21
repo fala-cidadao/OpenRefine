@@ -70,7 +70,7 @@ public class JSONUtilities {
     }
     
     static public boolean getBoolean(JsonNode obj, String key, boolean def) {
-        if (obj.has(key)) {
+        if (obj != null && obj.has(key)) {
             return obj.get(key).asBoolean(def);
         } else {
             return def;
