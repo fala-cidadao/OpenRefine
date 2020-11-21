@@ -64,7 +64,7 @@ import com.google.refine.util.ParsingUtilities;
 
 public class GetScatterplotCommand extends Command {
 
-    final static Logger logger = LoggerFactory.getLogger("get-scatterplot_command");
+    final static Logger LOGGER = LoggerFactory.getLogger("get-scatterplot_command");
     
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -90,7 +90,7 @@ public class GetScatterplotCommand extends Command {
                 sos.close();
             }
             
-            logger.trace("Drawn scatterplot in {} ms", Long.toString(System.currentTimeMillis() - start));
+            LOGGER.trace("Drawn scatterplot in {} ms", Long.toString(System.currentTimeMillis() - start));
         } catch (Exception e) {
             e.printStackTrace();
             respondException(response, e);
@@ -103,42 +103,42 @@ public class GetScatterplotCommand extends Command {
     	@JsonProperty(ScatterplotFacet.DOT)
     	double dot = 100;
     	@JsonIgnore
-    	public int dim_x = ScatterplotFacet.LIN;
+    	public int dimX = ScatterplotFacet.LIN;
     	@JsonIgnore
-    	public int dim_y = ScatterplotFacet.LIN;
+    	public int dimY = ScatterplotFacet.LIN;
     	@JsonProperty(ScatterplotFacet.ROTATION)
     	public int rotation = ScatterplotFacet.NO_ROTATION;
     	@JsonProperty(ScatterplotFacet.COLOR)
-    	public String color_str = "000000";
+    	public String colorStr = "000000";
     	@JsonProperty(ScatterplotFacet.BASE_COLOR)
-    	public String base_color_str = null;
+    	public String baseColorStr = null;
     	@JsonProperty(ScatterplotFacet.X_COLUMN_NAME)
-    	public String columnName_x = "";
+    	public String columnNameX = "";
     	@JsonProperty(ScatterplotFacet.X_EXPRESSION)
-    	public String expression_x = "value";
+    	public String expressionX = "value";
     	@JsonProperty(ScatterplotFacet.Y_COLUMN_NAME)
-    	public String columnName_y = "";
+    	public String columnNameY = "";
     	@JsonProperty(ScatterplotFacet.Y_EXPRESSION)
-    	public String expression_y = "value";
+    	public String expressionY = "value";
     	
         @JsonProperty(ScatterplotFacet.DIM_X)
         public String getDimX() {
-            return dim_x == ScatterplotFacet.LIN ? "lin" : "log";
+            return dimX == ScatterplotFacet.LIN ? "lin" : "log";
         }
         
         @JsonProperty(ScatterplotFacet.DIM_Y)
         public String getDimY() {
-            return dim_y == ScatterplotFacet.LIN ? "lin" : "log";
+            return dimY == ScatterplotFacet.LIN ? "lin" : "log";
         }
         
         @JsonProperty(ScatterplotFacet.DIM_X)
         public void setDimX(String dim) {
-        	dim_x = dim.equals("lin") ? ScatterplotFacet.LIN : ScatterplotFacet.LOG;
+        	dimX = dim.equals("lin") ? ScatterplotFacet.LIN : ScatterplotFacet.LOG;
         }
         
         @JsonProperty(ScatterplotFacet.DIM_Y)
         public void setDimY(String dim) {
-        	dim_y = dim.equals("lin") ? ScatterplotFacet.LIN : ScatterplotFacet.LOG;
+        	dimY = dim.equals("lin") ? ScatterplotFacet.LIN : ScatterplotFacet.LOG;
         }
         
         // rotation can be set to "none" (a JSON string) in which case it should be ignored
@@ -165,12 +165,12 @@ public class GetScatterplotCommand extends Command {
         Evaluable eval_x = null;
         Evaluable eval_y = null;
         
-        Color color = new Color(Integer.parseInt(o.color_str, 16));
+        Color color = new Color(Integer.parseInt(o.colorStr, 16));
         
-        Color base_color = o.base_color_str != null ? new Color(Integer.parseInt(o.base_color_str, 16)) : null;
+        Color base_color = o.baseColorStr != null ? new Color(Integer.parseInt(o.baseColorStr, 16)) : null;
         
-        if (o.columnName_x.length() > 0) {
-            Column x_column = project.columnModel.getColumnByName(o.columnName_x);
+        if (o.columnNameX.length() > 0) {
+            Column x_column = project.columnModel.getColumnByName(o.columnNameX);
             if (x_column != null) {
                 columnIndex_x = x_column.getCellIndex();
             }
@@ -179,13 +179,13 @@ public class GetScatterplotCommand extends Command {
         }
         
         try {
-            eval_x = MetaParser.parse(o.expression_x);
+            eval_x = MetaParser.parse(o.expressionX);
         } catch (ParsingException e) {
-            logger.warn("error parsing expression", e);
+            LOGGER.warn("error parsing expression", e);
         }
         
-        if (o.columnName_y.length() > 0) {
-            Column y_column = project.columnModel.getColumnByName(o.columnName_y);
+        if (o.columnNameY.length() > 0) {
+            Column y_column = project.columnModel.getColumnByName(o.columnNameY);
             if (y_column != null) {
                 columnIndex_y = y_column.getCellIndex();
             }
@@ -194,26 +194,26 @@ public class GetScatterplotCommand extends Command {
         }
         
         try {
-            eval_y = MetaParser.parse(o.expression_y);
+            eval_y = MetaParser.parse(o.expressionY);
         } catch (ParsingException e) {
-            logger.warn("error parsing expression", e);
+            LOGGER.warn("error parsing expression", e);
         }
         
         NumericBinIndex index_x = null;
         NumericBinIndex index_y = null;
         
-        Column column_x = project.columnModel.getColumnByName(o.columnName_x);
+        Column column_x = project.columnModel.getColumnByName(o.columnNameX);
         if (column_x != null) {
             columnIndex_x = column_x.getCellIndex();
-            index_x = ScatterplotFacet.getBinIndex(project, column_x, eval_x, o.expression_x);
+            index_x = ScatterplotFacet.getBinIndex(project, column_x, eval_x, o.expressionX);
             min_x = index_x.getMin();
             max_x = index_x.getMax();
         }
 
-        Column column_y = project.columnModel.getColumnByName(o.columnName_y);
+        Column column_y = project.columnModel.getColumnByName(o.columnNameY);
         if (column_y != null) {
             columnIndex_y = column_y.getCellIndex();
-            index_y = ScatterplotFacet.getBinIndex(project, column_y, eval_y, o.expression_y);
+            index_y = ScatterplotFacet.getBinIndex(project, column_y, eval_y, o.expressionY);
             min_y = index_y.getMin();
             max_y = index_y.getMax();
         }
@@ -221,7 +221,7 @@ public class GetScatterplotCommand extends Command {
         if (index_x != null && index_y != null && index_x.isNumeric() && index_y.isNumeric()) {
             ScatterplotDrawingRowVisitor drawer = new ScatterplotDrawingRowVisitor(
                 columnIndex_x, columnIndex_y, min_x, max_x, min_y, max_y, 
-                o.size, o.dim_x, o.dim_y, o.rotation, o.dot, color
+                o.size, o.dimX, o.dimY, o.rotation, o.dot, color
             );
             
             if (base_color != null) {
