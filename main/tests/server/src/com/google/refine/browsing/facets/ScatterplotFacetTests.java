@@ -47,16 +47,16 @@ import com.google.refine.util.TestUtils;
 
 public class ScatterplotFacetTests extends RefineTest {
     public static String configJson = "{\n" + 
-            "          \"to_x\": 1,\n" + 
-            "          \"to_y\": 1,\n" + 
+            "          \"toX\": 1,\n" + 
+            "          \"toY\": 1,\n" + 
             "          \"dot\": 1,\n" + 
-            "          \"from_x\": 0.21333333333333335,\n" + 
+            "          \"fromX\": 0.21333333333333335,\n" + 
             "          \"l\": 150,\n" + 
             "          \"type\": \"scatterplot\",\n" + 
-            "          \"from_y\": 0.26666666666666666,\n" + 
-            "          \"dim_y\": \"lin\",\n" + 
+            "          \"fromY\": 0.26666666666666666,\n" + 
+            "          \"dimY\": \"lin\",\n" + 
             "          \"ex\": \"value\",\n" + 
-            "          \"dim_x\": \"lin\",\n" +
+            "          \"dimX\": \"lin\",\n" +
             "          \"ey\": \"value\",\n" + 
             "          \"cx\": \"my column\",\n" + 
             "          \"cy\": \"e\",\n" + 
@@ -72,13 +72,13 @@ public class ScatterplotFacetTests extends RefineTest {
             + "\"l\":150,"
             + "\"dot\":1,"
             + "\"r\":0,"
-            + "\"dim_x\":0,"
-            + "\"dim_y\":0,"
+            + "\"dimX\":0,"
+            + "\"dimY\":0,"
             + "\"color\":\"000000\","
-            + "\"from_x\":0.21333333333333335,"
-            + "\"to_x\":1,"
-            + "\"from_y\":0.26666666666666666,"
-            + "\"to_y\":1"
+            + "\"fromX\":0.21333333333333335,"
+            + "\"toX\":1,"
+            + "\"fromY\":0.26666666666666666,"
+            + "\"toY\":1"
             + "}";
     
     @Test
